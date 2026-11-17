@@ -1,0 +1,38 @@
+title: June - August 2022 | Abhigna Y
+description: Dev Log 9. Telemetry radio and GNSS added, a barometer bug fixed, and TFAC r2 designed.
+nav: archive
+---
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="../archive.html">Archive</a>
+    <h1>June - August 2022</h1>
+    <p class="when">Dev Log 9</p>
+  </header>
+  <div class="prose">
+    <h2>Accomplishments in June 2022</h2>
+    <p>No progress was made in June.</p>
+    <h2>Accomplishments in July 2022</h2>
+    <p>After the lack of progress in June I decided to work on something that wasn’t waiting for rocket parts. I began work on adding two components to the avionics stack which were a Telemetry radio and GNSS. The telemetry radio I chose was an Ebyte E32 LoRa module (fig 1) operating on 433mHz (very powerful), I chose this radio primarily because it was cheaper while being more powerful than the other options I was looking at. As for the GNSS I chose the uBlox SAM-M8Q on a sparkfun board (fig 2), I again chose this because it was cheap compared to other options available and it has a builtin ceramic antenna!</p>
+  </div>
+  <div class="figs">
+    {{img log9-1.png | Telemetry radios | (fig 1 - Telemetry radios)}}
+    {{img log9-2.png | GNSS hooked up to TFAC via I2C | (fig 2 - GNSS hooked up to TFAC via I2C)}}
+  </div>
+  <div class="prose">
+    <h2>Accomplishments in August 2022</h2>
+    <p>I made a pretty good amount of progress in August. First I began working on code for logging important data from the GNSS but I ran into a bug where the barometer data started going haywire (fig 3). The TL;DR was that I was reading data from the baro at the fastest OSR possible which takes 7-9ms for conversion, so when the GNSS writes new data it changes the read interval, which creates a change in measured pressure, the fix was to reduce the barometer’s OSR and poll it every 10-15ms instead of every loop.</p>
+    <p>After that I designed a better improved avionics stack with a holder for the GNSS module and telemetry module (fig 4) but most of the new 3D printed parts were not printed right and broke right after printing, so I’ll have to print it again.</p>
+    <p>Also I made a little breakout board (fig 5) for the Telemetry radio mainly to improve cable management (didn’t really fix that) and to test out the capabilities and quality of PCBs manufactured locally.</p>
+    <p>Finally I designed TFAC r2 (fig 6), the main improvements include more IO, a functioning onboard GNSS and a much better layout (TFAC r1’s layout was pretty bad in hindsight). I’ve decided not to manufacture it because it doesn’t really make sense, the changes aren’t noteworthy and most of them can be fixed with a bodge.</p>
+  </div>
+  <div class="figs">
+    {{img log9-3.png | barometer data with GNSS data being logged | (fig 3 - barometer data with GNSS data being logged)}}
+    {{img log9-4.png | breakout board for the LoRa | (fig 5 - breakout board for the LoRa)}}
+    {{img log9-5.png | CAD model of the avionics | (fig 4 - CAD model of the avionics)}}
+    {{img log9-6.png | TFAC r2, layout | (fig 5 - TFAC r2, layout)}}
+  </div>
+  <nav class="pager" aria-label="Dev logs">
+    <a href="march-may-2022.html">Older: March - May 2022</a>
+    <a href="september-2022.html">Newer: September 2022</a>
+  </nav>
+</div>

@@ -1,0 +1,155 @@
+title: Avionics | Abhigna Y
+description: All the rocket flight computers Abhigna has designed and built, from SNIX R2 to TFAC r3.
+nav: index
+---
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="rocket.html">Advanced Model Rockets</a>
+    <h1>Avionics</h1>
+    <p class="lede">All the rocket flight computers that I've designed and built. These computers have a lot of functionality, data logging, parachute ejection, 3 axis stability control, etc.</p>
+  </header>
+
+  <figure class="lineup-wrap">
+    {{lineup}}
+    <figcaption>The four board outlines, drawn to the same scale.</figcaption>
+  </figure>
+
+  <section class="board-entry">
+    <div class="prose">
+      <h2>SNIX R2</h2>
+      <p>SNIX R2 is the first flight computer and PCB I designed. SNIX R2 was an intentionally ambitious PCB design that was intended to fly on every rocket I could think of at that time.</p>
+      <p>I didn't have any experience designing a circuit board, which was quite a complex PCB to design. There were several fundamental wiring issues with the sensors, microcontroller, and very noisy power traces. The biggest problem with this PCB was that I had traces on all 4 layers of the PCB which would cause a lot of crosstalk between different signals.</p>
+      <ul class="speclist">
+        <li>MCU: NXP MK20DX256</li>
+        <li>IMU: Bosch BNO055</li>
+        <li>Baro: Bosch BMP388</li>
+        <li>Flash, SD Datalogging</li>
+        <li>AP63300 3A Buck Converter</li>
+        <li>LED, Buzzer</li>
+        <li>4 MOSFET-controlled Pyro-Technic Channels</li>
+        <li>TVC and Fins</li>
+        <li>Multiple other Outputs</li>
+        <li>67x97mm on a 4 Layer board</li>
+        <li>Designed in Eagle</li>
+        <li>Development Time (Hardware Only) - December 2020 - March 2021</li>
+      </ul>
+    </div>
+    <div class="figs narrow">{{img snix-r2.jpg | SNIX R2 flight computer}}</div>
+  </section>
+
+  <section class="board-entry">
+    <div class="prose">
+      <h2>SNIX R2B</h2>
+      <p>SNIX R2B is the second-flight computer that I designed in the "SNIX" series. This computer uses identical components to SNIX R2 but is smaller and is a 2-layer PCB instead of 4 layers. The main problem with SNIX R2 was with the soldering. SMD soldering is quite hard to do when you first start so I got it assembled by a PCB Assembly house, but there were soldering issues. The PCB shown in the image has been scrapped for parts due to the absence of major sensors. (silicon shortage)</p>
+      <ul class="speclist">
+        <li>MCU: NXP MK20DX256</li>
+        <li>IMU: Bosch BNO055</li>
+        <li>Baro: TE MS5611 and Bosch BMP388</li>
+        <li>Flash, SD Datalogging</li>
+        <li>AP633 3A Buck Converter</li>
+        <li>LED, Buzzer</li>
+        <li>4 MOSFET-controlled Pyro-Technic Channels</li>
+        <li>TVC and Fins</li>
+        <li>Multiple other Outputs</li>
+        <li>50x86mm on a 2 Layer board</li>
+        <li>Designed in Autodesk Eagle</li>
+        <li>Development Time (Hardware Only) - March 2021 - August 2021</li>
+      </ul>
+    </div>
+    <div class="figs narrow">{{img snix-r2b.jpg | SNIX R2B flight computer}}</div>
+  </section>
+
+  <section class="board-entry">
+    <div class="prose">
+      <h2>SAFAC r1</h2>
+      <p>SAFAC (Second Attempt at a Flyable Avionics Computer) was meant to be a smaller and simpler version of SNIX with fewer I/O, peripherals, and a cleaner layout. SAFAC still has all the key components for flying on HPR and actively guided rockets but cuts down on some peripherals that I deemed unnecessary at that time. Technically this computer should have worked, but didn't as I had no previous PCB assembly experience and so there were quite a few soldering issues on this board. At that time some of the parts to make another SAFAC computer were out of stock (because of the silicon shortage) so I decided to design TFAC which would utilize components that were in stock at that time.</p>
+      <ul class="speclist">
+        <li>MCU: NXP MK20DX256</li>
+        <li>IMU: Bosch BMI088</li>
+        <li>Baro: TE MS5611 and Infenion DPS310</li>
+        <li>Flash, SD Datalogging</li>
+        <li>AP63300 3A Buck Converter</li>
+        <li>LED, Buzzer</li>
+        <li>2 Load Switch-based Pyro-Technic Channels</li>
+        <li>TVC outputs</li>
+        <li>Roll control, I2C, and UART outputs</li>
+        <li>42x78mm on a 4 Layer board</li>
+        <li>Designed in KiCad</li>
+        <li>Development Time (Hardware Only) - July 2021 - October 2021</li>
+      </ul>
+    </div>
+    <div class="figs narrow">{{img safac-r1.jpg | SAFAC r1 flight computer}}</div>
+  </section>
+
+  <section class="board-entry">
+    <div class="prose">
+      <h2>TFAC r1</h2>
+      <p>TFAC (Third Flyable Avionics Computer) is the newest flight computer that I designed. After soldering SAFAC, I learned that (for me at least) it is quite hard to do full SMD soldering so I took a step back with TFAC. TFAC is more complex than SAFAC with a GNSS radio and a couple more sensors, but is easier to solder. Unfortunately, I accidentally pulled down the GNSS interface selection pin to GND instead of pulling it high to 3v3 or leaving it open. Because of this, I couldn't use the onboard GNSS radio. This was fixed with TFAC r2.</p>
+      <ul class="speclist">
+        <li>MCU: NXP IMXRT1062 on a Teensy 4.0 backward compatible with MK20DX256 (on a Teensy 3.2)</li>
+        <li>IMU: Bosch BMI088</li>
+        <li>Baro: TE MS5607</li>
+        <li>Mag: ST LIS3MDL</li>
+        <li>GNSS: u-Blox NEO-M8J</li>
+        <li>Flash, SD Datalogging</li>
+        <li>AP63300 3A Buck Converter</li>
+        <li>LED, Buzzer</li>
+        <li>2 Load Switch-based Pyro-Technic Channels</li>
+        <li>TVC and FIN Outputs</li>
+        <li>Roll control, I2C, UART and SPI outputs</li>
+        <li>45x85mm on a 4 Layer board</li>
+        <li>Designed in KiCad</li>
+        <li>Development Time: October 2021 - June 2023</li>
+      </ul>
+    </div>
+    <div class="figs narrow">{{img tfac-r1.png | TFAC r1 board layout}}</div>
+  </section>
+
+  <section class="board-entry">
+    <div class="prose">
+      <h2>TFAC r2</h2>
+      <p>TFAC r2 was designed almost a year after TFAC r1. The main changes are the addition of more IO and a change in the placement of some of the components along with a functioning onboard GNSS. While I did fix the GNSS interface selection pin problem I realized that there was quite a bit of interference so the GNSS wasn't able to get a GPS fix. TFAC r2 also has dedicated connectors for a LoRa telemetry radio. Other than that I refined the layout which is a little more cleaner than r1. Unfortunately with TFAC r2, I removed the Flash Chip's CS pin pulldown resistor which meant that I was unable to use the Flash chip. This was fixed later on with TFAC r3</p>
+      <ul class="speclist">
+        <li>MCU: NXP IMXRT1062 on a Teensy 4.0 backward compatible with MK20DX256 (on a Teensy 3.2)</li>
+        <li>IMU: Bosch BMI088</li>
+        <li>Baro: TE MS5607</li>
+        <li>Mag: ST LIS3MDL</li>
+        <li>GNSS: u-Blox NEO-M9N</li>
+        <li>Flash, SD Datalogging</li>
+        <li>AP63300 3A Buck Converter</li>
+        <li>LED, Buzzer</li>
+        <li>2 Load Switch-based Pyro-Technic Channels</li>
+        <li>TVC and FIN Outputs</li>
+        <li>Roll control, I2C, UART and SPI outputs</li>
+        <li>45x85mm on a 4 Layer board</li>
+        <li>Designed in KiCad</li>
+        <li>Development Time: June 2023 to July 2023</li>
+      </ul>
+    </div>
+    <div class="figs narrow">{{img tfac-r2.png | TFAC r2 board layout}}</div>
+  </section>
+
+  <section class="board-entry">
+    <div class="prose">
+      <h2>TFAC r3</h2>
+      <p>TFAC r3 is identical to TFAC r2. The main change is the addition of the 10k ohm pull-down resistor for the flash chip's CS pin. Other than that the jumper pad for configuring the voltage of the servo connector was moved over and the RF layout for the GNSS module was cleaned up.</p>
+      <ul class="speclist">
+        <li>MCU: NXP IMXRT1062 on a Teensy 4.0 backward compatible with MK20DX256 (on a Teensy 3.2)</li>
+        <li>IMU: Bosch BMI088</li>
+        <li>Baro: TE MS5607</li>
+        <li>Mag: ST LIS3MDL</li>
+        <li>GNSS: u-Blox NEO-M9N</li>
+        <li>Flash, SD Datalogging</li>
+        <li>AP63300 3A Buck Converter</li>
+        <li>LED, Buzzer</li>
+        <li>2 Load Switch-based Pyro-Technic Channels</li>
+        <li>TVC and FIN Outputs</li>
+        <li>Roll control, I2C, UART and SPI outputs</li>
+        <li>45x85mm on a 4 Layer board</li>
+        <li>Designed in KiCad</li>
+        <li>Development Time: July 2023 to present</li>
+      </ul>
+    </div>
+    <div class="figs narrow">{{img tfac-r3.png | TFAC r3 board layout}}</div>
+  </section>
+</div>

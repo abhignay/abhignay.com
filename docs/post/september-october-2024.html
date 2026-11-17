@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>September - October 2024 | Abhigna Y</title>
+<meta name="description" content="Dev Log 21. Hardware for the TVC rocket, and the pad remote built into a real remote.">
+<meta property="og:title" content="September - October 2024 | Abhigna Y">
+<meta property="og:description" content="Dev Log 21. Hardware for the TVC rocket, and the pad remote built into a real remote.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.abhignay.com/post/september-october-2024">
+<meta property="og:image" content="https://www.abhignay.com/assets/img/hopper-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.abhignay.com/post/september-october-2024">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">Abhigna Y</a>
+    <nav aria-label="Main">
+      <a href="../index.html">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html" aria-current="page">Archive</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="../archive.html">Archive</a>
+    <h1>September - October 2024</h1>
+    <p class="when">Dev Log 21</p>
+  </header>
+  <div class="prose">
+    <h2>Project Update - September 2024</h2>
+    <p>Began working on the hardware for the TVC rocket this month. Got the airframe tubes, and designed and 3D printed the nosecone. Also did some integration tests of the TVC mount. (figs 1,2).</p>
+  </div>
+  <div class="figs">
+    <figure data-file="assets/img/log21-1.jpg"><img src="../assets/img/log21-1.jpg" alt="TVC rocket dev version 1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - TVC rocket dev version 1</figcaption></figure>
+    <figure data-file="assets/img/log21-2.jpg"><img src="../assets/img/log21-2.jpg" alt="TVC rocket dev version 2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - TVC rocket dev version 2</figcaption></figure>
+  </div>
+  <div class="prose">
+    <p>Also got all the launchpad computers fabricated from JLCPCB, threw in a small RFM69 breakout for TFAC and also some more TFAC r3 in purple this time (fig 3)!</p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log21-3.jpg"><img src="../assets/img/log21-3.jpg" alt="launch computers, TFAC, RFM69 breakout" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - launch computers, TFAC, RFM69 breakout</figcaption></figure>
+  </div>
+  <div class="prose">
+    <p>Put together the launch remote, and it works great. I was worried about how well I shielded the telemetry radio's antenna, but it looks like it works nominally (fig 4).</p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log21-4.jpeg"><img src="../assets/img/log21-4.jpeg" alt="Pad remote computer fully assembled" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 4 - Pad remote computer fully assembled</figcaption></figure>
+  </div>
+  <div class="prose">
+    <h2>Project Update - October 2024</h2>
+    <p>This month I turned the Pad Remote PCB to an actual remote. My idea for this was a 3D printed enclosure with several buttons - key switch for arming the system, flick switch for putting the system in a hold, green push button for resetting the countdown, a big red button for launching the rocket (because obviously), and a 7 segment display to display the countdown sequence (fig 5).</p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log21-5.jpg"><img src="../assets/img/log21-5.jpg" alt="Initial designs" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 5 - Initial designs</figcaption></figure>
+  </div>
+  <div class="prose">
+    <p>Implementing the design in CAD was rather straightforward, everything translated from paper to CAD quite easily. The only thing I had to change was add a bump at the bottom of the case because the key switch was too long to fit in the case with a LiPo at the bottom (figs 6-9).</p>
+  </div>
+  <div class="figs">
+    <figure data-file="assets/img/log21-6.png"><img src="../assets/img/log21-6.png" alt="CAD of the pad remote" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 6 - CAD of the pad remote</figcaption></figure>
+    <figure data-file="assets/img/log21-7.png"><img src="../assets/img/log21-7.png" alt="pad remote internals" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 7 - pad remote internals</figcaption></figure>
+    <figure data-file="assets/img/log21-8.jpg"><img src="../assets/img/log21-8.jpg" alt="pad remote fully built" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 8 - pad remote fully built</figcaption></figure>
+    <figure data-file="assets/img/log21-9.jpg"><img src="../assets/img/log21-9.jpg" alt="a mess of wires and hot glue on the inside" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 9 - a mess of wires and hot glue on the inside</figcaption></figure>
+  </div>
+  <div class="prose">
+    <p>Finally I wrote some software with all the switches performing their real actions.</p>
+  </div>
+  <div class="figs narrow">
+    <figure class="video" data-file="assets/video/log21-v1.mp4"><video controls preload="metadata" src="../assets/video/log21-v1.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>Pad remote working</figcaption></figure>
+  </div>
+  <nav class="pager" aria-label="Dev logs">
+    <a href="june-august-2024.html">Older: June - August 2024</a>
+    <a href="november-december-2024.html">Newer: November - December 2024</a>
+  </nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; Abhigna Y</p>
+    <ul>
+      <li><a href="https://github.com/abhignay">GitHub</a></li>
+      <li><a href="https://www.youtube.com/@abhignay">YouTube</a></li>
+      <li><a href="https://x.com/abhignayrk">X</a></li>
+      <li><a href="https://www.linkedin.com/in/abhigna-yerramreddikalva-97230231a/">LinkedIn</a></li>
+      <li><a href="https://www.flickr.com/photos/202569144@N06/">Flickr</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

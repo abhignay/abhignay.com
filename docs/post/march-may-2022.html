@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>March - May 2022 | Abhigna Y</title>
+<meta name="description" content="Dev Log 8. Data logging finished, Air MK1 CAD, and a launch pad design.">
+<meta property="og:title" content="March - May 2022 | Abhigna Y">
+<meta property="og:description" content="Dev Log 8. Data logging finished, Air MK1 CAD, and a launch pad design.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.abhignay.com/post/march-may-2022">
+<meta property="og:image" content="https://www.abhignay.com/assets/img/hopper-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.abhignay.com/post/march-may-2022">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">Abhigna Y</a>
+    <nav aria-label="Main">
+      <a href="../index.html">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html" aria-current="page">Archive</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="../archive.html">Archive</a>
+    <h1>March - May 2022</h1>
+    <p class="when">Dev Log 8</p>
+  </header>
+  <div class="prose">
+    <h2>Accomplishments in March 2022</h2>
+    <p>As expected not much progress was made in March. Mainly I worked on the data logging part of the flight software and shuffled through a couple of flash and sd Arduino libraries. The one that I’m currently using is messing up the barometric data, I hope to fix that next month! Other than that I worked on both the OpenRocket sims (fig 1) and a 3D Model of Air Mk1 (previously AltusAer) in Fusion360. The OpenRocket simulation looks pretty good and might be the final version of this rocket, the 3D model is still in early stages of dev (fig 2), and should be done late April. Other than the rocket itself I worked on the Avionics stack for it (fig 3). TFAC is screwed into two couplers, one on the top and one on the bottom. Attached to the bottom (via a couple rods) is a ‘box’/holder for the 11.1V LiPo battery.</p>
+    <p>Air MK1 is about a meter tall and made out of fiberglass for the airframe, a 3D printed nose cone and plywood for the fins (which are through the wall) and centering rings. The rocket is divided into two sections of airframe. The aft section holds all the centering rings, motor tube, fins and avionics stack. The forward section has the 3D printed nose cone and the parachute ejection system (to be designed).</p>
+  </div>
+  <div class="figs">
+    <figure data-file="assets/img/log8-1.png"><img src="../assets/img/log8-1.png" alt="OpenRocket design of Air MK1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 1 - OpenRocket design of Air MK1)</figcaption></figure>
+    <figure data-file="assets/img/log8-2.png"><img src="../assets/img/log8-2.png" alt="rough CAD model of Air MK1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 2 - rough CAD model of Air MK1)</figcaption></figure>
+    <figure data-file="assets/img/log8-3.png"><img src="../assets/img/log8-3.png" alt="avionics stack CAD model" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 3 - avionics stack CAD model)</figcaption></figure>
+  </div>
+  <div class="prose">
+    <h2>Accomplishments in April 2022</h2>
+    <p>A lot of progress was made this month! Firstly I approached the flight software with a goal of finishing it. After shuffling between flash chip libraries yet again I landed on the final flash library - <a href="https://github.com/PaulStoffregen/SerialFlash">SerialFlash - Paul Stoffregen</a>. With that I finished the flash side of the entire data logging code (fig 4), then I moved on to the SD side! The previous flash library I was using (Adafruit SPIFlash) required me to use a specific SD library (SdFat), different from the one I was previously using (the regular SD library) . This context will be useful a little later on.</p>
+    <p>The way that the flash data is transferred to the SD Card is that the flash data is read and then copied to SD and then erased. The data dump function was messing with (like really messing with) the logged data. A lot of values were just blatantly wrong, and others were replaced with an NaN (fig 5), since I dumped the actual integers and floats (you can see how that might cause issues), that basically caused the bug. I tried using hexdump as well but the bug was still persistent, as a last ditch effort I switched from the SdFat driver to the regular SD driver and that seemed to fix it :)</p>
+    <p>After the software side of TFAC was done I decided to move onto flight hardware. I quickly realized that TFAC had never flew on a rocket and it would be a really dumb move to have it control it’s first ever flight, so I redesigned the rocket to deploy parachutes via the motor ejection charge, and TFAC fly passive (fig 6). I also worked on redesigning and building the Avionics stack so it would be more space efficient (fig 7).</p>
+  </div>
+  <div class="figs">
+    <figure data-file="assets/img/log8-4.png"><img src="../assets/img/log8-4.png" alt="some data from the baro and IMU being written to and read from flash" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 4 - some data from the baro and IMU being written to and read from flash)</figcaption></figure>
+    <figure data-file="assets/img/log8-5.png"><img src="../assets/img/log8-5.png" alt="flash data dumped to an sd card" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 5 - flash data dumped to an sd card)</figcaption></figure>
+    <figure data-file="assets/img/log8-6.png"><img src="../assets/img/log8-6.png" alt="refined CAD model of Air MK1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 6 - refined CAD model of Air MK1)</figcaption></figure>
+    <figure data-file="assets/img/log8-7.png"><img src="../assets/img/log8-7.png" alt="better avionics stack" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 7 - better avionics stack)</figcaption></figure>
+  </div>
+  <div class="prose">
+    <h2>Accomplishments in May 2022</h2>
+    <p>May consists mainly of making CAD models and waiting for parts. At the start of May I received all the fiberglass tubes for the rocket, after taking a proper look at them it was clear that there were issues with the mold and the way they were fabricated. Ultimately I couldn’t use those tubes to build an actual rocket.</p>
+    <p>I decided to work on something else before going for a second round with the fiberglass parts, and that something was a launchpad (fig 8), the pad is made out of aluminum for the base, with an aluminum extrusion as the launch rail. I couldn’t find a proper ‘shop’ where I could build the pad (really just welding and machining rectangular aluminum tubes), so the launch pad is now on hold until I can find somewhere that I can safely assemble the pad.</p>
+    <p>I ended May with a better CAD model (fig 9) and a way to power on TFAC on the pad (that wasn’t just a wire shorting the switch terminal), I did it with a tiny little push button switch glued on the top coupler (fig 10)</p>
+  </div>
+  <div class="figs">
+    <figure data-file="assets/img/log8-8.png"><img src="../assets/img/log8-8.png" alt="launchpad 3d model" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 8 - launchpad 3d model)</figcaption></figure>
+    <figure data-file="assets/img/log8-9.png"><img src="../assets/img/log8-9.png" alt="better CAD model" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 9 - better CAD model)</figcaption></figure>
+    <figure data-file="assets/img/log8-10.png"><img src="../assets/img/log8-10.png" alt="Avionics stack with the switch" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 10 - Avionics stack with the switch)</figcaption></figure>
+  </div>
+  <nav class="pager" aria-label="Dev logs">
+    <a href="february-2022.html">Older: February 2022</a>
+    <a href="june-august-2022.html">Newer: June - August 2022</a>
+  </nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; Abhigna Y</p>
+    <ul>
+      <li><a href="https://github.com/abhignay">GitHub</a></li>
+      <li><a href="https://www.youtube.com/@abhignay">YouTube</a></li>
+      <li><a href="https://x.com/abhignayrk">X</a></li>
+      <li><a href="https://www.linkedin.com/in/abhigna-yerramreddikalva-97230231a/">LinkedIn</a></li>
+      <li><a href="https://www.flickr.com/photos/202569144@N06/">Flickr</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

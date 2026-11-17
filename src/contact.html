@@ -1,0 +1,19 @@
+title: Contact | Abhigna Y
+description: Get in touch with Abhigna Yerramreddikalva.
+nav: contact
+---
+<div class="wrap">
+  <header class="page-head">
+    <h1>Let's connect</h1>
+    <p class="address">abhignayrk [at] gmail [dot] com</p>
+    <a class="button" id="mail" href="#main" hidden>Send email</a>
+  </header>
+</div>
+<script>
+  // The address is assembled here so it is not sitting in the page for scrapers.
+  (function () {
+    var link = document.getElementById("mail");
+    link.href = "mailto:" + ["abhignayrk", "gmail.com"].join("@");
+    link.hidden = false;
+  })();
+</script>

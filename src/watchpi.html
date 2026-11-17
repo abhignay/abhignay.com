@@ -1,0 +1,96 @@
+title: WatchPi | Abhigna Y
+description: An open-source watch with a 1.28 inch color display and some smarts.
+nav: index
+---
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="index.html">All projects</a>
+    <h1>WatchPi</h1>
+    <p class="lede">An open-source watch with a 1.28" color display and some smarts</p>
+    <p class="when">February 2023 - May 2023</p>
+  </header>
+
+  <div class="prose">
+    <h2>Inspiration</h2>
+    <p>I'd been wanting to dive into the world of wearables for quite some time, before starting this project I tried to design a board swap for the classic Casio F91-W inspired by the <a href="https://www.sensorwatch.net/">Sensor Watch</a> in October of 2022. I'd almost finished the board layout when the microcontroller I was using for the project went out of stock everywhere and wouldn't be back in stock until almost a year later. Without the microcontroller, the watch couldn't do anything it'd just be a hunk of plastic parts, so I had no choice but to put this project on hold and maybe restart it after the microcontroller was back in stock.</p>
+    <p>Fast forward to February of 2023 where I came across a neat little display module called the GC9A01, a round IPS display with an SPI bus interface. Immediately upon seeing it, the idea of reviving my wearable device project popped into my head. After digging online, I found a <a href="https://www.waveshare.com/wiki/RP2040-LCD-1.28">Waveshare module</a> with the GC9A01 and a Raspberry Pi RP2040 microcontroller. To make a watch, all I needed to do now was write some software to display the time, slap on a battery, design a case and I'd have my own "smartwatch"!</p>
+
+    <h2>Software</h2>
+    <p>After getting my hands on the module, I began working on the software. From other projects, I had pretty good experience working in C++ with the Arduino Framework, but in the spirit of learning as much as possible, I decided to go with the <a href="https://www.raspberrypi.com/documentation/microcontrollers/c_sdk.html">RP2040 C SDK</a>. Waveshare had already written a basic driver to interface with the LCD Display and various other components on the board, so I thought that I'd just use that as I had no plans of designing an intricate fully-fledged watch interface.</p>
+    <p>I started with the basics, setting the RTC to the date and time I wanted, and displaying the date and time on separate lines. Then I began to design some watch faces; nothing too special, just some colored text, aesthetic lines, and changing the arrangement of various pieces of data, some of <a href="https://www.nytimes.com/wirecutter/reviews/best-running-watch/">Garmin's more minimalist watch faces</a> inspired me here.</p>
+  </div>
+  <div class="figs">
+    {{img watchpi-face-1.jpg | First watch face | First attempt at designing a watch face}}
+    {{img watchpi-face-3.jpg | First aesthetic watch face | First aesthetic watch face}}
+    {{img watchpi-face-2.png | Second watch face | Second watch face}}
+  </div>
+
+  <div class="prose">
+    <h2>Hardware</h2>
+    <p>Other than the Waveshare display module there would be a couple more components required to turn a display with a microcontroller attached to it, into a watch. For starters; a battery. I wanted this watch to be rechargeable and small, so a Lithium Polymer (LiPo) battery seemed like my best bet. Then came the challenge of where to position the battery in the watch. I knew I wanted the watch to be somewhat inconspicuous so I had some pretty major size constraints to deal with. After some experimenting the best place to position the battery seemed to be in-between the Waveshare module's header-pins. I could have a fairly thick battery but would have to skimp on the width and length of the battery. After a bunch of digging online, I came across <a href="https://robu.in/product/400mah-pcm-protected-micro-li-po-battery-2/">this 400mAh 1-cell LiPo</a> that fits the bill pretty well. This may seem like a fairly large battery (the Apple Watch Series 9 has a 308mAh battery, and lasts all day long), but with an always-on-display WatchPi has a battery life of only 9 hours, so it's fairly short.</p>
+  </div>
+  <div class="figs" style="max-width:40rem">
+    {{img watchpi-battery.jpg | Battery sitting between the header pins | WatchPi battery Placement}}
+    {{img watchpi-side.jpg | Side view of the watch | WatchPi Side Profile}}
+  </div>
+  <div class="prose">
+    <p>My other requirement for this watch is that it should have buttons to switch between watch faces, update time, etc. To do this I soldered some solid-core wire to a tactile pushbutton switch and called it a day. These buttons would be held by friction between the Waveshare Display module's header pin slot and the watch casing. Was this the most efficient or elegant way of including buttons? No. Does it work well? Yes. The last piece of the puzzle was the watch straps. I decided to use generic 22mm black watch straps, which give WatchPi this unique two-tone matte and glossy black look.</p>
+
+    <h2>Watch Case</h2>
+    <p>At this point, all that's needed to turn this stack of parts into an actual watch is a watch case. For my first case design, my philosophy was to keep it as small and as low-profile as possible. The case diameter was 38mm and the height of the case was 12mm. Keep in mind that the Waveshare module had a diameter of around 35mm with a 3-4mm protrusion in the form of its USB-C port. To get around this without making the watch case bigger I decided to have a fairly large slot in the case for the USB-C port to stick out with an extrusion to cover the port.</p>
+  </div>
+  <div class="figs" style="max-width:40rem">
+    {{img watchpi-case-r1-cad.png | CAD model of case r1 | WatchPi Case r1 - CAD Model}}
+    {{img watchpi-case-r1-cad-2.png | CAD model of case r1 without parts | WatchPi Case r1 - CAD Model}}
+  </div>
+  <div class="prose">
+    <p>This case design didn't work for several reasons. It was difficult to print, difficult to integrate, and had very little room for adding extra functionalities. In fact, I had to break the front of the case to get the Waveshare module out as it was stuck inside.</p>
+  </div>
+  <div class="figs narrow">
+    {{img watchpi-case-r1.jpg | 3D-printed case r1 | WatchPi Case r1 - 3D Printed}}
+  </div>
+  <div class="prose">
+    <p>After my failed first go at designing the case I decided to go back to the drawing board and change the design from the ground up. The current case design compromised its form over its function and that was something I didn't want to do. The whole purpose of building this watch was to help me learn as much as I could about building wearable electronics, and I couldn't learn all I could if I made the case so small that it left no room for expandability. So it was time to pivot.</p>
+    <p>Enter WatchPi Case r2. It was now a whopping 45mm in diameter which allowed me to simply slide in the Waveshare module instead of painstakingly fiddling with the module to get the USB-C connector into the connector slot and then pushing down on the module. Case v2 wasn't the final case, however. I intentionally didn't add an opening for the USB-C port or buttonholes. The goal of this case was to just perfect the integration and all the dimensions of the Waveshare module. That's it. Trying to fix all the problems I had with Case r1 and also adding more functionalities would prove difficult to do in the next revision. Instead, an iterative design process was far better as I could alter subtle aspects of each case design to see what worked and looked the best.</p>
+  </div>
+  <div class="figs" style="max-width:40rem">
+    {{img watchpi-case-r2.jpg | 3D-printed case r2 | WatchPi Case r2 - 3D Printed}}
+    {{img watchpi-case-r2-model.jpg | 3D model of case r2 | WatchPi Case r2 - 3D Model}}
+  </div>
+  <div class="prose">
+    <p>With Case r3 I added the opening for the USB-C port but didn't get the position of the port quite right. I fixed that with Case r4 and added holes for two buttons but unfortunately, the position of those buttons was off by a couple of millimeters. So that needed to be fixed in the next revision.</p>
+  </div>
+  <div class="figs">
+    {{img watchpi-case-r3.jpg | Case r3 | WatchPi Case r3}}
+    {{img watchpi-case-r4.jpg | Case r4 | WatchPi Case r4}}
+    {{img watchpi-case-r4-button.jpg | Button hole on case r4 | WatchPi Case r4 - Button Hole}}
+  </div>
+  <div class="prose">
+    <p>The final WatchPi case revision was r5. With case r5 all I did was move the button holes down by 2mm. Sometimes these revisions will have breakthrough changes; other times, all that changes is a singular dimension.</p>
+  </div>
+  <div class="figs" style="max-width:40rem">
+    {{img watchpi-case-r5-front.png | Top view of case r5 | WatchPi Case r5 - Top View}}
+    {{img watchpi-case-r5-back.png | Bottom view of case r5 | WatchPi Case r5 - Bottom View}}
+  </div>
+  <div class="prose">
+    <p>In total, there were 5 revisions of the WatchPi case.</p>
+  </div>
+  <div class="figs narrow">
+    {{img watchpi-case-revisions.png | All five case revisions side by side | All WatchPi case revisions}}
+  </div>
+
+  <div class="prose">
+    <h2>What I learned from this project?</h2>
+    <p>My main learning lesson from this project was that; if you want something done right, do it yourself. I wanted this watch done quickly so I didn't want to spend all that development time and money designing the watch's electronics from scratch. As a result, I didn't have any control over many of the design requirements for this watch; size, display type, and microcontroller, all of those were already set in stone when I chose to use the Waveshare display module as my starting point for this watch.</p>
+    <p>First off WatchPi has terrible battery life, lasting only 6 hours on a single charge and that's because of the inefficient, power-sucking display and some not-so-optimized code. I used Waveshare's readymade library for the LCD instead of writing my own or using a better-optimized display and graphics library. This library missed out on basic functionalities like being able to turn the display off without needing to power off the whole system. WatchPi could easily have an all-day battery life without changing any of the hardware but as a result of the inefficient display library and the power-hungry LCD, it's stuck with the 6-hour battery life.</p>
+    <p>Another problem with this watch that comes from the Waveshare module is the size of the module itself. When I started building this watch I had so many plans for what this watch could do. I wanted it to have Bluetooth and NFC capabilities so it could communicate with my cellphone, I even wanted to add GPS and a flash chip that could store games so that I could play games on the watch (in fact, I even wanted to call this project the Game On Watch as I hoped it would be able to do watch things and play games, a play on words on the Nintendo Game And Watch). Unfortunately, none of that panned out in the way I wanted, there simply wasn't enough space in the profile I wanted, to add anything more than the battery, two buttons, and the Waveshare module.</p>
+    <p>Regardless of what went wrong with this watch, it did teach me a lot about wearables and what I was thinking wrong about portable electronics and these are lessons I can apply in the future to make my next try at wearables (foreshadowing) a whole lot better. So while this watch accomplishes the bare minimum to be able to be considered a watch I still consider it to be a valuable project, I learned a ton from it and had a lot of fun building it!</p>
+    <p>I think that WatchPi is a good learning resource for anyone getting started with wearable electronics, so I've published all the code, the BOM, and the STL files for the case <a href="https://github.com/abhignay/WatchPi">here on my GitHub</a>.</p>
+
+    <h2>What I would do differently on the next watch?</h2>
+    <p>Firstly I would make my own watch PCB. Considering that all the issues with WatchPi stemmed from the Waveshare module making my own PCB would be the biggest change. I would also use a different display, an OLED or E-Ink display either of which would be more power efficient and look cooler than the LCD on the WatchPi. Furthermore, I would consider switching the microcontroller to an ESP32 or something with inbuilt WIFI and BLE capabilities so that I could add some smarts to the watch. Adding a tiny GPS radio, like the MTK3333, and a flash chip to store game files are also on my list for my next watch project.</p>
+  </div>
+  <div class="figs narrow" style="max-width:20rem">
+    {{img watchpi-final.jpg | The finished WatchPi on its strap | WatchPi fully integrated}}
+  </div>
+</div>

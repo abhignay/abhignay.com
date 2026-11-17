@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>August - November 2025 | Abhigna Y</title>
+<meta name="description" content="Dev Log 26. Upgraded the test stand to measure TVC vane deflection and motor thrust, and built a new control UI.">
+<meta property="og:title" content="August - November 2025 | Abhigna Y">
+<meta property="og:description" content="Dev Log 26. Upgraded the test stand to measure TVC vane deflection and motor thrust, and built a new control UI.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.abhignay.com/post/september-october-2025">
+<meta property="og:image" content="https://www.abhignay.com/assets/img/hopper-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.abhignay.com/post/september-october-2025">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">Abhigna Y</a>
+    <nav aria-label="Main">
+      <a href="../index.html">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html" aria-current="page">Archive</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="../archive.html">Archive</a>
+    <h1>August - November 2025</h1>
+    <p class="when">Dev Log 26</p>
+  </header>
+  <div class="prose">
+    <h2>Project Update - August 2025</h2>
+    <p>This month I upgraded the test stand to measure TVC vane deflection as well as motor thrust. The way I'm doing this is mounting another load cell on L-shaped aluminium extrusions right up against one of the TVC servos (fig 1). This will give me the data I need to create the transfer function for converting servo angle to side force generated in the control system.</p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log26-1.png"><img src="../assets/img/log26-1.png" alt="New Test Stand setup" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - New Test Stand setup</figcaption></figure>
+  </div>
+  <div class="prose">
+    <p>I also threw together a simple GCS UI (fig 2) for the stand, using Python and PyQt5. This simple UI lets me control the thrust of the brushless motors, activate a simple servo routine for cycling through various vane deflections, and zero-ing out the load cells.</p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log26-2.png"><img src="../assets/img/log26-2.png" alt="Test Stand Control UI" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 2 - Test Stand Control UI</figcaption></figure>
+  </div>
+  <div class="prose">
+    <p>I tested this setup several times, with all tests yielding the same garbage data. I only later realized that this setup for measuring side force was fundamentally wrong. I was under the impression that one singular servo parallel to the load cell would generate a side force that is detectable enough by the load cell. However, it should be two servos in tandem, orthogonal to the load cell.</p>
+    <p>I'll have to redo these tests next month to get usable data.</p>
+    <h2>Project Update - September 2025</h2>
+    <p>I ran the new TVC vane deflection tests this month (fig 3), and I'm pretty happy with the data. There is a proper correlation between vane angle and side force that I can use for creating my transfer function. There are still some inconsistencies between what I expect and what the data tells me (especially at larger deflection angles), so I think some additional tests may be in order.</p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log26-3.png"><img src="../assets/img/log26-3.png" alt="Test Stand that can measure accurate side forces" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - Test Stand that can measure accurate side forces</figcaption></figure>
+  </div>
+  <div class="prose">
+    <h2>Project Update - October 2025</h2>
+    <p>I made no progress this month because of college applications</p>
+    <h2>Project Update - November 2025</h2>
+    <p>I made no progress this month because of the same reason as October. Next month I should have more free time to work on the Lander.</p>
+  </div>
+  <nav class="pager" aria-label="Dev logs">
+    <a href="june-july-2025.html">Older: June - July 2025</a>
+    <span></span>
+  </nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; Abhigna Y</p>
+    <ul>
+      <li><a href="https://github.com/abhignay">GitHub</a></li>
+      <li><a href="https://www.youtube.com/@abhignay">YouTube</a></li>
+      <li><a href="https://x.com/abhignayrk">X</a></li>
+      <li><a href="https://www.linkedin.com/in/abhigna-yerramreddikalva-97230231a/">LinkedIn</a></li>
+      <li><a href="https://www.flickr.com/photos/202569144@N06/">Flickr</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

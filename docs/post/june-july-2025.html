@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>June - July 2025 | Abhigna Y</title>
+<meta name="description" content="Dev Log 25. Troubleshot a TFAC r3 board with a dead GNSS radio, then tested the motors on the load cell.">
+<meta property="og:title" content="June - July 2025 | Abhigna Y">
+<meta property="og:description" content="Dev Log 25. Troubleshot a TFAC r3 board with a dead GNSS radio, then tested the motors on the load cell.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.abhignay.com/post/june-july-2025">
+<meta property="og:image" content="https://www.abhignay.com/assets/img/hopper-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.abhignay.com/post/june-july-2025">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">Abhigna Y</a>
+    <nav aria-label="Main">
+      <a href="../index.html">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html" aria-current="page">Archive</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="../archive.html">Archive</a>
+    <h1>June - July 2025</h1>
+    <p class="when">Dev Log 25</p>
+  </header>
+  <div class="prose">
+    <h2>Project Update - June 2025</h2>
+    <p>Not much work was done in June. I troubleshooted a TFACr3 board whose GNSS radio was not working. The reason for this is because the ferrite bead in the Bias-Tee wasn't soldered on one side (fig 1). Pretty silly actually, spent quite a few hours scratching my head trying to figure out why the radio wasn't working, and the problem was very trivial. Good reminder to always check your solder joints after assembly.</p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log25-1.jpg"><img src="../assets/img/log25-1.jpg" alt="Bias-Tee ferrite bead" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - Bias-Tee ferrite bead</figcaption></figure>
+  </div>
+  <div class="prose">
+    <h2>Project Update - July 2025</h2>
+    <p>In July I tested the motor setup on the load cell. For mounting the two motors to the load cell I used two bottom hexagonal sections for both ends of the hexagonal cage to mount the motors. The upper motor (which is mounted down as the whole propulsion assembly is inverted) is mounted via long M3 screws that connect both the load cell bracket and the hexagonal section via compression (fig 2)</p>
+  </div>
+  <div class="figs narrow">
+    <figure class="video" data-file="assets/video/log25-v1.mp4"><video controls preload="metadata" src="../assets/video/log25-v1.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>fig 2 - Test assembly</figcaption></figure>
+  </div>
+  <div class="prose">
+    <p>The load cell is screwed onto a single section of 2020 aluminum extrusion which is clamped down to a flat surface with three heavy duty clamps. The load cell along with the Signal and GND wires of the ESC are connected to Liftoff Logic which is connected to a computer. The load cell data &amp; throttle %age is printed out to serial and displayed via Serial Studio. I can command the throttle by manually inputting the percentage to the Serial Monitor.</p>
+    <p>The test were mostly successful. I was getting a peak thrust of 1.7kg (fig 3), which is less than what's advertised so I think I made some mistakes with the setup that I have to fix.</p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log25-2.png"><img src="../assets/img/log25-2.png" alt="Load cell data" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - Load cell data</figcaption></figure>
+  </div>
+  <div class="prose">
+    <p>I say the tests were mostly successful because I blew a motor (fig 4). An extremely dumb mistake. One of the wires wasn't soldered to the connector properly. Best I can figure there was an arc and the motor died :(</p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log25-3.png"><img src="../assets/img/log25-3.png" alt="Motor made the magic smoke" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 4 - Motor made the magic smoke</figcaption></figure>
+  </div>
+  <div class="prose">
+    <p>I'm going to get a new motor and re-run these tests again next month.</p>
+  </div>
+  <nav class="pager" aria-label="Dev logs">
+    <a href="april-may-2025.html">Older: April - May 2025</a>
+    <a href="september-october-2025.html">Newer: August - November 2025</a>
+  </nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; Abhigna Y</p>
+    <ul>
+      <li><a href="https://github.com/abhignay">GitHub</a></li>
+      <li><a href="https://www.youtube.com/@abhignay">YouTube</a></li>
+      <li><a href="https://x.com/abhignayrk">X</a></li>
+      <li><a href="https://www.linkedin.com/in/abhigna-yerramreddikalva-97230231a/">LinkedIn</a></li>
+      <li><a href="https://www.flickr.com/photos/202569144@N06/">Flickr</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

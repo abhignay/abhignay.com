@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>June - August 2024 | Abhigna Y</title>
+<meta name="description" content="Dev Log 20. Internship at Global Aerosports, a TVC mount, and a switch to a compliant mount.">
+<meta property="og:title" content="June - August 2024 | Abhigna Y">
+<meta property="og:description" content="Dev Log 20. Internship at Global Aerosports, a TVC mount, and a switch to a compliant mount.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.abhignay.com/post/june-august-2024">
+<meta property="og:image" content="https://www.abhignay.com/assets/img/hopper-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.abhignay.com/post/june-august-2024">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">Abhigna Y</a>
+    <nav aria-label="Main">
+      <a href="../index.html">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html" aria-current="page">Archive</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="../archive.html">Archive</a>
+    <h1>June - August 2024</h1>
+    <p class="when">Dev Log 20</p>
+  </header>
+  <div class="prose">
+    <h2>Project Update - June 2024</h2>
+    <p>Progress in June was minimal because of an Internship I was doing at a company called Global Aerosports. In my internship I designed and built a high power rocket (similar to Air MK1) and CanSat hardware.</p>
+    <p>In other news I designed a TVC mount! It's an onion gimbal half mount (fig 1). With my first version I made the range of motion too small (only 2°), fixed that with v2.</p>
+  </div>
+  <div class="figs">
+    <figure data-file="assets/img/log20-1.png"><img src="../assets/img/log20-1.png" alt="TVC mount CAD" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - TVC mount CAD</figcaption></figure>
+    <figure class="video" data-file="assets/video/log20-v1.mp4"><video controls preload="metadata" src="../assets/video/log20-v1.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>TVC mount v1 testing</figcaption></figure>
+  </div>
+  <div class="prose">
+    <p>Also tested out the RFM69HCW communication (fig 2) between a Teensy (for the pad computer), and an RP2040 (pad remote).</p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log20-2.jpg"><img src="../assets/img/log20-2.jpg" alt="RFM69 communication testing" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 2 - RFM69 communication testing</figcaption></figure>
+  </div>
+  <div class="prose">
+    <h2>Project Update - July 2024</h2>
+    <p>Like June I worked a lot on my internship so general progress has been slow. Only thing I did this month is refine the TVC mount and fully print and test it. And it works great, like really great!</p>
+  </div>
+  <div class="figs narrow">
+    <figure class="video" data-file="assets/video/log20-v2.mp4"><video controls preload="metadata" src="../assets/video/log20-v2.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>TVC mount fully working</figcaption></figure>
+  </div>
+  <div class="prose">
+    <h2>Project Update - August 2024</h2>
+    <p>Completely switched up on my existing TVC system this month. I switched from using 74mm airframes to a 66mm airframe to save mass. Trying to make the half mount 66mm compatible was a challenge, and a challenge I could not overcome. So I switched from this mount architecture to a compliant mount. Basically rather than having two gimbals and a different gimballing point per axis, you don't have gimbals at all. Instead you have a compliant joint and two servos that "pull" or "push" the motor tube. Very similar to how TVC is done in the real space industry.</p>
+    <p>My own compliant mount uses a 3D printed TPU joint, motor tube, and upper plate with the X and Y servos stacked on top of each other.</p>
+  </div>
+  <div class="figs narrow">
+    <figure class="video" data-file="assets/video/log20-v3.mp4"><video controls preload="metadata" src="../assets/video/log20-v3.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>Compliant TVC mount in action</figcaption></figure>
+  </div>
+  <nav class="pager" aria-label="Dev logs">
+    <a href="april-may-2024.html">Older: April - May 2024</a>
+    <a href="september-october-2024.html">Newer: September - October 2024</a>
+  </nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; Abhigna Y</p>
+    <ul>
+      <li><a href="https://github.com/abhignay">GitHub</a></li>
+      <li><a href="https://www.youtube.com/@abhignay">YouTube</a></li>
+      <li><a href="https://x.com/abhignayrk">X</a></li>
+      <li><a href="https://www.linkedin.com/in/abhigna-yerramreddikalva-97230231a/">LinkedIn</a></li>
+      <li><a href="https://www.flickr.com/photos/202569144@N06/">Flickr</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

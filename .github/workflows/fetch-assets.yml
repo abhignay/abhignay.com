@@ -1,0 +1,28 @@
+# One-time job: copies the photos, videos and PDFs from the old Wix site into
+# this repository so the new site no longer depends on Wix.
+# Run it from the Actions tab: "Fetch assets from Wix" -> "Run workflow".
+name: Fetch assets from Wix
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Download files listed in assets.json
+        run: python3 fetch_assets.py
+      - name: Commit the downloaded files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/assets
+          git diff --cached --quiet || git commit -m "Add photos, videos and PDFs from the old site"
+          git push

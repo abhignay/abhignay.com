@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>October 2022 | Abhigna Y</title>
+<meta name="description" content="Dev Log 11. Ground control UI running, telemetry work, and a new avionics stack.">
+<meta property="og:title" content="October 2022 | Abhigna Y">
+<meta property="og:description" content="Dev Log 11. Ground control UI running, telemetry work, and a new avionics stack.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.abhignay.com/post/october-2022">
+<meta property="og:image" content="https://www.abhignay.com/assets/img/hopper-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.abhignay.com/post/october-2022">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">Abhigna Y</a>
+    <nav aria-label="Main">
+      <a href="../index.html">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html" aria-current="page">Archive</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="../archive.html">Archive</a>
+    <h1>October 2022</h1>
+    <p class="when">Dev Log 11</p>
+  </header>
+  <div class="prose">
+    <h2>Accomplishments in October 2022</h2>
+    <p>In October my main goal was to get the Ground Control UI up and running, so that’s what I did! I started out small by only updating the graph and value for one <a href="https://www.youtube.com/watch?v=w6yavuobGPo">variable</a>, and then moved on to <a href="https://youtu.be/DuQASxwHhrI">updating all the data</a>. This was all done with data directly printed to the Serial Port from TFAC, not the data transmitted via the LoRa’s.</p>
+    <p>I’m working on the software for transmitting the telemetry data, the LoRa drivers I was using have a couple of “delay()” functions in them, so when a packet is transmitted (done every 60ms) the entire software freezes for a couple of seconds. As you can tell this is really not ideal for a real-time system. Next month I intend on fixing this by implementing the <a href="https://www.airspayce.com/mikem/arduino/RadioHead/">RadioHead Packet Radio Library</a> in my code, it’s a more general-purpose library and works with multiple different kinds of radios (works with embedded too!).</p>
+    <p>In terms of Telemetry hardware, I started off by accidentally frying one of the E32 LoRa modules (fig 1) by powering it with a 9A battery. I also worked on the Ground-Station hardware by switching from a solderless breadboard to a more efficient protoboard for the Teensy and receiver LoRa (figs 2 and 3).</p>
+    <p>Finally, I worked on designing a new Avionics stack. The main difference between this new stack and the previous one is that this stack is a single sled with all the components on that single sled (instead of the mess of multiple bulkheads and sleds). Additionally, this avionics stack is made for a wider diameter (74mm instead of 66mm, I decided to change up Air MK1’s design. OpenRocket simulation should be done next month) so it gives me a little more room to fit everything. Unfortunately after printing the stack out, I realized that instead of making the structural integrity and cable management better, I actually made it worse (figs 4, 5, 6, and 7)! Next month I plan on redesigning the Avionics stack from the ground up.</p>
+  </div>
+  <div class="figs">
+    <figure data-file="assets/img/log11-1.png"><img src="../assets/img/log11-1.png" alt="The fried LoRa and the battery that fried it" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 1 - The fried LoRa and the battery that fried it)</figcaption></figure>
+    <figure data-file="assets/img/log11-2.png"><img src="../assets/img/log11-2.png" alt="The new Ground-Control Hardware! Teensy 3.2 hooked up to a LoRa on a protoboard" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 2 - The new Ground-Control Hardware! Teensy 3.2 hooked up to a LoRa on a protoboard)</figcaption></figure>
+    <figure data-file="assets/img/log11-3.png"><img src="../assets/img/log11-3.png" alt="Wiring of the protoboard" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 3 - Wiring of the protoboard)</figcaption></figure>
+    <figure data-file="assets/img/log11-4.png"><img src="../assets/img/log11-4.png" alt="New Avionics Stack CAD - Front) (fig 5 - New Avionics Stack CAD - Back" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 4 - New Avionics Stack CAD - Front) (fig 5 - New Avionics Stack CAD - Back)</figcaption></figure>
+    <figure data-file="assets/img/log11-5.png"><img src="../assets/img/log11-5.png" alt="Avionics stack 3D Printed - Front) (fig 6 - Avionics stack 3D Printed - Back" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 5 - Avionics stack 3D Printed - Front) (fig 6 - Avionics stack 3D Printed - Back)</figcaption></figure>
+  </div>
+  <nav class="pager" aria-label="Dev logs">
+    <a href="september-2022.html">Older: September 2022</a>
+    <a href="november-2022.html">Newer: November 2022 - December 2022</a>
+  </nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; Abhigna Y</p>
+    <ul>
+      <li><a href="https://github.com/abhignay">GitHub</a></li>
+      <li><a href="https://www.youtube.com/@abhignay">YouTube</a></li>
+      <li><a href="https://x.com/abhignayrk">X</a></li>
+      <li><a href="https://www.linkedin.com/in/abhigna-yerramreddikalva-97230231a/">LinkedIn</a></li>
+      <li><a href="https://www.flickr.com/photos/202569144@N06/">Flickr</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

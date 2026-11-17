@@ -1,0 +1,43 @@
+title: August - November 2025 | Abhigna Y
+description: Dev Log 26. Upgraded the test stand to measure TVC vane deflection and motor thrust, and built a new control UI.
+nav: archive
+---
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="../archive.html">Archive</a>
+    <h1>August - November 2025</h1>
+    <p class="when">Dev Log 26</p>
+  </header>
+  <div class="prose">
+    <h2>Project Update - August 2025</h2>
+    <p>This month I upgraded the test stand to measure TVC vane deflection as well as motor thrust. The way I'm doing this is mounting another load cell on L-shaped aluminium extrusions right up against one of the TVC servos (fig 1). This will give me the data I need to create the transfer function for converting servo angle to side force generated in the control system.</p>
+  </div>
+  <div class="figs narrow">
+    {{img log26-1.png | New Test Stand setup | fig 1 - New Test Stand setup}}
+  </div>
+  <div class="prose">
+    <p>I also threw together a simple GCS UI (fig 2) for the stand, using Python and PyQt5. This simple UI lets me control the thrust of the brushless motors, activate a simple servo routine for cycling through various vane deflections, and zero-ing out the load cells.</p>
+  </div>
+  <div class="figs narrow">
+    {{img log26-2.png | Test Stand Control UI | fig 2 - Test Stand Control UI}}
+  </div>
+  <div class="prose">
+    <p>I tested this setup several times, with all tests yielding the same garbage data. I only later realized that this setup for measuring side force was fundamentally wrong. I was under the impression that one singular servo parallel to the load cell would generate a side force that is detectable enough by the load cell. However, it should be two servos in tandem, orthogonal to the load cell.</p>
+    <p>I'll have to redo these tests next month to get usable data.</p>
+    <h2>Project Update - September 2025</h2>
+    <p>I ran the new TVC vane deflection tests this month (fig 3), and I'm pretty happy with the data. There is a proper correlation between vane angle and side force that I can use for creating my transfer function. There are still some inconsistencies between what I expect and what the data tells me (especially at larger deflection angles), so I think some additional tests may be in order.</p>
+  </div>
+  <div class="figs narrow">
+    {{img log26-3.png | Test Stand that can measure accurate side forces | fig 3 - Test Stand that can measure accurate side forces}}
+  </div>
+  <div class="prose">
+    <h2>Project Update - October 2025</h2>
+    <p>I made no progress this month because of college applications</p>
+    <h2>Project Update - November 2025</h2>
+    <p>I made no progress this month because of the same reason as October. Next month I should have more free time to work on the Lander.</p>
+  </div>
+  <nav class="pager" aria-label="Dev logs">
+    <a href="june-july-2025.html">Older: June - July 2025</a>
+    <span></span>
+  </nav>
+</div>

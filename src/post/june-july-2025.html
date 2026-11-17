@@ -1,0 +1,45 @@
+title: June - July 2025 | Abhigna Y
+description: Dev Log 25. Troubleshot a TFAC r3 board with a dead GNSS radio, then tested the motors on the load cell.
+nav: archive
+---
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="../archive.html">Archive</a>
+    <h1>June - July 2025</h1>
+    <p class="when">Dev Log 25</p>
+  </header>
+  <div class="prose">
+    <h2>Project Update - June 2025</h2>
+    <p>Not much work was done in June. I troubleshooted a TFACr3 board whose GNSS radio was not working. The reason for this is because the ferrite bead in the Bias-Tee wasn't soldered on one side (fig 1). Pretty silly actually, spent quite a few hours scratching my head trying to figure out why the radio wasn't working, and the problem was very trivial. Good reminder to always check your solder joints after assembly.</p>
+  </div>
+  <div class="figs narrow">
+    {{img log25-1.jpg | Bias-Tee ferrite bead | fig 1 - Bias-Tee ferrite bead}}
+  </div>
+  <div class="prose">
+    <h2>Project Update - July 2025</h2>
+    <p>In July I tested the motor setup on the load cell. For mounting the two motors to the load cell I used two bottom hexagonal sections for both ends of the hexagonal cage to mount the motors. The upper motor (which is mounted down as the whole propulsion assembly is inverted) is mounted via long M3 screws that connect both the load cell bracket and the hexagonal section via compression (fig 2)</p>
+  </div>
+  <div class="figs narrow">
+    {{video log25-v1.mp4 | fig 2 - Test assembly}}
+  </div>
+  <div class="prose">
+    <p>The load cell is screwed onto a single section of 2020 aluminum extrusion which is clamped down to a flat surface with three heavy duty clamps. The load cell along with the Signal and GND wires of the ESC are connected to Liftoff Logic which is connected to a computer. The load cell data &amp; throttle %age is printed out to serial and displayed via Serial Studio. I can command the throttle by manually inputting the percentage to the Serial Monitor.</p>
+    <p>The test were mostly successful. I was getting a peak thrust of 1.7kg (fig 3), which is less than what's advertised so I think I made some mistakes with the setup that I have to fix.</p>
+  </div>
+  <div class="figs narrow">
+    {{img log25-2.png | Load cell data | fig 3 - Load cell data}}
+  </div>
+  <div class="prose">
+    <p>I say the tests were mostly successful because I blew a motor (fig 4). An extremely dumb mistake. One of the wires wasn't soldered to the connector properly. Best I can figure there was an arc and the motor died :(</p>
+  </div>
+  <div class="figs narrow">
+    {{img log25-3.png | Motor made the magic smoke | fig 4 - Motor made the magic smoke}}
+  </div>
+  <div class="prose">
+    <p>I'm going to get a new motor and re-run these tests again next month.</p>
+  </div>
+  <nav class="pager" aria-label="Dev logs">
+    <a href="april-may-2025.html">Older: April - May 2025</a>
+    <a href="september-october-2025.html">Newer: August - November 2025</a>
+  </nav>
+</div>

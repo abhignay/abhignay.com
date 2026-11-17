@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avionics | Abhigna Y</title>
+<meta name="description" content="All the rocket flight computers Abhigna has designed and built, from SNIX R2 to TFAC r3.">
+<meta property="og:title" content="Avionics | Abhigna Y">
+<meta property="og:description" content="All the rocket flight computers Abhigna has designed and built, from SNIX R2 to TFAC r3.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.abhignay.com/avionics">
+<meta property="og:image" content="https://www.abhignay.com/assets/img/hopper-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.abhignay.com/avionics">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="index.html">Abhigna Y</a>
+    <nav aria-label="Main">
+      <a href="index.html" aria-current="page">Projects</a>
+      <a href="documents.html">Documents</a>
+      <a href="highlights.html">Highlights</a>
+      <a href="archive.html">Archive</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="rocket.html">Advanced Model Rockets</a>
+    <h1>Avionics</h1>
+    <p class="lede">All the rocket flight computers that I've designed and built. These computers have a lot of functionality, data logging, parachute ejection, 3 axis stability control, etc.</p>
+  </header>
+
+  <figure class="lineup-wrap">
+    <svg class="lineup" viewBox="0 0 540 278" role="img" aria-label="Outlines of the four flight computer board sizes, drawn to the same scale">
+<rect class="board" x="1" y="30" width="132" height="194" rx="5"/>
+<circle class="hole" cx="11" cy="40" r="3.5"/>
+<circle class="hole" cx="123" cy="40" r="3.5"/>
+<circle class="hole" cx="11" cy="214" r="3.5"/>
+<circle class="hole" cx="123" cy="214" r="3.5"/>
+<text class="dim" x="67.0" y="21" text-anchor="middle">67 &#215; 97 mm</text>
+<text class="name" x="67.0" y="254" text-anchor="middle">SNIX R2</text>
+<rect class="board" x="179" y="52" width="98" height="172" rx="5"/>
+<circle class="hole" cx="189" cy="62" r="3.5"/>
+<circle class="hole" cx="267" cy="62" r="3.5"/>
+<circle class="hole" cx="189" cy="214" r="3.5"/>
+<circle class="hole" cx="267" cy="214" r="3.5"/>
+<text class="dim" x="228.0" y="43" text-anchor="middle">50 &#215; 86 mm</text>
+<text class="name" x="228.0" y="254" text-anchor="middle">SNIX R2B</text>
+<rect class="board" x="323" y="68" width="82" height="156" rx="5"/>
+<circle class="hole" cx="333" cy="78" r="3.5"/>
+<circle class="hole" cx="395" cy="78" r="3.5"/>
+<circle class="hole" cx="333" cy="214" r="3.5"/>
+<circle class="hole" cx="395" cy="214" r="3.5"/>
+<text class="dim" x="364.0" y="59" text-anchor="middle">42 &#215; 78 mm</text>
+<text class="name" x="364.0" y="254" text-anchor="middle">SAFAC r1</text>
+<rect class="board" x="451" y="54" width="88" height="170" rx="5"/>
+<circle class="hole" cx="461" cy="64" r="3.5"/>
+<circle class="hole" cx="529" cy="64" r="3.5"/>
+<circle class="hole" cx="461" cy="214" r="3.5"/>
+<circle class="hole" cx="529" cy="214" r="3.5"/>
+<text class="dim" x="495.0" y="45" text-anchor="middle">45 &#215; 85 mm</text>
+<text class="name" x="495.0" y="254" text-anchor="middle">TFAC r1 to r3</text>
+</svg>
+    <figcaption>The four board outlines, drawn to the same scale.</figcaption>
+  </figure>
+
+  <section class="board-entry">
+    <div class="prose">
+      <h2>SNIX R2</h2>
+      <p>SNIX R2 is the first flight computer and PCB I designed. SNIX R2 was an intentionally ambitious PCB design that was intended to fly on every rocket I could think of at that time.</p>
+      <p>I didn't have any experience designing a circuit board, which was quite a complex PCB to design. There were several fundamental wiring issues with the sensors, microcontroller, and very noisy power traces. The biggest problem with this PCB was that I had traces on all 4 layers of the PCB which would cause a lot of crosstalk between different signals.</p>
+      <ul class="speclist">
+        <li>MCU: NXP MK20DX256</li>
+        <li>IMU: Bosch BNO055</li>
+        <li>Baro: Bosch BMP388</li>
+        <li>Flash, SD Datalogging</li>
+        <li>AP63300 3A Buck Converter</li>
+        <li>LED, Buzzer</li>
+        <li>4 MOSFET-controlled Pyro-Technic Channels</li>
+        <li>TVC and Fins</li>
+        <li>Multiple other Outputs</li>
+        <li>67x97mm on a 4 Layer board</li>
+        <li>Designed in Eagle</li>
+        <li>Development Time (Hardware Only) - December 2020 - March 2021</li>
+      </ul>
+    </div>
+    <div class="figs narrow"><figure data-file="assets/img/snix-r2.jpg"><img src="assets/img/snix-r2.jpg" alt="SNIX R2 flight computer" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure></div>
+  </section>
+
+  <section class="board-entry">
+    <div class="prose">
+      <h2>SNIX R2B</h2>
+      <p>SNIX R2B is the second-flight computer that I designed in the "SNIX" series. This computer uses identical components to SNIX R2 but is smaller and is a 2-layer PCB instead of 4 layers. The main problem with SNIX R2 was with the soldering. SMD soldering is quite hard to do when you first start so I got it assembled by a PCB Assembly house, but there were soldering issues. The PCB shown in the image has been scrapped for parts due to the absence of major sensors. (silicon shortage)</p>
+      <ul class="speclist">
+        <li>MCU: NXP MK20DX256</li>
+        <li>IMU: Bosch BNO055</li>
+        <li>Baro: TE MS5611 and Bosch BMP388</li>
+        <li>Flash, SD Datalogging</li>
+        <li>AP633 3A Buck Converter</li>
+        <li>LED, Buzzer</li>
+        <li>4 MOSFET-controlled Pyro-Technic Channels</li>
+        <li>TVC and Fins</li>
+        <li>Multiple other Outputs</li>
+        <li>50x86mm on a 2 Layer board</li>
+        <li>Designed in Autodesk Eagle</li>
+        <li>Development Time (Hardware Only) - March 2021 - August 2021</li>
+      </ul>
+    </div>
+    <div class="figs narrow"><figure data-file="assets/img/snix-r2b.jpg"><img src="assets/img/snix-r2b.jpg" alt="SNIX R2B flight computer" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure></div>
+  </section>
+
+  <section class="board-entry">
+    <div class="prose">
+      <h2>SAFAC r1</h2>
+      <p>SAFAC (Second Attempt at a Flyable Avionics Computer) was meant to be a smaller and simpler version of SNIX with fewer I/O, peripherals, and a cleaner layout. SAFAC still has all the key components for flying on HPR and actively guided rockets but cuts down on some peripherals that I deemed unnecessary at that time. Technically this computer should have worked, but didn't as I had no previous PCB assembly experience and so there were quite a few soldering issues on this board. At that time some of the parts to make another SAFAC computer were out of stock (because of the silicon shortage) so I decided to design TFAC which would utilize components that were in stock at that time.</p>
+      <ul class="speclist">
+        <li>MCU: NXP MK20DX256</li>
+        <li>IMU: Bosch BMI088</li>
+        <li>Baro: TE MS5611 and Infenion DPS310</li>
+        <li>Flash, SD Datalogging</li>
+        <li>AP63300 3A Buck Converter</li>
+        <li>LED, Buzzer</li>
+        <li>2 Load Switch-based Pyro-Technic Channels</li>
+        <li>TVC outputs</li>
+        <li>Roll control, I2C, and UART outputs</li>
+        <li>42x78mm on a 4 Layer board</li>
+        <li>Designed in KiCad</li>
+        <li>Development Time (Hardware Only) - July 2021 - October 2021</li>
+      </ul>
+    </div>
+    <div class="figs narrow"><figure data-file="assets/img/safac-r1.jpg"><img src="assets/img/safac-r1.jpg" alt="SAFAC r1 flight computer" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure></div>
+  </section>
+
+  <section class="board-entry">
+    <div class="prose">
+      <h2>TFAC r1</h2>
+      <p>TFAC (Third Flyable Avionics Computer) is the newest flight computer that I designed. After soldering SAFAC, I learned that (for me at least) it is quite hard to do full SMD soldering so I took a step back with TFAC. TFAC is more complex than SAFAC with a GNSS radio and a couple more sensors, but is easier to solder. Unfortunately, I accidentally pulled down the GNSS interface selection pin to GND instead of pulling it high to 3v3 or leaving it open. Because of this, I couldn't use the onboard GNSS radio. This was fixed with TFAC r2.</p>
+      <ul class="speclist">
+        <li>MCU: NXP IMXRT1062 on a Teensy 4.0 backward compatible with MK20DX256 (on a Teensy 3.2)</li>
+        <li>IMU: Bosch BMI088</li>
+        <li>Baro: TE MS5607</li>
+        <li>Mag: ST LIS3MDL</li>
+        <li>GNSS: u-Blox NEO-M8J</li>
+        <li>Flash, SD Datalogging</li>
+        <li>AP63300 3A Buck Converter</li>
+        <li>LED, Buzzer</li>
+        <li>2 Load Switch-based Pyro-Technic Channels</li>
+        <li>TVC and FIN Outputs</li>
+        <li>Roll control, I2C, UART and SPI outputs</li>
+        <li>45x85mm on a 4 Layer board</li>
+        <li>Designed in KiCad</li>
+        <li>Development Time: October 2021 - June 2023</li>
+      </ul>
+    </div>
+    <div class="figs narrow"><figure data-file="assets/img/tfac-r1.png"><img src="assets/img/tfac-r1.png" alt="TFAC r1 board layout" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure></div>
+  </section>
+
+  <section class="board-entry">
+    <div class="prose">
+      <h2>TFAC r2</h2>
+      <p>TFAC r2 was designed almost a year after TFAC r1. The main changes are the addition of more IO and a change in the placement of some of the components along with a functioning onboard GNSS. While I did fix the GNSS interface selection pin problem I realized that there was quite a bit of interference so the GNSS wasn't able to get a GPS fix. TFAC r2 also has dedicated connectors for a LoRa telemetry radio. Other than that I refined the layout which is a little more cleaner than r1. Unfortunately with TFAC r2, I removed the Flash Chip's CS pin pulldown resistor which meant that I was unable to use the Flash chip. This was fixed later on with TFAC r3</p>
+      <ul class="speclist">
+        <li>MCU: NXP IMXRT1062 on a Teensy 4.0 backward compatible with MK20DX256 (on a Teensy 3.2)</li>
+        <li>IMU: Bosch BMI088</li>
+        <li>Baro: TE MS5607</li>
+        <li>Mag: ST LIS3MDL</li>
+        <li>GNSS: u-Blox NEO-M9N</li>
+        <li>Flash, SD Datalogging</li>
+        <li>AP63300 3A Buck Converter</li>
+        <li>LED, Buzzer</li>
+        <li>2 Load Switch-based Pyro-Technic Channels</li>
+        <li>TVC and FIN Outputs</li>
+        <li>Roll control, I2C, UART and SPI outputs</li>
+        <li>45x85mm on a 4 Layer board</li>
+        <li>Designed in KiCad</li>
+        <li>Development Time: June 2023 to July 2023</li>
+      </ul>
+    </div>
+    <div class="figs narrow"><figure data-file="assets/img/tfac-r2.png"><img src="assets/img/tfac-r2.png" alt="TFAC r2 board layout" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure></div>
+  </section>
+
+  <section class="board-entry">
+    <div class="prose">
+      <h2>TFAC r3</h2>
+      <p>TFAC r3 is identical to TFAC r2. The main change is the addition of the 10k ohm pull-down resistor for the flash chip's CS pin. Other than that the jumper pad for configuring the voltage of the servo connector was moved over and the RF layout for the GNSS module was cleaned up.</p>
+      <ul class="speclist">
+        <li>MCU: NXP IMXRT1062 on a Teensy 4.0 backward compatible with MK20DX256 (on a Teensy 3.2)</li>
+        <li>IMU: Bosch BMI088</li>
+        <li>Baro: TE MS5607</li>
+        <li>Mag: ST LIS3MDL</li>
+        <li>GNSS: u-Blox NEO-M9N</li>
+        <li>Flash, SD Datalogging</li>
+        <li>AP63300 3A Buck Converter</li>
+        <li>LED, Buzzer</li>
+        <li>2 Load Switch-based Pyro-Technic Channels</li>
+        <li>TVC and FIN Outputs</li>
+        <li>Roll control, I2C, UART and SPI outputs</li>
+        <li>45x85mm on a 4 Layer board</li>
+        <li>Designed in KiCad</li>
+        <li>Development Time: July 2023 to present</li>
+      </ul>
+    </div>
+    <div class="figs narrow"><figure data-file="assets/img/tfac-r3.png"><img src="assets/img/tfac-r3.png" alt="TFAC r3 board layout" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure></div>
+  </section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; Abhigna Y</p>
+    <ul>
+      <li><a href="https://github.com/abhignay">GitHub</a></li>
+      <li><a href="https://www.youtube.com/@abhignay">YouTube</a></li>
+      <li><a href="https://x.com/abhignayrk">X</a></li>
+      <li><a href="https://www.linkedin.com/in/abhigna-yerramreddikalva-97230231a/">LinkedIn</a></li>
+      <li><a href="https://www.flickr.com/photos/202569144@N06/">Flickr</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

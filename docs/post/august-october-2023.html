@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>August-October 2023 | Abhigna Y</title>
+<meta name="description" content="Dev Log 16. TFAC r3 boards assembled, Air MK1 forward section, and the first Arduboy clone designs.">
+<meta property="og:title" content="August-October 2023 | Abhigna Y">
+<meta property="og:description" content="Dev Log 16. TFAC r3 boards assembled, Air MK1 forward section, and the first Arduboy clone designs.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.abhignay.com/post/august-october-2023">
+<meta property="og:image" content="https://www.abhignay.com/assets/img/hopper-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.abhignay.com/post/august-october-2023">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">Abhigna Y</a>
+    <nav aria-label="Main">
+      <a href="../index.html">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html" aria-current="page">Archive</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="../archive.html">Archive</a>
+    <h1>August-October 2023</h1>
+    <p class="when">Dev Log 16</p>
+  </header>
+  <div class="prose">
+    <h2>Project Update - August 2023</h2>
+    <p>I received the new TFAC r3 (fig 1) PCBs. And assembled them (fig 2), GPS radio and all.</p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log16-1.jpg"><img src="../assets/img/log16-1.jpg" alt="TFAC PCB evolution" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - TFAC PCB evolution</figcaption></figure>
+  </div>
+  <div class="prose">
+    <p>The GNSS radio sort of works. It comes up on the I2C bus (fig 3), but doesn't give any data when connected to the antenna. I suspect this is an issue with the antenna rather than the board layout, but I'll have to test it out with another antenna to actually figure that out.</p>
+  </div>
+  <div class="figs">
+    <figure data-file="assets/img/log16-2.jpg"><img src="../assets/img/log16-2.jpg" alt="TFAC r3 fully assembled" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 2 - TFAC r3 fully assembled</figcaption></figure>
+    <figure data-file="assets/img/log16-3.png"><img src="../assets/img/log16-3.png" alt="I2C scanner showing all the sensors!" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - I2C scanner showing all the sensors!</figcaption></figure>
+  </div>
+  <div class="prose">
+    <h2>Project Update - September 2023</h2>
+    <p>Back to Air MK1 development this month. First thing I did was design and 3D print a nosecone and coupler tube for the vehicle (fig 4).</p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log16-4.jpg"><img src="../assets/img/log16-4.jpg" alt="Air MK1 forward section" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 4 - Air MK1 forward section</figcaption></figure>
+  </div>
+  <div class="prose">
+    <p>Then I cut the aft airframe to size and drilled the holes for mounting the avionics stack and the cutouts for the runcam (fig 5, 6)</p>
+  </div>
+  <div class="figs">
+    <figure data-file="assets/img/log16-5.jpg"><img src="../assets/img/log16-5.jpg" alt="Air MK1 forward section fully cut out" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 5 - Air MK1 forward section fully cut out</figcaption></figure>
+    <figure data-file="assets/img/log16-6.jpg"><img src="../assets/img/log16-6.jpg" alt="RunCam view from Air MK1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 6 - RunCam view from Air MK1</figcaption></figure>
+  </div>
+  <div class="prose">
+    <p>Last thing I did was integrate all components of the avionics stack together (fig 7)</p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log16-7.jpg"><img src="../assets/img/log16-7.jpg" alt="Avionics Stack fully assembled" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 7 - Avionics Stack fully assembled</figcaption></figure>
+  </div>
+  <div class="prose">
+    <h2>Project Update - October 2023</h2>
+    <p>The next thing I had to do with Air MK1 was work on the aft airframe; fins, centering rings, things like that. I designed laser cuttable files of those components and sent them to get laser cut (fig 8)</p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log16-8.png"><img src="../assets/img/log16-8.png" alt="fins and centering rings laser cut" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 8 - fins and centering rings laser cut</figcaption></figure>
+  </div>
+  <div class="prose">
+    <p>While waiting on all those parts I was inspired by a Short Circuit video on the Arduboy game console to make my own. My first PCB design (fig 9) was using an RP2040, at that time I didn't get the fact that the Arduboy was an AVR-based ecosystem. Once I figured that out I switched to using an Arduino Pro Micro as my microcontroller (fig 10).</p>
+  </div>
+  <div class="figs">
+    <figure data-file="assets/img/log16-9.jpg"><img src="../assets/img/log16-9.jpg" alt="1st revision Arduboy clone" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 9 - 1st revision Arduboy clone</figcaption></figure>
+    <figure data-file="assets/img/log16-10.jpg"><img src="../assets/img/log16-10.jpg" alt="2nd Revision Arduboy clone" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>2nd Revision Arduboy clone</figcaption></figure>
+  </div>
+  <nav class="pager" aria-label="Dev logs">
+    <a href="june-july-2023.html">Older: June - July 2023</a>
+    <a href="november-december-2023.html">Newer: November - December 2023</a>
+  </nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; Abhigna Y</p>
+    <ul>
+      <li><a href="https://github.com/abhignay">GitHub</a></li>
+      <li><a href="https://www.youtube.com/@abhignay">YouTube</a></li>
+      <li><a href="https://x.com/abhignayrk">X</a></li>
+      <li><a href="https://www.linkedin.com/in/abhigna-yerramreddikalva-97230231a/">LinkedIn</a></li>
+      <li><a href="https://www.flickr.com/photos/202569144@N06/">Flickr</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

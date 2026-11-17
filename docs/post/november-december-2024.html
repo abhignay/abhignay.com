@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>November - December 2024 | Abhigna Y</title>
+<meta name="description" content="Dev Log 22. Launch computers assembled and talking over radio. Moved on from guided rockets to an EDF hopper.">
+<meta property="og:title" content="November - December 2024 | Abhigna Y">
+<meta property="og:description" content="Dev Log 22. Launch computers assembled and talking over radio. Moved on from guided rockets to an EDF hopper.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.abhignay.com/post/november-december-2024">
+<meta property="og:image" content="https://www.abhignay.com/assets/img/hopper-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.abhignay.com/post/november-december-2024">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">Abhigna Y</a>
+    <nav aria-label="Main">
+      <a href="../index.html">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html" aria-current="page">Archive</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="../archive.html">Archive</a>
+    <h1>November - December 2024</h1>
+    <p class="when">Dev Log 22</p>
+  </header>
+  <div class="prose">
+    <h2>Project Update - November 2024</h2>
+    <p>Lots of work on the launch computers this month. First thing I did is assemble the launchpad computer (figs 1, 2). The assembly process was smooth and everything works nominally.</p>
+  </div>
+  <div class="figs">
+    <figure data-file="assets/img/log22-1.jpg"><img src="../assets/img/log22-1.jpg" alt="Photo from dev log 22" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
+    <figure data-file="assets/img/log22-2.jpg"><img src="../assets/img/log22-2.jpg" alt="Photo from dev log 22" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
+  </div>
+  <div class="prose">
+    <p>After both the pad computer and pad remote, it was time to test the radio communication between them (figs 3, 4). Also packets are encrypted as a treat :).</p>
+  </div>
+  <div class="figs">
+    <figure data-file="assets/img/log22-3.jpg"><img src="../assets/img/log22-3.jpg" alt="Pad remote and computer commmunicating via RFM69" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - Pad remote and computer commmunicating via RFM69</figcaption></figure>
+    <figure data-file="assets/img/log22-4.png"><img src="../assets/img/log22-4.png" alt="data being received and acknowledged" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 4 - data being received and acknowledged</figcaption></figure>
+  </div>
+  <div class="prose">
+    <p>After that I wrote code to send the pad remote status to the launch pad, i.e send whether the countdown has started, has been reset, etc.</p>
+  </div>
+  <div class="figs narrow">
+    <figure class="video" data-file="assets/video/log22-v1.mp4"><video controls preload="metadata" src="../assets/video/log22-v1.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>Communication between pad remote and pad computer</figcaption></figure>
+  </div>
+  <div class="prose">
+    <h2>Project Update - December 2024</h2>
+    <p>Not much progress was made in December. I was having some alignment problems with the compliant TVC mount, so I had to design another TVC mount. This TVC mount is similar to a half mount. The inner and outer gimbals are almost identical to the half mount I designed previously, and the motor tube is inverted so it extends down from the two gimbals (fig 5).</p>
+  </div>
+  <div class="figs">
+    <figure data-file="assets/img/log22-5.png"><img src="../assets/img/log22-5.png" alt="New TVC mount" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 5 - New TVC mount</figcaption></figure>
+    <figure class="video" data-file="assets/video/log22-v2.mp4"><video controls preload="metadata" src="../assets/video/log22-v2.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>TVC mount working</figcaption></figure>
+  </div>
+  <div class="prose">
+    <p>At around the end of this month I realized that maybe building a guided rocket in a country with no rocketry regulations is not the best idea. Rocketry in India is by itself a gray area, and adding a control system to those rockets sees like I might be close to pushing some legal boundaries Even if it's a very low chance, it's a chance I don't want to take.</p>
+    <p>I still want to build actively guided vehicles, and I really want to build something similar to Starship. So if I can't build rockets what's the next best thing? EDF powered vehicles. I want to build an EDF-powered hopper/lander vehicle that will autonomously navigate to a catch tower and land on it like the Starship Superheavy booster.</p>
+    <p>I'm planning on using a 74mm cardboard tube as the airframe for this vehicle, so I got a 66mm 3-4s EDF for the project (fig 6). Started the basic CAD for this vehicle, should have more done next month.</p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log22-6.jpg"><img src="../assets/img/log22-6.jpg" alt="66mm EDF" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 6 - 66mm EDF</figcaption></figure>
+  </div>
+  <nav class="pager" aria-label="Dev logs">
+    <a href="september-october-2024.html">Older: September - October 2024</a>
+    <a href="january-march-2025.html">Newer: January - March 2025</a>
+  </nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; Abhigna Y</p>
+    <ul>
+      <li><a href="https://github.com/abhignay">GitHub</a></li>
+      <li><a href="https://www.youtube.com/@abhignay">YouTube</a></li>
+      <li><a href="https://x.com/abhignayrk">X</a></li>
+      <li><a href="https://www.linkedin.com/in/abhigna-yerramreddikalva-97230231a/">LinkedIn</a></li>
+      <li><a href="https://www.flickr.com/photos/202569144@N06/">Flickr</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

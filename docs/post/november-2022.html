@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>November 2022 - December 2022 | Abhigna Y</title>
+<meta name="description" content="Dev Log 12. RunCam mount, a redesigned avionics stack, and a simpler ground control UI.">
+<meta property="og:title" content="November 2022 - December 2022 | Abhigna Y">
+<meta property="og:description" content="Dev Log 12. RunCam mount, a redesigned avionics stack, and a simpler ground control UI.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.abhignay.com/post/november-2022">
+<meta property="og:image" content="https://www.abhignay.com/assets/img/hopper-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.abhignay.com/post/november-2022">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">Abhigna Y</a>
+    <nav aria-label="Main">
+      <a href="../index.html">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html" aria-current="page">Archive</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="../archive.html">Archive</a>
+    <h1>November 2022 - December 2022</h1>
+    <p class="when">Dev Log 12</p>
+  </header>
+  <div class="prose">
+    <h2>Project Update - November 2022</h2>
+    <p>I acquired a RunCam Split 3 camera for my rockets and designed and 3D printed a mount for the camera (fig1). The basic idea of this mount is that the camera sensor will stick out of the rocket's airframe while the recording board will be safely mounted inside the rocket's airframe.</p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log12-1.jpg"><img src="../assets/img/log12-1.jpg" alt="RunCam Split 3D printed mount" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - RunCam Split 3D printed mount</figcaption></figure>
+  </div>
+  <div class="prose">
+    <p>I also fully redesigned the avionics stack (fig 2). Rather than one huge sled with all the components mounted, I decided to divide the avionics stack into two main sections: a flight computer section, and a telemetry section. The flight computer section holds the TFAC flight computer, LiPo battery and SAM-M8Q GNSS radio module. The telemetry section holds</p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log12-2.png"><img src="../assets/img/log12-2.png" alt="Redesigned avionics stack" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 2 - Redesigned avionics stack</figcaption></figure>
+  </div>
+  <div class="prose">
+    <h2>Project Update - December 2022</h2>
+    <p>In December I did a lot of work on the telemetry system. First I fixed the problems with the telemetry radio by lowering the transmission rate and the amount of data sent. Instead of sending 30+ channels of data 15 times a second, I decided to only have the telemetry radio send 13 channels of important data 3 times a second.</p>
+    <p>To do this I also had to redesign the Ground Control Software (GCS). I couldn't have big fancy graphs or rows upon rows of data, I needed something that was simple and showed all the data in really big font, so that's what I did. The GCS is written in Python with PyQt5 and uses the same color scheme as the older GCS. This new Ground Control Software would take up an eight of the screen rather than the whole screen. At the top is a box with all the timing related data (date, time, Vehicle On Time, Flight Time). Right next to it is a color-changing box that shows the vehicle state. Below the header is the main data box which shows important data like altitude, velocity, acceleration, GPS coordinates, etc. This UI is both easier for the telemetry system computers and also the computer that the UI is running on. GitHub repo with the code: <a href="https://github.com/abhignay/GroundControlUI-v2">https://github.com/abhignay/GroundControlUI-v2</a></p>
+  </div>
+  <div class="figs narrow">
+    <figure data-file="assets/img/log12-3.png"><img src="../assets/img/log12-3.png" alt="New Ground Control Software" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - New Ground Control Software</figcaption></figure>
+  </div>
+  <nav class="pager" aria-label="Dev logs">
+    <a href="october-2022.html">Older: October 2022</a>
+    <a href="january-2023-march-2023.html">Newer: January 2023 - March 2023</a>
+  </nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; Abhigna Y</p>
+    <ul>
+      <li><a href="https://github.com/abhignay">GitHub</a></li>
+      <li><a href="https://www.youtube.com/@abhignay">YouTube</a></li>
+      <li><a href="https://x.com/abhignayrk">X</a></li>
+      <li><a href="https://www.linkedin.com/in/abhigna-yerramreddikalva-97230231a/">LinkedIn</a></li>
+      <li><a href="https://www.flickr.com/photos/202569144@N06/">Flickr</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

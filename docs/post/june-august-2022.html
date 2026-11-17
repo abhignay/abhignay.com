@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>June - August 2022 | Abhigna Y</title>
+<meta name="description" content="Dev Log 9. Telemetry radio and GNSS added, a barometer bug fixed, and TFAC r2 designed.">
+<meta property="og:title" content="June - August 2022 | Abhigna Y">
+<meta property="og:description" content="Dev Log 9. Telemetry radio and GNSS added, a barometer bug fixed, and TFAC r2 designed.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.abhignay.com/post/june-august-2022">
+<meta property="og:image" content="https://www.abhignay.com/assets/img/hopper-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.abhignay.com/post/june-august-2022">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">Abhigna Y</a>
+    <nav aria-label="Main">
+      <a href="../index.html">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html" aria-current="page">Archive</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="../archive.html">Archive</a>
+    <h1>June - August 2022</h1>
+    <p class="when">Dev Log 9</p>
+  </header>
+  <div class="prose">
+    <h2>Accomplishments in June 2022</h2>
+    <p>No progress was made in June.</p>
+    <h2>Accomplishments in July 2022</h2>
+    <p>After the lack of progress in June I decided to work on something that wasn’t waiting for rocket parts. I began work on adding two components to the avionics stack which were a Telemetry radio and GNSS. The telemetry radio I chose was an Ebyte E32 LoRa module (fig 1) operating on 433mHz (very powerful), I chose this radio primarily because it was cheaper while being more powerful than the other options I was looking at. As for the GNSS I chose the uBlox SAM-M8Q on a sparkfun board (fig 2), I again chose this because it was cheap compared to other options available and it has a builtin ceramic antenna!</p>
+  </div>
+  <div class="figs">
+    <figure data-file="assets/img/log9-1.png"><img src="../assets/img/log9-1.png" alt="Telemetry radios" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 1 - Telemetry radios)</figcaption></figure>
+    <figure data-file="assets/img/log9-2.png"><img src="../assets/img/log9-2.png" alt="GNSS hooked up to TFAC via I2C" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 2 - GNSS hooked up to TFAC via I2C)</figcaption></figure>
+  </div>
+  <div class="prose">
+    <h2>Accomplishments in August 2022</h2>
+    <p>I made a pretty good amount of progress in August. First I began working on code for logging important data from the GNSS but I ran into a bug where the barometer data started going haywire (fig 3). The TL;DR was that I was reading data from the baro at the fastest OSR possible which takes 7-9ms for conversion, so when the GNSS writes new data it changes the read interval, which creates a change in measured pressure, the fix was to reduce the barometer’s OSR and poll it every 10-15ms instead of every loop.</p>
+    <p>After that I designed a better improved avionics stack with a holder for the GNSS module and telemetry module (fig 4) but most of the new 3D printed parts were not printed right and broke right after printing, so I’ll have to print it again.</p>
+    <p>Also I made a little breakout board (fig 5) for the Telemetry radio mainly to improve cable management (didn’t really fix that) and to test out the capabilities and quality of PCBs manufactured locally.</p>
+    <p>Finally I designed TFAC r2 (fig 6), the main improvements include more IO, a functioning onboard GNSS and a much better layout (TFAC r1’s layout was pretty bad in hindsight). I’ve decided not to manufacture it because it doesn’t really make sense, the changes aren’t noteworthy and most of them can be fixed with a bodge.</p>
+  </div>
+  <div class="figs">
+    <figure data-file="assets/img/log9-3.png"><img src="../assets/img/log9-3.png" alt="barometer data with GNSS data being logged" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 3 - barometer data with GNSS data being logged)</figcaption></figure>
+    <figure data-file="assets/img/log9-4.png"><img src="../assets/img/log9-4.png" alt="breakout board for the LoRa" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 5 - breakout board for the LoRa)</figcaption></figure>
+    <figure data-file="assets/img/log9-5.png"><img src="../assets/img/log9-5.png" alt="CAD model of the avionics" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 4 - CAD model of the avionics)</figcaption></figure>
+    <figure data-file="assets/img/log9-6.png"><img src="../assets/img/log9-6.png" alt="TFAC r2, layout" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 5 - TFAC r2, layout)</figcaption></figure>
+  </div>
+  <nav class="pager" aria-label="Dev logs">
+    <a href="march-may-2022.html">Older: March - May 2022</a>
+    <a href="september-2022.html">Newer: September 2022</a>
+  </nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; Abhigna Y</p>
+    <ul>
+      <li><a href="https://github.com/abhignay">GitHub</a></li>
+      <li><a href="https://www.youtube.com/@abhignay">YouTube</a></li>
+      <li><a href="https://x.com/abhignayrk">X</a></li>
+      <li><a href="https://www.linkedin.com/in/abhigna-yerramreddikalva-97230231a/">LinkedIn</a></li>
+      <li><a href="https://www.flickr.com/photos/202569144@N06/">Flickr</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
