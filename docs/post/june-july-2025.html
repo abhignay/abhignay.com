@@ -33,19 +33,17 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="../index.html">Abhigna Y</a>
-    <div class="header-end">
-      <nav aria-label="Main">
-        <a href="../index.html">Projects</a>
-        <a href="../documents.html">Documents</a>
-        <a href="../highlights.html">Highlights</a>
-        <a href="../archive.html" aria-current="page">Archive</a>
-        <a href="../contact.html">Contact</a>
-      </nav>
+    <nav aria-label="Main">
+      <a href="../index.html">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html" aria-current="page">Archive</a>
+      <a href="../contact.html">Contact</a>
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
         <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
         <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
-    </div>
+    </nav>
   </div>
 </header>
 <main id="main">
@@ -60,27 +58,27 @@
     <p>Not much work was done in June. I troubleshooted a TFACr3 board whose GNSS radio was not working. The reason for this is because the ferrite bead in the Bias-Tee wasn't soldered on one side (fig 1). Pretty silly actually, spent quite a few hours scratching my head trying to figure out why the radio wasn't working, and the problem was very trivial. Good reminder to always check your solder joints after assembly.</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log25-1.jpg"><img src="../assets/img/log25-1.jpg" alt="Bias-Tee ferrite bead" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - Bias-Tee ferrite bead</figcaption></figure>
+    <figure data-file="assets/img/log25-1.jpg" style="--r: 1.501; --w: 1597px"><img src="../assets/img/log25-1.jpg" alt="Bias-Tee ferrite bead" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - Bias-Tee ferrite bead</figcaption></figure>
   </div>
   <div class="prose">
     <h2>Project Update - July 2025</h2>
     <p>In July I tested the motor setup on the load cell. For mounting the two motors to the load cell I used two bottom hexagonal sections for both ends of the hexagonal cage to mount the motors. The upper motor (which is mounted down as the whole propulsion assembly is inverted) is mounted via long M3 screws that connect both the load cell bracket and the hexagonal section via compression (fig 2)</p>
   </div>
   <div class="figs figs-1">
-    <figure class="video" data-file="assets/video/log25-v1.mp4"><video controls preload="metadata" src="../assets/video/log25-v1.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>fig 2 - Test assembly</figcaption></figure>
+    <figure class="video" data-file="assets/video/log25-v1.mp4" style="--r: 1.778"><video controls preload="metadata" src="../assets/video/log25-v1.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>fig 2 - Test assembly</figcaption></figure>
   </div>
   <div class="prose">
     <p>The load cell is screwed onto a single section of 2020 aluminum extrusion which is clamped down to a flat surface with three heavy duty clamps. The load cell along with the Signal and GND wires of the ESC are connected to Liftoff Logic which is connected to a computer. The load cell data &amp; throttle %age is printed out to serial and displayed via Serial Studio. I can command the throttle by manually inputting the percentage to the Serial Monitor.</p>
     <p>The test were mostly successful. I was getting a peak thrust of 1.7kg (fig 3), which is less than what's advertised so I think I made some mistakes with the setup that I have to fix.</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log25-2.png"><img src="../assets/img/log25-2.png" alt="Load cell data" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - Load cell data</figcaption></figure>
+    <figure data-file="assets/img/log25-2.png" style="--r: 0.914; --w: 679px"><img src="../assets/img/log25-2.png" alt="Load cell data" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - Load cell data</figcaption></figure>
   </div>
   <div class="prose">
     <p>I say the tests were mostly successful because I blew a motor (fig 4). An extremely dumb mistake. One of the wires wasn't soldered to the connector properly. Best I can figure there was an arc and the motor died :(</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log25-3.png"><img src="../assets/img/log25-3.png" alt="Motor made the magic smoke" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 4 - Motor made the magic smoke</figcaption></figure>
+    <figure data-file="assets/img/log25-3.png" style="--r: 1.451; --w: 1283px"><img src="../assets/img/log25-3.png" alt="Motor made the magic smoke" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 4 - Motor made the magic smoke</figcaption></figure>
   </div>
   <div class="prose">
     <p>I'm going to get a new motor and re-run these tests again next month.</p>

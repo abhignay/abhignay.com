@@ -191,10 +191,21 @@ figcaption { color: var(--muted); font-size: 0.92rem; line-height: 1.4; margin-t
   margin-bottom: 0.5rem;
 }
 .figs-1 { grid-template-columns: minmax(0, 1fr); max-width: 44rem; }
-.figs-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 52rem; }
-.figs-3 { grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); max-width: 60rem; }
-.figs-2 img { max-height: 36rem; }
-.figs-3 img { max-height: 28rem; }
+/* Rows of photos: each photo's width follows its shape (--r = width / height,
+   set by build.py), so every photo in a row ends up the same height.
+   Rows aim for 28rem tall and shrink evenly to fit the space. */
+.figs-2, .figs-3 { display: flex; align-items: flex-start; max-width: 60rem; }
+.figs-3 { flex-wrap: wrap; }
+.figs-2 > figure, .figs-3 > figure { flex: 0 1 calc(var(--r, 1.33) * 28rem); min-width: 6.5rem; }
+/* Groups of three or more wrap onto several lines; each line is stretched to
+   the full width, again in proportion to shape, but never past 28rem tall. */
+.figs-3 > figure {
+  flex: var(--r, 1.33) 1 calc(var(--r, 1.33) * 15rem);
+  max-width: min(calc(var(--r, 1.33) * 28rem), var(--w, 100rem));
+}
+.figs-2 img, .figs-3 img, .figs-2 video, .figs-3 video { width: 100%; max-height: none; }
+/* Never stretch a photo past its real width; small screenshots would blur. */
+.figs-2 > figure, .figs-3 > figure { max-width: var(--w, none); }
 
 /* A figure whose file has not been added yet shows where it goes. */
 figure.missing img { display: none; }
@@ -283,7 +294,16 @@ td:nth-child(2) { color: var(--muted); }
 
 /* Videos, spec lists, dev logs */
 
-figure video { display: block; width: 100%; max-height: 34rem; background: #000; border-radius: 3px; }
+/* Videos take their real shape (--r from build.py): portrait phone videos stay
+   portrait instead of sitting in a wide black box. */
+figure video {
+  display: block;
+  width: min(100%, calc(var(--r, 1.778) * 34rem));
+  height: auto;
+  aspect-ratio: var(--r, 1.778);
+  background: #000;
+  border-radius: 3px;
+}
 figure.video.missing video { display: none; }
 figure.video.missing::before { content: "Video to add: " attr(data-file); }
 
@@ -331,39 +351,33 @@ img[src$="avionics-overview.jpg"] { object-position: center 35%; }
   .project figure { max-width: 22rem; }
 }
 
-/* Light and dark mode toggle */
+/* Light and dark mode toggle: sits after Contact and looks like a menu item. */
 
 .site-header .wrap { align-items: center; }
-.header-end { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+.site-header nav { align-items: center; }
 .theme-toggle {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  padding: 0;
+  padding: 0.3rem 0;
+  margin: 0;
   color: var(--ink);
-  background: transparent;
-  border: 1px solid var(--line);
-  border-radius: 50%;
+  background: none;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  font: inherit;
+  line-height: inherit;
   cursor: pointer;
 }
-.theme-toggle:hover { border-color: var(--ink); }
-.theme-toggle svg { width: 1.1rem; height: 1.1rem; }
+.theme-toggle:hover { border-bottom-color: var(--line); }
+.theme-toggle svg { display: block; width: 1.05em; height: 1.05em; }
 .theme-toggle .sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .sun { display: block; }
 :root[data-theme="dark"] .theme-toggle .moon { display: none; }
 
 @media (max-width: 46rem) {
-  .figs-2 { grid-template-columns: minmax(0, 1fr); }
-  .figs-2 img, .figs-3 img { max-height: 30rem; }
-  .figs-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-@media (max-width: 46rem) {
-  /* On phones: name and toggle share the top line, the menu sits below. */
-  .header-end { display: contents; }
-  .site-name { order: 1; }
-  .theme-toggle { order: 2; margin-left: auto; }
-  .site-header nav { order: 3; width: 100%; }
+  .figs-2, .figs-3 { gap: 0.75rem; }
+  /* On phones a pair only shares a line if both fit; otherwise each takes the full width. */
+  .figs-2 { flex-wrap: wrap; }
+  .figs-3 > figure { flex-basis: calc(var(--r, 1.33) * 9rem); }
 }

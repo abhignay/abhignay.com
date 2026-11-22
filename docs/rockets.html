@@ -33,19 +33,17 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="index.html">Abhigna Y</a>
-    <div class="header-end">
-      <nav aria-label="Main">
-        <a href="index.html" aria-current="page">Projects</a>
-        <a href="documents.html">Documents</a>
-        <a href="highlights.html">Highlights</a>
-        <a href="archive.html">Archive</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+    <nav aria-label="Main">
+      <a href="index.html" aria-current="page">Projects</a>
+      <a href="documents.html">Documents</a>
+      <a href="highlights.html">Highlights</a>
+      <a href="archive.html">Archive</a>
+      <a href="contact.html">Contact</a>
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
         <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
         <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
-    </div>
+    </nav>
   </div>
 </header>
 <main id="main">
@@ -59,46 +57,46 @@
     <h2>Air MK1</h2>
   </div>
   <div class="figs figs-2">
-    <figure data-file="assets/img/air-mk1-cad.png"><img src="assets/img/air-mk1-cad.png" alt="CAD model of Air MK1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>CAD Model of Air</figcaption></figure>
-    <figure data-file="assets/img/air-mk1-built.png"><img src="assets/img/air-mk1-built.png" alt="Air MK1 fully built" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK1 - Fully Built</figcaption></figure>
+    <figure data-file="assets/img/air-mk1-cad.png" style="--r: 0.309; --w: 259px"><img src="assets/img/air-mk1-cad.png" alt="CAD model of Air MK1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>CAD Model of Air</figcaption></figure>
+    <figure data-file="assets/img/air-mk1-built.png" style="--r: 0.200; --w: 148px"><img src="assets/img/air-mk1-built.png" alt="Air MK1 fully built" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK1 - Fully Built</figcaption></figure>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/air-mk1-openrocket.png"><img src="assets/img/air-mk1-openrocket.png" alt="OpenRocket drawing of Air MK1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>2D model of Air taken from OpenRocket</figcaption></figure>
+    <figure data-file="assets/img/air-mk1-openrocket.png" style="--r: 3.429; --w: 1920px"><img src="assets/img/air-mk1-openrocket.png" alt="OpenRocket drawing of Air MK1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>2D model of Air taken from OpenRocket</figcaption></figure>
   </div>
   <div class="prose">
     <p>Air MK1 is a high-powered rocket, designed to fly to an altitude of over 1km at a max velocity of over 600kmph. Air MK1 uses a 74mm cardboard mailing tube as its airframe, and motor tube, with a 3D Printed PLA nosecone on top. The fins, centering rings, and motor retainer are precision cut out from 3mm thick Plywood. The payload for Air MK1 is the TFAC flight computer designed by me, TFAC flies onboard the rocket to record data and test out its software. TFAC is configured to fire Pyro Channel 1 at apogee but isn't connected to any black-powder charge. This is mainly to check if the computer has a good understanding of where the apogee is, and to see whether it cycles through the state machine properly. TFAC is powered on by twisting two wires that are connected to the computer's switch terminal. Additionally, the vehicle has a RunCam Split 3 to capture onboard video. Air MK1 is recovered using a 48" nylon parachute deployed by the ejection charge from the motor.</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/air-mk1-avionics.jpg"><img src="assets/img/air-mk1-avionics.jpg" alt="Air MK1 fully built, lying on its side" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
+    <figure data-file="assets/img/air-mk1-avionics.jpg" style="--r: 4.959; --w: 4032px"><img src="assets/img/air-mk1-avionics.jpg" alt="Air MK1 fully built, lying on its side" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
   </div>
   <div class="prose">
     <p>Along with TFAC is a LoRa telemetry radio to transmit data from the rocket to a ground station. The ground hardware is comprised of an identical LoRa radio and a Teensy 4.0. The Ground Control Software (GCS) is a GUI written by me. The ground software was written in Python with the PyQt5 library. The ground software displays flight data such as altitude, velocity, acceleration, and GPS coordinates. The data transmission rate is variable and lowers as the vehicle ascends. Along with the ability to display data the GCS can also send commands to power on vehicle cameras, fire pyro-channels and switch system states. The code for the Ground Software <a href="https://github.com/abhignay/GroundControlUI-v2">can be found here</a>.</p>
   </div>
   <div class="figs figs-2">
-    <figure data-file="assets/img/gcs-2.jpg"><img src="assets/img/gcs-2.jpg" alt="Ground control software" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Ground Control Software</figcaption></figure>
-    <figure data-file="assets/img/gcs-1.jpg"><img src="assets/img/gcs-1.jpg" alt="Avionics stack for Air MK1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Avionics Stack for Air</figcaption></figure>
+    <figure data-file="assets/img/gcs-2.jpg" style="--r: 0.665; --w: 531px"><img src="assets/img/gcs-2.jpg" alt="Ground control software" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Ground Control Software</figcaption></figure>
+    <figure data-file="assets/img/gcs-1.jpg" style="--r: 0.750; --w: 3024px"><img src="assets/img/gcs-1.jpg" alt="Avionics stack for Air MK1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Avionics Stack for Air</figcaption></figure>
   </div>
 
   <div class="prose">
     <h2>Air MK2</h2>
   </div>
   <div class="figs figs-2">
-    <figure data-file="assets/img/air-mk2-cad.png"><img src="assets/img/air-mk2-cad.png" alt="CAD model of Air MK2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK2 - CAD Model</figcaption></figure>
-    <figure data-file="assets/img/air-mk2-built.png"><img src="assets/img/air-mk2-built.png" alt="Air MK2 fully built" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK2 - Fully built</figcaption></figure>
+    <figure data-file="assets/img/air-mk2-cad.png" style="--r: 0.207; --w: 182px"><img src="assets/img/air-mk2-cad.png" alt="CAD model of Air MK2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK2 - CAD Model</figcaption></figure>
+    <figure data-file="assets/img/air-mk2-built.png" style="--r: 0.257; --w: 241px"><img src="assets/img/air-mk2-built.png" alt="Air MK2 fully built" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK2 - Fully built</figcaption></figure>
   </div>
   <div class="prose">
     <p>Air MK2 is my first dual-deploy high-power rocket. Air MK2's main goal is to have TFAC deploy parachutes and go high and fast. Air MK2 is built of materials similar to those of its predecessor. It uses an identical 3" diameter cardboard tube as its airframe and a 2" diameter cardboard tube as its motor mount tube. Air MK2's fins are through-the-wall fins laser cut from 4mm thick plywood. The centering rings and other bulkheads are cut from 5mm thick plywood. The nosecone of Air MK2 is 3D printed and the coupler tube will serve as the Avionics Bay. The sled and bulkheads of the avionics bay are 3D printed, and there are plywood covers on top of the bulkheads to protect them from the ejection charge. There are also two 6mm diameter threaded rods running through the av-bay to provide structural rigidity and an eyebolt on each bulkhead for shock-cord attachment. An Ebyte E32 LoRa module is the telemetry radio for Air MK2. The LoRa is glued to the back of the avionics stack and connects to the flight computer via two qwicc connectors. For GPS a ceramic U.FL antenna is placed at the front of the stack. A 3s 800mAh LiPo battery powers on the avionics bay and there is a pull-pin switch to power on the flight computer.</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/air-mk2-openrocket.png"><img src="assets/img/air-mk2-openrocket.png" alt="OpenRocket drawing of Air MK2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK2 OpenRocket 2D Model</figcaption></figure>
+    <figure data-file="assets/img/air-mk2-openrocket.png" style="--r: 3.442; --w: 1917px"><img src="assets/img/air-mk2-openrocket.png" alt="OpenRocket drawing of Air MK2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK2 OpenRocket 2D Model</figcaption></figure>
   </div>
   <div class="prose">
     <p>Additionally, there are 4 lever connectors on each bulkhead to connect the pyro channel outputs from TFAC to the actual pyro charge. This makes it easy to switch between different Pyro Channels and different Pyro Charges without requiring any extra tools.</p>
     <p>Air MK2 is 1.5m tall and has a dry mass of 1800g. It is estimated to reach an apogee of 1800m at a max velocity of Mach 0.7 on a J135W equivalent rocket motor.</p>
   </div>
   <div class="figs figs-2">
-    <figure data-file="assets/img/air-mk2-av-front.png"><img src="assets/img/air-mk2-av-front.png" alt="Front of the Air MK2 avionics stack" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK2 Avionics Stack - Front</figcaption></figure>
-    <figure data-file="assets/img/air-mk2-av-back.png"><img src="assets/img/air-mk2-av-back.png" alt="Back of the Air MK2 avionics stack" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK2 Avionics Stack - Back</figcaption></figure>
+    <figure data-file="assets/img/air-mk2-av-front.png" style="--r: 0.551; --w: 533px"><img src="assets/img/air-mk2-av-front.png" alt="Front of the Air MK2 avionics stack" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK2 Avionics Stack - Front</figcaption></figure>
+    <figure data-file="assets/img/air-mk2-av-back.png" style="--r: 0.509; --w: 457px"><img src="assets/img/air-mk2-av-back.png" alt="Back of the Air MK2 avionics stack" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK2 Avionics Stack - Back</figcaption></figure>
   </div>
 
   <div class="prose">
@@ -107,11 +105,11 @@
     <p>One notable change from Air MK2 is the decision to use bolts for motor retention rather than nuts that are glued onto the inside of the aft centering ring. This is less prone to an accidental decoupling of the motor retainer. Other than that there is not much of a difference between Air MK2 and Air MK2.1. The two rockets have the same goal, use the same kind of motor tube and fly identical flight computers with mostly identical software.</p>
   </div>
   <div class="figs figs-2">
-    <figure data-file="assets/img/air-mk21-cad.png"><img src="assets/img/air-mk21-cad.png" alt="CAD model of Air MK2.1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK2.1 CAD Model</figcaption></figure>
-    <figure data-file="assets/img/air-mk21-built.png"><img src="assets/img/air-mk21-built.png" alt="Air MK2.1 fully built" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK2.1 - Fully Built</figcaption></figure>
+    <figure data-file="assets/img/air-mk21-cad.png" style="--r: 0.249; --w: 208px"><img src="assets/img/air-mk21-cad.png" alt="CAD model of Air MK2.1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK2.1 CAD Model</figcaption></figure>
+    <figure data-file="assets/img/air-mk21-built.png" style="--r: 0.404; --w: 343px"><img src="assets/img/air-mk21-built.png" alt="Air MK2.1 fully built" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK2.1 - Fully Built</figcaption></figure>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/air-mk21-openrocket.png"><img src="assets/img/air-mk21-openrocket.png" alt="OpenRocket drawing of Air MK2.1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK2.1 OpenRocket 2D Model</figcaption></figure>
+    <figure data-file="assets/img/air-mk21-openrocket.png" style="--r: 3.685; --w: 1861px"><img src="assets/img/air-mk21-openrocket.png" alt="OpenRocket drawing of Air MK2.1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK2.1 OpenRocket 2D Model</figcaption></figure>
   </div>
 
   <div class="prose">
@@ -120,15 +118,15 @@
     <p>Air MK1.1 features a low-cost CanSat system designed by me. The CanSat uses a Teensy 4.0 as its microcontroller and uses an LSM6DSO as its IMU and a BMP280 as the Barometer. Additionally, it has an NRF radio module for telemetry. All components are mounted on a 35x80mm 2 layer PCB.</p>
   </div>
   <div class="figs figs-3">
-    <figure data-file="assets/img/air-mk11-built.jpg"><img src="assets/img/air-mk11-built.jpg" alt="Air MK1.1 fully built" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK1.1 - Fully Built</figcaption></figure>
-    <figure data-file="assets/img/cansat-layout.png"><img src="assets/img/cansat-layout.png" alt="CanSat PCB layout" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>CanSat PCB Layout</figcaption></figure>
-    <figure data-file="assets/img/cansat-assembled.jpg"><img src="assets/img/cansat-assembled.jpg" alt="CanSat PCB fully assembled" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>CanSat PCB fully assembled</figcaption></figure>
+    <figure data-file="assets/img/air-mk11-built.jpg" style="--r: 0.377; --w: 1017px"><img src="assets/img/air-mk11-built.jpg" alt="Air MK1.1 fully built" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Air MK1.1 - Fully Built</figcaption></figure>
+    <figure data-file="assets/img/cansat-layout.png" style="--r: 0.576; --w: 401px"><img src="assets/img/cansat-layout.png" alt="CanSat PCB layout" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>CanSat PCB Layout</figcaption></figure>
+    <figure data-file="assets/img/cansat-assembled.jpg" style="--r: 0.750; --w: 700px"><img src="assets/img/cansat-assembled.jpg" alt="CanSat PCB fully assembled" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>CanSat PCB fully assembled</figcaption></figure>
   </div>
   <div class="prose">
     <p>The mechanical ejection system is integrated into the CanSat stack and makes use of a spring and servo-actuated pusher plate mechanism to eject parachutes. The spring is attached to an extruded cylinder at the base of the stack. The other end of the spring is attached to the pusher rod and pusher plate. The bottom of the pusher rod is locked in place via a servo-actuated pin. When the servo is actuated the pin and plate are released and push the parachutes out of the rocket. All components of the ejection system are 3D printed out of PLA.</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/air-mk11-ejection.jpg"><img src="assets/img/air-mk11-ejection.jpg" alt="The mechanical ejection system" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
+    <figure data-file="assets/img/air-mk11-ejection.jpg" style="--r: 0.562; --w: 1440px"><img src="assets/img/air-mk11-ejection.jpg" alt="The mechanical ejection system" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
   </div>
 </div>
 </main>

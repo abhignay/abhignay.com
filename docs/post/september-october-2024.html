@@ -33,19 +33,17 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="../index.html">Abhigna Y</a>
-    <div class="header-end">
-      <nav aria-label="Main">
-        <a href="../index.html">Projects</a>
-        <a href="../documents.html">Documents</a>
-        <a href="../highlights.html">Highlights</a>
-        <a href="../archive.html" aria-current="page">Archive</a>
-        <a href="../contact.html">Contact</a>
-      </nav>
+    <nav aria-label="Main">
+      <a href="../index.html">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html" aria-current="page">Archive</a>
+      <a href="../contact.html">Contact</a>
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
         <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
         <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
-    </div>
+    </nav>
   </div>
 </header>
 <main id="main">
@@ -60,42 +58,42 @@
     <p>Began working on the hardware for the TVC rocket this month. Got the airframe tubes, and designed and 3D printed the nosecone. Also did some integration tests of the TVC mount. (figs 1,2).</p>
   </div>
   <div class="figs figs-2">
-    <figure data-file="assets/img/log21-1.jpg"><img src="../assets/img/log21-1.jpg" alt="TVC rocket dev version 1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - TVC rocket dev version 1</figcaption></figure>
-    <figure data-file="assets/img/log21-2.jpg"><img src="../assets/img/log21-2.jpg" alt="TVC rocket dev version 2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - TVC rocket dev version 2</figcaption></figure>
+    <figure data-file="assets/img/log21-1.jpg" style="--r: 0.750; --w: 725px"><img src="../assets/img/log21-1.jpg" alt="TVC rocket dev version 1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - TVC rocket dev version 1</figcaption></figure>
+    <figure data-file="assets/img/log21-2.jpg" style="--r: 0.750; --w: 725px"><img src="../assets/img/log21-2.jpg" alt="TVC rocket dev version 2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - TVC rocket dev version 2</figcaption></figure>
   </div>
   <div class="prose">
     <p>Also got all the launchpad computers fabricated from JLCPCB, threw in a small RFM69 breakout for TFAC and also some more TFAC r3 in purple this time (fig 3)!</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log21-3.jpg"><img src="../assets/img/log21-3.jpg" alt="launch computers, TFAC, RFM69 breakout" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - launch computers, TFAC, RFM69 breakout</figcaption></figure>
+    <figure data-file="assets/img/log21-3.jpg" style="--r: 1.333; --w: 1289px"><img src="../assets/img/log21-3.jpg" alt="launch computers, TFAC, RFM69 breakout" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - launch computers, TFAC, RFM69 breakout</figcaption></figure>
   </div>
   <div class="prose">
     <p>Put together the launch remote, and it works great. I was worried about how well I shielded the telemetry radio's antenna, but it looks like it works nominally (fig 4).</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log21-4.jpeg"><img src="../assets/img/log21-4.jpeg" alt="Pad remote computer fully assembled" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 4 - Pad remote computer fully assembled</figcaption></figure>
+    <figure data-file="assets/img/log21-4.jpeg" style="--r: 0.746; --w: 721px"><img src="../assets/img/log21-4.jpeg" alt="Pad remote computer fully assembled" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 4 - Pad remote computer fully assembled</figcaption></figure>
   </div>
   <div class="prose">
     <h2>Project Update - October 2024</h2>
     <p>This month I turned the Pad Remote PCB to an actual remote. My idea for this was a 3D printed enclosure with several buttons - key switch for arming the system, flick switch for putting the system in a hold, green push button for resetting the countdown, a big red button for launching the rocket (because obviously), and a 7 segment display to display the countdown sequence (fig 5).</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log21-5.jpg"><img src="../assets/img/log21-5.jpg" alt="Initial designs" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 5 - Initial designs</figcaption></figure>
+    <figure data-file="assets/img/log21-5.jpg" style="--r: 0.750; --w: 725px"><img src="../assets/img/log21-5.jpg" alt="Initial designs" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 5 - Initial designs</figcaption></figure>
   </div>
   <div class="prose">
     <p>Implementing the design in CAD was rather straightforward, everything translated from paper to CAD quite easily. The only thing I had to change was add a bump at the bottom of the case because the key switch was too long to fit in the case with a LiPo at the bottom (figs 6-9).</p>
   </div>
   <div class="figs figs-3">
-    <figure data-file="assets/img/log21-6.png"><img src="../assets/img/log21-6.png" alt="CAD of the pad remote" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 6 - CAD of the pad remote</figcaption></figure>
-    <figure data-file="assets/img/log21-7.png"><img src="../assets/img/log21-7.png" alt="pad remote internals" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 7 - pad remote internals</figcaption></figure>
-    <figure data-file="assets/img/log21-8.jpg"><img src="../assets/img/log21-8.jpg" alt="pad remote fully built" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 8 - pad remote fully built</figcaption></figure>
-    <figure data-file="assets/img/log21-9.jpg"><img src="../assets/img/log21-9.jpg" alt="a mess of wires and hot glue on the inside" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 9 - a mess of wires and hot glue on the inside</figcaption></figure>
+    <figure data-file="assets/img/log21-6.png" style="--r: 1.339; --w: 846px"><img src="../assets/img/log21-6.png" alt="CAD of the pad remote" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 6 - CAD of the pad remote</figcaption></figure>
+    <figure data-file="assets/img/log21-7.png" style="--r: 1.282; --w: 760px"><img src="../assets/img/log21-7.png" alt="pad remote internals" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 7 - pad remote internals</figcaption></figure>
+    <figure data-file="assets/img/log21-8.jpg" style="--r: 0.750; --w: 724px"><img src="../assets/img/log21-8.jpg" alt="pad remote fully built" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 8 - pad remote fully built</figcaption></figure>
+    <figure data-file="assets/img/log21-9.jpg" style="--r: 1.334; --w: 1287px"><img src="../assets/img/log21-9.jpg" alt="a mess of wires and hot glue on the inside" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 9 - a mess of wires and hot glue on the inside</figcaption></figure>
   </div>
   <div class="prose">
     <p>Finally I wrote some software with all the switches performing their real actions.</p>
   </div>
   <div class="figs figs-1">
-    <figure class="video" data-file="assets/video/log21-v1.mp4"><video controls preload="metadata" src="../assets/video/log21-v1.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>Pad remote working</figcaption></figure>
+    <figure class="video" data-file="assets/video/log21-v1.mp4" style="--r: 0.562"><video controls preload="metadata" src="../assets/video/log21-v1.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>Pad remote working</figcaption></figure>
   </div>
   <nav class="pager" aria-label="Dev logs">
     <a href="june-august-2024.html">Older: June - August 2024</a>

@@ -33,19 +33,17 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="../index.html">Abhigna Y</a>
-    <div class="header-end">
-      <nav aria-label="Main">
-        <a href="../index.html">Projects</a>
-        <a href="../documents.html">Documents</a>
-        <a href="../highlights.html">Highlights</a>
-        <a href="../archive.html" aria-current="page">Archive</a>
-        <a href="../contact.html">Contact</a>
-      </nav>
+    <nav aria-label="Main">
+      <a href="../index.html">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html" aria-current="page">Archive</a>
+      <a href="../contact.html">Contact</a>
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
         <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
         <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
-    </div>
+    </nav>
   </div>
 </header>
 <main id="main">
@@ -61,13 +59,13 @@
     <p>To start with, I assembled the first TFAC PCB (Fig 1) which at first had some issues connecting to the SPI flash chip as the chip was not compatible with the library I was using and the library itself had some issues. With a change in the library and flash chip, TFAC works flawlessly!</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log4-1.png"><img src="../assets/img/log4-1.png" alt="The first assembled TFAC flight computer" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(Fig 1) The first assembled TFAC flight computer</figcaption></figure>
+    <figure data-file="assets/img/log4-1.png" style="--r: 1.358; --w: 504px"><img src="../assets/img/log4-1.png" alt="The first assembled TFAC flight computer" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(Fig 1) The first assembled TFAC flight computer</figcaption></figure>
   </div>
   <div class="prose">
     <p>A 3D printable mounting bracket (Fig 2) was also designed for TFAC, however the screw holes were off by a couple millimetres so the holes on TFAC and the holes on the mount didn’t quite match up. I intend to fix this in the next revision which should be designed and sent to the 3D Printing house in December.</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log4-2.png"><img src="../assets/img/log4-2.png" alt="Prototype mounting bracket for TFAC" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(Fig 2) Prototype mounting bracket for TFAC</figcaption></figure>
+    <figure data-file="assets/img/log4-2.png" style="--r: 1.779; --w: 740px"><img src="../assets/img/log4-2.png" alt="Prototype mounting bracket for TFAC" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(Fig 2) Prototype mounting bracket for TFAC</figcaption></figure>
   </div>
   <div class="prose">
     <p>I also wrote a driver in C++ for the barometer sensor on TFAC, which was a good learning experience. Most of November comprised of me writing/attempting to write TFAC’s flight software. Even though significant progress wasn’t made I would still consider it valuable. I am now a lot more comfortable working in the C++ environment and I know much more about interfacing with sensors, SPI devices, etc.</p>

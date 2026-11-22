@@ -33,19 +33,17 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="index.html">Abhigna Y</a>
-    <div class="header-end">
-      <nav aria-label="Main">
-        <a href="index.html" aria-current="page">Projects</a>
-        <a href="documents.html">Documents</a>
-        <a href="highlights.html">Highlights</a>
-        <a href="archive.html">Archive</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+    <nav aria-label="Main">
+      <a href="index.html" aria-current="page">Projects</a>
+      <a href="documents.html">Documents</a>
+      <a href="highlights.html">Highlights</a>
+      <a href="archive.html">Archive</a>
+      <a href="contact.html">Contact</a>
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
         <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
         <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
-    </div>
+    </nav>
   </div>
 </header>
 <main id="main">
@@ -67,9 +65,9 @@
     <p>I started with the basics, setting the RTC to the date and time I wanted, and displaying the date and time on separate lines. Then I began to design some watch faces; nothing too special, just some colored text, aesthetic lines, and changing the arrangement of various pieces of data, some of <a href="https://www.nytimes.com/wirecutter/reviews/best-running-watch/">Garmin's more minimalist watch faces</a> inspired me here.</p>
   </div>
   <div class="figs figs-3">
-    <figure data-file="assets/img/watchpi-face-1.jpg"><img src="assets/img/watchpi-face-1.jpg" alt="First watch face" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>First attempt at designing a watch face</figcaption></figure>
-    <figure data-file="assets/img/watchpi-face-2.png"><img src="assets/img/watchpi-face-2.png" alt="First aesthetic watch face" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>First aesthetic watch face</figcaption></figure>
-    <figure data-file="assets/img/watchpi-face-3.jpg"><img src="assets/img/watchpi-face-3.jpg" alt="Second watch face" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Second watch face</figcaption></figure>
+    <figure data-file="assets/img/watchpi-face-1.jpg" style="--r: 1.328; --w: 1282px"><img src="assets/img/watchpi-face-1.jpg" alt="First watch face" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>First attempt at designing a watch face</figcaption></figure>
+    <figure data-file="assets/img/watchpi-face-2.png" style="--r: 0.963; --w: 727px"><img src="assets/img/watchpi-face-2.png" alt="First aesthetic watch face" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>First aesthetic watch face</figcaption></figure>
+    <figure data-file="assets/img/watchpi-face-3.jpg" style="--r: 0.753; --w: 727px"><img src="assets/img/watchpi-face-3.jpg" alt="Second watch face" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Second watch face</figcaption></figure>
   </div>
 
   <div class="prose">
@@ -77,8 +75,8 @@
     <p>Other than the Waveshare display module there would be a couple more components required to turn a display with a microcontroller attached to it, into a watch. For starters; a battery. I wanted this watch to be rechargeable and small, so a Lithium Polymer (LiPo) battery seemed like my best bet. Then came the challenge of where to position the battery in the watch. I knew I wanted the watch to be somewhat inconspicuous so I had some pretty major size constraints to deal with. After some experimenting the best place to position the battery seemed to be in-between the Waveshare module's header-pins. I could have a fairly thick battery but would have to skimp on the width and length of the battery. After a bunch of digging online, I came across <a href="https://robu.in/product/400mah-pcm-protected-micro-li-po-battery-2/">this 400mAh 1-cell LiPo</a> that fits the bill pretty well. This may seem like a fairly large battery (the Apple Watch Series 9 has a 308mAh battery, and lasts all day long), but with an always-on-display WatchPi has a battery life of only 9 hours, so it's fairly short.</p>
   </div>
   <div class="figs figs-2">
-    <figure data-file="assets/img/watchpi-battery.jpg"><img src="assets/img/watchpi-battery.jpg" alt="Battery sitting between the header pins" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi battery Placement</figcaption></figure>
-    <figure data-file="assets/img/watchpi-side.jpg"><img src="assets/img/watchpi-side.jpg" alt="Side view of the watch" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Side Profile</figcaption></figure>
+    <figure data-file="assets/img/watchpi-battery.jpg" style="--r: 1.334; --w: 1287px"><img src="assets/img/watchpi-battery.jpg" alt="Battery sitting between the header pins" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi battery Placement</figcaption></figure>
+    <figure data-file="assets/img/watchpi-side.jpg" style="--r: 1.333; --w: 4032px"><img src="assets/img/watchpi-side.jpg" alt="Side view of the watch" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Side Profile</figcaption></figure>
   </div>
   <div class="prose">
     <p>My other requirement for this watch is that it should have buttons to switch between watch faces, update time, etc. To do this I soldered some solid-core wire to a tactile pushbutton switch and called it a day. These buttons would be held by friction between the Waveshare Display module's header pin slot and the watch casing. Was this the most efficient or elegant way of including buttons? No. Does it work well? Yes. The last piece of the puzzle was the watch straps. I decided to use generic 22mm black watch straps, which give WatchPi this unique two-tone matte and glossy black look.</p>
@@ -87,44 +85,44 @@
     <p>At this point, all that's needed to turn this stack of parts into an actual watch is a watch case. For my first case design, my philosophy was to keep it as small and as low-profile as possible. The case diameter was 38mm and the height of the case was 12mm. Keep in mind that the Waveshare module had a diameter of around 35mm with a 3-4mm protrusion in the form of its USB-C port. To get around this without making the watch case bigger I decided to have a fairly large slot in the case for the USB-C port to stick out with an extrusion to cover the port.</p>
   </div>
   <div class="figs figs-2">
-    <figure data-file="assets/img/watchpi-case-r1-cad.png"><img src="assets/img/watchpi-case-r1-cad.png" alt="CAD model of case r1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r1 - CAD Model</figcaption></figure>
-    <figure data-file="assets/img/watchpi-case-r1-cad-2.png"><img src="assets/img/watchpi-case-r1-cad-2.png" alt="CAD model of case r1 without parts" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r1 - CAD Model</figcaption></figure>
+    <figure data-file="assets/img/watchpi-case-r1-cad.png" style="--r: 1.039; --w: 663px"><img src="assets/img/watchpi-case-r1-cad.png" alt="CAD model of case r1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r1 - CAD Model</figcaption></figure>
+    <figure data-file="assets/img/watchpi-case-r1-cad-2.png" style="--r: 1.260; --w: 605px"><img src="assets/img/watchpi-case-r1-cad-2.png" alt="CAD model of case r1 without parts" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r1 - CAD Model</figcaption></figure>
   </div>
   <div class="prose">
     <p>This case design didn't work for several reasons. It was difficult to print, difficult to integrate, and had very little room for adding extra functionalities. In fact, I had to break the front of the case to get the Waveshare module out as it was stuck inside.</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/watchpi-case-r1.jpg"><img src="assets/img/watchpi-case-r1.jpg" alt="3D-printed case r1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r1 - 3D Printed</figcaption></figure>
+    <figure data-file="assets/img/watchpi-case-r1.jpg" style="--r: 1.328; --w: 1283px"><img src="assets/img/watchpi-case-r1.jpg" alt="3D-printed case r1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r1 - 3D Printed</figcaption></figure>
   </div>
   <div class="prose">
     <p>After my failed first go at designing the case I decided to go back to the drawing board and change the design from the ground up. The current case design compromised its form over its function and that was something I didn't want to do. The whole purpose of building this watch was to help me learn as much as I could about building wearable electronics, and I couldn't learn all I could if I made the case so small that it left no room for expandability. So it was time to pivot.</p>
     <p>Enter WatchPi Case r2. It was now a whopping 45mm in diameter which allowed me to simply slide in the Waveshare module instead of painstakingly fiddling with the module to get the USB-C connector into the connector slot and then pushing down on the module. Case v2 wasn't the final case, however. I intentionally didn't add an opening for the USB-C port or buttonholes. The goal of this case was to just perfect the integration and all the dimensions of the Waveshare module. That's it. Trying to fix all the problems I had with Case r1 and also adding more functionalities would prove difficult to do in the next revision. Instead, an iterative design process was far better as I could alter subtle aspects of each case design to see what worked and looked the best.</p>
   </div>
   <div class="figs figs-2">
-    <figure data-file="assets/img/watchpi-case-r2.jpg"><img src="assets/img/watchpi-case-r2.jpg" alt="3D-printed case r2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r2 - 3D Printed</figcaption></figure>
-    <figure data-file="assets/img/watchpi-case-r2-model.jpg"><img src="assets/img/watchpi-case-r2-model.jpg" alt="3D model of case r2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r2 - 3D Model</figcaption></figure>
+    <figure data-file="assets/img/watchpi-case-r2.jpg" style="--r: 1.328; --w: 1283px"><img src="assets/img/watchpi-case-r2.jpg" alt="3D-printed case r2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r2 - 3D Printed</figcaption></figure>
+    <figure data-file="assets/img/watchpi-case-r2-model.jpg" style="--r: 1.236; --w: 921px"><img src="assets/img/watchpi-case-r2-model.jpg" alt="3D model of case r2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r2 - 3D Model</figcaption></figure>
   </div>
   <div class="prose">
     <p>With Case r3 I added the opening for the USB-C port but didn't get the position of the port quite right. I fixed that with Case r4 and added holes for two buttons but unfortunately, the position of those buttons was off by a couple of millimeters. So that needed to be fixed in the next revision.</p>
   </div>
   <div class="figs figs-3">
-    <figure data-file="assets/img/watchpi-case-r3.jpg"><img src="assets/img/watchpi-case-r3.jpg" alt="Case r3" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r3</figcaption></figure>
-    <figure data-file="assets/img/watchpi-case-r4.jpg"><img src="assets/img/watchpi-case-r4.jpg" alt="Case r4" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r4</figcaption></figure>
-    <figure data-file="assets/img/watchpi-case-r4-button.jpg"><img src="assets/img/watchpi-case-r4-button.jpg" alt="Button hole on case r4" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r4 - Button Hole</figcaption></figure>
+    <figure data-file="assets/img/watchpi-case-r3.jpg" style="--r: 1.328; --w: 1283px"><img src="assets/img/watchpi-case-r3.jpg" alt="Case r3" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r3</figcaption></figure>
+    <figure data-file="assets/img/watchpi-case-r4.jpg" style="--r: 1.328; --w: 1283px"><img src="assets/img/watchpi-case-r4.jpg" alt="Case r4" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r4</figcaption></figure>
+    <figure data-file="assets/img/watchpi-case-r4-button.jpg" style="--r: 1.328; --w: 1283px"><img src="assets/img/watchpi-case-r4-button.jpg" alt="Button hole on case r4" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r4 - Button Hole</figcaption></figure>
   </div>
   <div class="prose">
     <p>The final WatchPi case revision was r5. With case r5 all I did was move the button holes down by 2mm. Sometimes these revisions will have breakthrough changes; other times, all that changes is a singular dimension.</p>
   </div>
   <div class="figs figs-2">
-    <figure data-file="assets/img/watchpi-case-r5-front.png"><img src="assets/img/watchpi-case-r5-front.png" alt="Top view of case r5" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r5 - Top View</figcaption></figure>
-    <figure data-file="assets/img/watchpi-case-r5-back.png"><img src="assets/img/watchpi-case-r5-back.png" alt="Bottom view of case r5" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r5 - Bottom View</figcaption></figure>
+    <figure data-file="assets/img/watchpi-case-r5-front.png" style="--r: 1.592; --w: 815px"><img src="assets/img/watchpi-case-r5-front.png" alt="Top view of case r5" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r5 - Top View</figcaption></figure>
+    <figure data-file="assets/img/watchpi-case-r5-back.png" style="--r: 1.060; --w: 808px"><img src="assets/img/watchpi-case-r5-back.png" alt="Bottom view of case r5" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi Case r5 - Bottom View</figcaption></figure>
   </div>
   <div class="prose">
     <p>In total, there were 5 revisions of the WatchPi case.</p>
   </div>
   <div class="figs figs-2">
-    <figure data-file="assets/img/watchpi-case-revisions.png"><img src="assets/img/watchpi-case-revisions.png" alt="All five case revisions side by side" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>All WatchPi case revisions</figcaption></figure>
-    <figure data-file="assets/img/watchpi-final.jpg"><img src="assets/img/watchpi-final.jpg" alt="The finished WatchPi on its strap" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi fully integrated</figcaption></figure>
+    <figure data-file="assets/img/watchpi-case-revisions.png" style="--r: 1.873; --w: 1002px"><img src="assets/img/watchpi-case-revisions.png" alt="All five case revisions side by side" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>All WatchPi case revisions</figcaption></figure>
+    <figure data-file="assets/img/watchpi-final.jpg" style="--r: 1.778; --w: 1920px"><img src="assets/img/watchpi-final.jpg" alt="The finished WatchPi on its strap" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>WatchPi fully integrated</figcaption></figure>
   </div>
 
   <div class="prose">

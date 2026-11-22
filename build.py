@@ -10,6 +10,7 @@ are not touched by the build.
 import html
 import pathlib
 import re
+import struct
 
 ROOT = pathlib.Path(__file__).parent
 SRC = ROOT / "src"
@@ -75,15 +76,13 @@ PAGE = """<!DOCTYPE html>
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="{root}index.html">Abhigna Y</a>
-    <div class="header-end">
-      <nav aria-label="Main">
+    <nav aria-label="Main">
 {nav}
-      </nav>
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
         <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
         <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
-    </div>
+    </nav>
   </div>
 </header>
 <main id="main">
@@ -119,13 +118,111 @@ PAGE = """<!DOCTYPE html>
 """
 
 
+def image_size(path):
+    """(width, height) of a PNG, JPEG, GIF or WebP file as displayed, or None."""
+    try:
+        with open(path, "rb") as f:
+            data = f.read(65536)
+            if data[:8] == b"\x89PNG\r\n\x1a\n":
+                return (int.from_bytes(data[16:20], "big"), int.from_bytes(data[20:24], "big"))
+            if data[:6] in (b"GIF87a", b"GIF89a"):
+                return (int.from_bytes(data[6:8], "little"), int.from_bytes(data[8:10], "little"))
+            if data[:4] == b"RIFF" and data[8:12] == b"WEBP":
+                if data[12:16] == b"VP8X":
+                    return (int.from_bytes(data[24:27], "little") + 1, int.from_bytes(data[27:30], "little") + 1)
+                if data[12:16] == b"VP8 ":
+                    return (int.from_bytes(data[26:28], "little") & 0x3FFF, int.from_bytes(data[28:30], "little") & 0x3FFF)
+                if data[12:16] == b"VP8L":
+                    b = int.from_bytes(data[21:25], "little")
+                    return ((b & 0x3FFF) + 1, ((b >> 14) & 0x3FFF) + 1)
+            if data[:2] == b"\xff\xd8":
+                f.seek(2)
+                while True:
+                    marker = f.read(2)
+                    if len(marker) < 2 or marker[0] != 0xFF:
+                        return None
+                    length = int.from_bytes(f.read(2), "big")
+                    if marker[1] in (0xC0, 0xC1, 0xC2, 0xC3, 0xC5, 0xC6, 0xC7, 0xC9, 0xCA, 0xCB, 0xCD, 0xCE, 0xCF):
+                        seg = f.read(5)
+                        h, w = int.from_bytes(seg[1:3], "big"), int.from_bytes(seg[3:5], "big")
+                        if orientation(path) in (5, 6, 7, 8):
+                            w, h = h, w
+                        return (w, h)
+                    f.seek(length - 2, 1)
+    except (OSError, ZeroDivisionError):
+        return None
+    return None
+
+
+def orientation(path):
+    """EXIF orientation of a JPEG (1 if none). Phone photos are often stored sideways."""
+    with open(path, "rb") as f:
+        data = f.read(65536)
+    i = data.find(b"Exif\x00\x00")
+    if i < 0:
+        return 1
+    t = data[i + 6:]
+    big = t[:2] == b"MM"
+    get = lambda o, n: int.from_bytes(t[o:o + n], "big" if big else "little")
+    try:
+        ifd = get(4, 4)
+        for k in range(get(ifd, 2)):
+            e = ifd + 2 + 12 * k
+            if get(e, 2) == 0x0112:
+                return get(e + 8, 2)
+    except Exception:
+        pass
+    return 1
+
+
+def mp4_ratio(path):
+    """Display width / height of the first video track in an MP4, from its tkhd box."""
+    try:
+        data = pathlib.Path(path).read_bytes()
+    except OSError:
+        return None
+    def boxes(start, end):
+        i = start
+        while i + 8 <= end:
+            size, kind = struct.unpack(">I4s", data[i:i + 8]); hdr = 8
+            if size == 1:
+                size = struct.unpack(">Q", data[i + 8:i + 16])[0]; hdr = 16
+            elif size == 0:
+                size = end - i
+            if size < hdr:
+                return
+            yield kind, i + hdr, i + size
+            i += size
+    def find(start, end):
+        for kind, s, e in boxes(start, end):
+            if kind in (b"moov", b"trak"):
+                r = find(s, e)
+                if r:
+                    return r
+            elif kind == b"tkhd":
+                off = s + (88 if data[s] == 1 else 76)
+                w, h = (v / 65536 for v in struct.unpack(">II", data[off:off + 8]))
+                if w and h:
+                    a, b = struct.unpack(">ii", data[off - 36:off - 28])
+                    if a == 0 and b != 0:  # rotated 90 degrees
+                        w, h = h, w
+                    return w / h
+        return None
+    try:
+        return find(0, len(data))
+    except struct.error:
+        return None
+
+
 def figure(match, root=""):
     parts = [p.strip() for p in match.group(1).split("|")]
     name, alt = parts[0], parts[1]
     caption = parts[2] if len(parts) > 2 else ""
     cap = f"<figcaption>{caption}</figcaption>" if caption else ""
+    size = image_size(OUT / "assets" / "img" / name)
+    shape = f' style="--r: {size[0] / size[1]:.3f}; --w: {size[0]}px"' if size and size[1] else ""
     return (
-        f'<figure data-file="assets/img/{name}">'
+        f'<figure data-file="assets/img/{name}"{shape}>'
         f'<img src="{root}assets/img/{name}" alt="{html.escape(alt)}" loading="lazy" '
         f"onerror=\"this.parentNode.classList.add('missing')\">{cap}</figure>"
     )
@@ -137,22 +234,22 @@ def video(match, root=""):
     caption = parts[1] if len(parts) > 1 else ""
     cap = f"<figcaption>{caption}</figcaption>" if caption else ""
     return (
-        f'<figure class="video" data-file="assets/video/{name}">'
+        f'<figure class="video" data-file="assets/video/{name}" style="--r: {mp4_ratio(OUT / "assets" / "video" / name) or 16 / 9:.3f}">'
         f'<video controls preload="metadata" src="{root}assets/video/{name}" '
         f"onerror=\"this.parentNode.classList.add('missing')\"></video>{cap}</figure>"
     )
 
 
 def lineup(_match):
-    scale, gap, pad_top, label_h = 2, 44, 30, 54
+    scale, gap, pad_top, label_h, pad_side = 2, 44, 30, 54, 30
     tallest = max(h for _, _, h in BOARDS) * scale
-    width = sum(w * scale for _, w, _ in BOARDS) + gap * (len(BOARDS) - 1)
+    width = sum(w * scale for _, w, _ in BOARDS) + gap * (len(BOARDS) - 1) + 2 * pad_side
     height = pad_top + tallest + label_h
     out = [
         f'<svg class="lineup" viewBox="0 0 {width} {height}" role="img" '
         f'aria-label="Outlines of the four flight computer board sizes, drawn to the same scale">'
     ]
-    x = 0
+    x = pad_side
     for name, w, h in BOARDS:
         bw, bh = w * scale, h * scale
         y = pad_top + tallest - bh
@@ -185,7 +282,7 @@ def build():
         body = re.sub(r"\{\{video (.+?)\}\}", lambda m: video(m, root), body)
         body = re.sub(r"\{\{lineup\}\}", lineup, body)
         nav = "\n".join(
-            '        <a href="{0}{1}.html"{2}>{3}</a>'.format(
+            '      <a href="{0}{1}.html"{2}>{3}</a>'.format(
                 root, slug, ' aria-current="page"' if meta.get("nav") == slug else "", label
             )
             for slug, label in NAV

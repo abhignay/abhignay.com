@@ -33,19 +33,17 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="../index.html">Abhigna Y</a>
-    <div class="header-end">
-      <nav aria-label="Main">
-        <a href="../index.html">Projects</a>
-        <a href="../documents.html">Documents</a>
-        <a href="../highlights.html">Highlights</a>
-        <a href="../archive.html" aria-current="page">Archive</a>
-        <a href="../contact.html">Contact</a>
-      </nav>
+    <nav aria-label="Main">
+      <a href="../index.html">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html" aria-current="page">Archive</a>
+      <a href="../contact.html">Contact</a>
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
         <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
         <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
-    </div>
+    </nav>
   </div>
 </header>
 <main id="main">
@@ -61,9 +59,9 @@
     <p>First I began working on the watch faces, then moved onto the actual time ticking software and other miscellaneous stuff. My first go at the watch face was dead simple; time (hour, minute, second) in big text in the middle of the screen, and the date right below it (fig 1).</p>
   </div>
   <div class="figs figs-3">
-    <figure data-file="assets/img/log14-1.jpg"><img src="../assets/img/log14-1.jpg" alt="first attempt at a watch face" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - first attempt at a watch face</figcaption></figure>
-    <figure data-file="assets/img/log14-2.jpg"><img src="../assets/img/log14-2.jpg" alt="second watch face" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 2 - second watch face</figcaption></figure>
-    <figure data-file="assets/img/log14-3.jpg"><img src="../assets/img/log14-3.jpg" alt="third watch face" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - third watch face</figcaption></figure>
+    <figure data-file="assets/img/log14-1.jpg" style="--r: 1.328; --w: 8160px"><img src="../assets/img/log14-1.jpg" alt="first attempt at a watch face" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - first attempt at a watch face</figcaption></figure>
+    <figure data-file="assets/img/log14-2.jpg" style="--r: 0.753; --w: 6144px"><img src="../assets/img/log14-2.jpg" alt="second watch face" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 2 - second watch face</figcaption></figure>
+    <figure data-file="assets/img/log14-3.jpg" style="--r: 0.753; --w: 6144px"><img src="../assets/img/log14-3.jpg" alt="third watch face" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - third watch face</figcaption></figure>
   </div>
   <div class="prose">
     <p>Once I had a basic understanding of how all the display drivers worked I had a go at making a proper watch face. I wanted this to be clean and simple. Time in the center, date at the top and temperature and battery percentage at the bottom. All separated by nice little lines.</p>
@@ -71,32 +69,32 @@
     <p>I also designed a basic case for the watch (fig 4). I wanted it to be very small and low profile so what I did is make a case just big enough for the circular part of the display module to fit in and have a cutout for the USB-C extrusion to prod out of. This extrusion will be covered by a cap and there is an identical cap at the back for symmetry. Also there are two buttons on either side of the watch.</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log14-4.png"><img src="../assets/img/log14-4.png" alt="Watch Case v1 CAD model in Fusion 360" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 4 - Watch Case v1 CAD model in Fusion 360</figcaption></figure>
+    <figure data-file="assets/img/log14-4.png" style="--r: 2.232; --w: 1589px"><img src="../assets/img/log14-4.png" alt="Watch Case v1 CAD model in Fusion 360" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 4 - Watch Case v1 CAD model in Fusion 360</figcaption></figure>
   </div>
   <div class="prose">
     <h2>Project Update - May 2023</h2>
     <p>A continuation of last month's case design efforts. I got the 1st version of the case printed (fig 5), however it didn't turn out so great. The case was very flimsy due to how thin the walls were and the USB-C cap idea failed spectacularly. In fact I had to break off the front of the case just to slide the RP2040 module in the case.</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log14-5.jpeg"><img src="../assets/img/log14-5.jpeg" alt="printed 1st version watch case" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 5 - printed 1st version watch case</figcaption></figure>
+    <figure data-file="assets/img/log14-5.jpeg" style="--r: 1.328; --w: 1283px"><img src="../assets/img/log14-5.jpeg" alt="printed 1st version watch case" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 5 - printed 1st version watch case</figcaption></figure>
   </div>
   <div class="prose">
     <p>So I redesigned the case from scratch (fig 6). No more extremely thin walls and weird protrusions, the whole module is now going to fit nicely inside the case. I bumped up the case diameter a whole 7mm and cutout a contour-ish shape for the USB protrusion to fit in. This version didn't have any buttons.</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log14-6.png"><img src="../assets/img/log14-6.png" alt="case v2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 6 - case v2</figcaption></figure>
+    <figure data-file="assets/img/log14-6.png" style="--r: 2.377; --w: 1210px"><img src="../assets/img/log14-6.png" alt="case v2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 6 - case v2</figcaption></figure>
   </div>
   <div class="prose">
     <p>After printing and testing the 2nd version of the case I realized there were still some kinks I needed to iron out, so I did that and more with the 3rd version of the case. Then I had to fix the positioning and size of the USB-C port hole, then added some buttons which I did with the 4th version. Finally the 5th version changed the position of the buttons so they rest better inside the case. Iterative design (fig 7)!</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log14-7.jpeg"><img src="../assets/img/log14-7.jpeg" alt="watch case iterations" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 7 - watch case iterations</figcaption></figure>
+    <figure data-file="assets/img/log14-7.jpeg" style="--r: 1.328; --w: 1280px"><img src="../assets/img/log14-7.jpeg" alt="watch case iterations" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 7 - watch case iterations</figcaption></figure>
   </div>
   <div class="prose">
     <p>With all the hardware stuff done I had to turn my eyes to software and add the buttons functions and tidy it up a bit so I could publish it on Git. But before I do that I had the all important task of naming the thing. And I chose the name, WatchPi, an amalgamation of Watch and Raspberry Pi. Here is the GitHub repo with all the code and CAD for WatchPi - <a href="https://github.com/abhignay/WatchPi">https://github.com/abhignay/WatchPi</a></p>
   </div>
   <div class="figs figs-1">
-    <figure class="video" data-file="assets/video/log14-v1.mp4"><video controls preload="metadata" src="../assets/video/log14-v1.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>WatchPi buttons test</figcaption></figure>
+    <figure class="video" data-file="assets/video/log14-v1.mp4" style="--r: 0.562"><video controls preload="metadata" src="../assets/video/log14-v1.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>WatchPi buttons test</figcaption></figure>
   </div>
   <nav class="pager" aria-label="Dev logs">
     <a href="january-2023-march-2023.html">Older: January 2023 - March 2023</a>

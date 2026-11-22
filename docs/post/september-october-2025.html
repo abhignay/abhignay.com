@@ -33,19 +33,17 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="../index.html">Abhigna Y</a>
-    <div class="header-end">
-      <nav aria-label="Main">
-        <a href="../index.html">Projects</a>
-        <a href="../documents.html">Documents</a>
-        <a href="../highlights.html">Highlights</a>
-        <a href="../archive.html" aria-current="page">Archive</a>
-        <a href="../contact.html">Contact</a>
-      </nav>
+    <nav aria-label="Main">
+      <a href="../index.html">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html" aria-current="page">Archive</a>
+      <a href="../contact.html">Contact</a>
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
         <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
         <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
-    </div>
+    </nav>
   </div>
 </header>
 <main id="main">
@@ -60,13 +58,13 @@
     <p>This month I upgraded the test stand to measure TVC vane deflection as well as motor thrust. The way I'm doing this is mounting another load cell on L-shaped aluminium extrusions right up against one of the TVC servos (fig 1). This will give me the data I need to create the transfer function for converting servo angle to side force generated in the control system.</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log26-1.png"><img src="../assets/img/log26-1.png" alt="New Test Stand setup" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - New Test Stand setup</figcaption></figure>
+    <figure data-file="assets/img/log26-1.png" style="--r: 1.501; --w: 1400px"><img src="../assets/img/log26-1.png" alt="New Test Stand setup" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - New Test Stand setup</figcaption></figure>
   </div>
   <div class="prose">
     <p>I also threw together a simple GCS UI (fig 2) for the stand, using Python and PyQt5. This simple UI lets me control the thrust of the brushless motors, activate a simple servo routine for cycling through various vane deflections, and zero-ing out the load cells.</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log26-2.png"><img src="../assets/img/log26-2.png" alt="Test Stand Control UI" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 2 - Test Stand Control UI</figcaption></figure>
+    <figure data-file="assets/img/log26-2.png" style="--r: 0.962; --w: 529px"><img src="../assets/img/log26-2.png" alt="Test Stand Control UI" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 2 - Test Stand Control UI</figcaption></figure>
   </div>
   <div class="prose">
     <p>I tested this setup several times, with all tests yielding the same garbage data. I only later realized that this setup for measuring side force was fundamentally wrong. I was under the impression that one singular servo parallel to the load cell would generate a side force that is detectable enough by the load cell. However, it should be two servos in tandem, orthogonal to the load cell.</p>
@@ -75,7 +73,7 @@
     <p>I ran the new TVC vane deflection tests this month (fig 3), and I'm pretty happy with the data. There is a proper correlation between vane angle and side force that I can use for creating my transfer function. There are still some inconsistencies between what I expect and what the data tells me (especially at larger deflection angles), so I think some additional tests may be in order.</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log26-3.png"><img src="../assets/img/log26-3.png" alt="Test Stand that can measure accurate side forces" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - Test Stand that can measure accurate side forces</figcaption></figure>
+    <figure data-file="assets/img/log26-3.png" style="--r: 1.501; --w: 1451px"><img src="../assets/img/log26-3.png" alt="Test Stand that can measure accurate side forces" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - Test Stand that can measure accurate side forces</figcaption></figure>
   </div>
   <div class="prose">
     <h2>Project Update - October 2025</h2>

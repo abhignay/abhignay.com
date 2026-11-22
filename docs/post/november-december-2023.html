@@ -33,19 +33,17 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="../index.html">Abhigna Y</a>
-    <div class="header-end">
-      <nav aria-label="Main">
-        <a href="../index.html">Projects</a>
-        <a href="../documents.html">Documents</a>
-        <a href="../highlights.html">Highlights</a>
-        <a href="../archive.html" aria-current="page">Archive</a>
-        <a href="../contact.html">Contact</a>
-      </nav>
+    <nav aria-label="Main">
+      <a href="../index.html">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html" aria-current="page">Archive</a>
+      <a href="../contact.html">Contact</a>
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
         <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
         <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
-    </div>
+    </nav>
   </div>
 </header>
 <main id="main">
@@ -60,72 +58,72 @@
     <p>Not much progress was made this month. I got the Arduboy Clone PCB, now called the ArduGame, manufactured and put it together (fig 1). Everything works well except for the fact that I swapped the pins of the left and right buttons on the D-Pad, so had to fix that in software. PCB Schematic and Layout can be found here - <a href="https://github.com/abhignay/ArduGame">https://github.com/abhignay/ArduGame</a></p>
   </div>
   <div class="figs figs-1">
-    <figure class="video" data-file="assets/video/log17-v1.mp4"><video controls preload="metadata" src="../assets/video/log17-v1.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>fig 1 - ArduGame</figcaption></figure>
+    <figure class="video" data-file="assets/video/log17-v1.mp4" style="--r: 1.778"><video controls preload="metadata" src="../assets/video/log17-v1.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>fig 1 - ArduGame</figcaption></figure>
   </div>
   <div class="prose">
     <p>Now that I was done with this project, I started working on Air MK1 again. I designed and printed a fin-cutting jig and a jig to align the fins, and tried cutting out 4 fin slots on a spare piece of airframe (fig 2, 3, 4, 5)</p>
   </div>
   <div class="figs figs-3">
-    <figure data-file="assets/img/log17-1.jpg"><img src="../assets/img/log17-1.jpg" alt="Fin slot cutting jig" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 2 - Fin slot cutting jig</figcaption></figure>
-    <figure data-file="assets/img/log17-2.jpg"><img src="../assets/img/log17-2.jpg" alt="fin alignment jig" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - fin alignment jig</figcaption></figure>
-    <figure data-file="assets/img/log17-3.jpg"><img src="../assets/img/log17-3.jpg" alt="fin slot" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 4 - fin slot</figcaption></figure>
-    <figure data-file="assets/img/log17-4.png"><img src="../assets/img/log17-4.png" alt="Air MK1 with fins attached" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 5 - Air MK1 with fins attached</figcaption></figure>
+    <figure data-file="assets/img/log17-1.jpg" style="--r: 0.714; --w: 673px"><img src="../assets/img/log17-1.jpg" alt="Fin slot cutting jig" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 2 - Fin slot cutting jig</figcaption></figure>
+    <figure data-file="assets/img/log17-2.jpg" style="--r: 1.334; --w: 1287px"><img src="../assets/img/log17-2.jpg" alt="fin alignment jig" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - fin alignment jig</figcaption></figure>
+    <figure data-file="assets/img/log17-3.jpg" style="--r: 0.746; --w: 1504px"><img src="../assets/img/log17-3.jpg" alt="fin slot" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 4 - fin slot</figcaption></figure>
+    <figure data-file="assets/img/log17-4.png" style="--r: 0.240; --w: 195px"><img src="../assets/img/log17-4.png" alt="Air MK1 with fins attached" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 5 - Air MK1 with fins attached</figcaption></figure>
   </div>
   <div class="prose">
     <p>I also assembled another TFAC r3 PCB (fig 6) and also assembled an updated telemetry board (fig 7, 8). This PCB uses JST connectors to connect to TFAC rather than jumper cables and terminal blocks. It also has an inbuilt step-down converter so it can be powered with TFAC's 5V rail than can supply a lot more current than the 3.3V rail.</p>
   </div>
   <div class="figs figs-3">
-    <figure data-file="assets/img/log17-5.jpg"><img src="../assets/img/log17-5.jpg" alt="TFAC r3" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 6 - TFAC r3</figcaption></figure>
-    <figure data-file="assets/img/log17-6.jpg"><img src="../assets/img/log17-6.jpg" alt="Telemetry Breakout v2 Front" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 7 - Telemetry Breakout v2 Front</figcaption></figure>
-    <figure data-file="assets/img/log17-7.jpg"><img src="../assets/img/log17-7.jpg" alt="Telemetry Breakout v2 Back" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 8 - Telemetry Breakout v2 Back</figcaption></figure>
+    <figure data-file="assets/img/log17-5.jpg" style="--r: 1.334; --w: 1287px"><img src="../assets/img/log17-5.jpg" alt="TFAC r3" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 6 - TFAC r3</figcaption></figure>
+    <figure data-file="assets/img/log17-6.jpg" style="--r: 1.334; --w: 1287px"><img src="../assets/img/log17-6.jpg" alt="Telemetry Breakout v2 Front" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 7 - Telemetry Breakout v2 Front</figcaption></figure>
+    <figure data-file="assets/img/log17-7.jpg" style="--r: 1.334; --w: 1287px"><img src="../assets/img/log17-7.jpg" alt="Telemetry Breakout v2 Back" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 8 - Telemetry Breakout v2 Back</figcaption></figure>
   </div>
   <div class="prose">
     <h2>Project Update - December 2023</h2>
     <p>This month was a lot of Air MK1 development. First thing I did was epoxy on the centering rings and eye bolt to the motor mount tube (fig 9). This was my first time ever working with epoxy so the end result was very messy :/</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log17-8.jpg"><img src="../assets/img/log17-8.jpg" alt="eye bolt and centering ring attached to MMT" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 9 - eye bolt and centering ring attached to MMT</figcaption></figure>
+    <figure data-file="assets/img/log17-8.jpg" style="--r: 0.750; --w: 724px"><img src="../assets/img/log17-8.jpg" alt="eye bolt and centering ring attached to MMT" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 9 - eye bolt and centering ring attached to MMT</figcaption></figure>
   </div>
   <div class="prose">
     <p>Next up was the fins. I cut out slots for the fins on the airframe, glued the motor mount tube into the airframe and did the inner fillets for the fins. Then I epoxied on the rear centering ring and did the outer fillets (figs 10, 11, 12)</p>
   </div>
   <div class="figs figs-3">
-    <figure data-file="assets/img/log17-9.jpg"><img src="../assets/img/log17-9.jpg" alt="Air MK1 with inner fin fillets done" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 10 - Air MK1 with inner fin fillets done</figcaption></figure>
-    <figure data-file="assets/img/log17-10.jpg"><img src="../assets/img/log17-10.jpg" alt="Rear centering ring attached" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 11 - Rear centering ring attached</figcaption></figure>
-    <figure data-file="assets/img/log17-11.jpg"><img src="../assets/img/log17-11.jpg" alt="Outer fin fillets" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 12 - Outer fin fillets</figcaption></figure>
+    <figure data-file="assets/img/log17-9.jpg" style="--r: 1.808; --w: 2048px"><img src="../assets/img/log17-9.jpg" alt="Air MK1 with inner fin fillets done" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 10 - Air MK1 with inner fin fillets done</figcaption></figure>
+    <figure data-file="assets/img/log17-10.jpg" style="--r: 1.318; --w: 1011px"><img src="../assets/img/log17-10.jpg" alt="Rear centering ring attached" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 11 - Rear centering ring attached</figcaption></figure>
+    <figure data-file="assets/img/log17-11.jpg" style="--r: 1.113; --w: 1070px"><img src="../assets/img/log17-11.jpg" alt="Outer fin fillets" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 12 - Outer fin fillets</figcaption></figure>
   </div>
   <div class="prose">
     <p>After this I sanded down the fillets and beveled the leading and trailing edges of the fins (fig 13).</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log17-12.jpg"><img src="../assets/img/log17-12.jpg" alt="fillets sanded, leading and trailing edges beveled" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 13 - fillets sanded, leading and trailing edges beveled</figcaption></figure>
+    <figure data-file="assets/img/log17-12.jpg" style="--r: 1.197; --w: 1074px"><img src="../assets/img/log17-12.jpg" alt="fillets sanded, leading and trailing edges beveled" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 13 - fillets sanded, leading and trailing edges beveled</figcaption></figure>
   </div>
   <div class="prose">
     <p>Finally it was time for painting. I decided to go with a white base coat and blue accents. I first painted the forward airframe in white (fig 14).</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log17-13.jpg"><img src="../assets/img/log17-13.jpg" alt="forward airframe painted" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 14 - forward airframe painted</figcaption></figure>
+    <figure data-file="assets/img/log17-13.jpg" style="--r: 0.557; --w: 539px"><img src="../assets/img/log17-13.jpg" alt="forward airframe painted" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 14 - forward airframe painted</figcaption></figure>
   </div>
   <div class="prose">
     <p>After this I ran out of white paint, but had some blue paint handy. I really wanted to see some evolution in the paint scheme of Air MK1 so I hit the fins with a coat of blue paint (figs 15, 16), which as you'll see soon enough was a terrible idea. When painting you really want to do the light colors first, then the darker ones.</p>
   </div>
   <div class="figs figs-2">
-    <figure data-file="assets/img/log17-14.jpg"><img src="../assets/img/log17-14.jpg" alt="exposing only the fins for the blue paint" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 15 - exposing only the fins for the blue paint</figcaption></figure>
-    <figure data-file="assets/img/log17-15.jpg"><img src="../assets/img/log17-15.jpg" alt="fins painted in blue" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 16 - fins painted in blue</figcaption></figure>
+    <figure data-file="assets/img/log17-14.jpg" style="--r: 0.750; --w: 724px"><img src="../assets/img/log17-14.jpg" alt="exposing only the fins for the blue paint" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 15 - exposing only the fins for the blue paint</figcaption></figure>
+    <figure data-file="assets/img/log17-15.jpg" style="--r: 1.233; --w: 946px"><img src="../assets/img/log17-15.jpg" alt="fins painted in blue" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 16 - fins painted in blue</figcaption></figure>
   </div>
   <div class="prose">
     <p>After I got the white spray paint I hit the aft section with 3 coats of white paint (fig 17). Unfortunately there were quite a few paint bleeds near the fins which could be avoided had I painted the fins white and then blue rather than the other way around.</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log17-16.jpg"><img src="../assets/img/log17-16.jpg" alt="Air MK1 aft section fully painted" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 17 - Air MK1 aft section fully painted</figcaption></figure>
+    <figure data-file="assets/img/log17-16.jpg" style="--r: 0.750; --w: 724px"><img src="../assets/img/log17-16.jpg" alt="Air MK1 aft section fully painted" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 17 - Air MK1 aft section fully painted</figcaption></figure>
   </div>
   <div class="prose">
     <p>And with that Air MK1 is 95% of the way complete!</p>
   </div>
   <div class="figs figs-3">
-    <figure data-file="assets/img/log17-17.png"><img src="../assets/img/log17-17.png" alt="Photo from dev log 17" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
-    <figure data-file="assets/img/log17-18.jpg"><img src="../assets/img/log17-18.jpg" alt="Photo from dev log 17" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
-    <figure data-file="assets/img/log17-19.png"><img src="../assets/img/log17-19.png" alt="Photo from dev log 17" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
+    <figure data-file="assets/img/log17-17.png" style="--r: 4.655; --w: 824px"><img src="../assets/img/log17-17.png" alt="Photo from dev log 17" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
+    <figure data-file="assets/img/log17-18.jpg" style="--r: 2.675; --w: 987px"><img src="../assets/img/log17-18.jpg" alt="Photo from dev log 17" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
+    <figure data-file="assets/img/log17-19.png" style="--r: 0.366; --w: 248px"><img src="../assets/img/log17-19.png" alt="Photo from dev log 17" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
   </div>
   <nav class="pager" aria-label="Dev logs">
     <a href="august-october-2023.html">Older: August-October 2023</a>

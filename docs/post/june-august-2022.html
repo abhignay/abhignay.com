@@ -33,19 +33,17 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="../index.html">Abhigna Y</a>
-    <div class="header-end">
-      <nav aria-label="Main">
-        <a href="../index.html">Projects</a>
-        <a href="../documents.html">Documents</a>
-        <a href="../highlights.html">Highlights</a>
-        <a href="../archive.html" aria-current="page">Archive</a>
-        <a href="../contact.html">Contact</a>
-      </nav>
+    <nav aria-label="Main">
+      <a href="../index.html">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html" aria-current="page">Archive</a>
+      <a href="../contact.html">Contact</a>
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
         <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
         <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
-    </div>
+    </nav>
   </div>
 </header>
 <main id="main">
@@ -62,10 +60,10 @@
     <p>After the lack of progress in June I decided to work on something that wasn’t waiting for rocket parts. I began work on adding two components to the avionics stack which were a Telemetry radio and GNSS. The telemetry radio I chose was an Ebyte E32 LoRa module (fig 1) operating on 433mHz (very powerful), I chose this radio primarily because it was cheaper while being more powerful than the other options I was looking at. As for the GNSS I chose the uBlox SAM-M8Q on a sparkfun board (fig 2), I again chose this because it was cheap compared to other options available and it has a builtin ceramic antenna!</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log9-1.png"><img src="../assets/img/log9-1.png" alt="Telemetry radios" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 1 - Telemetry radios)</figcaption></figure>
+    <figure data-file="assets/img/log9-1.png" style="--r: 1.213; --w: 939px"><img src="../assets/img/log9-1.png" alt="Telemetry radios" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 1 - Telemetry radios)</figcaption></figure>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log9-2.png"><img src="../assets/img/log9-2.png" alt="GNSS hooked up to TFAC via I2C" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 2 - GNSS hooked up to TFAC via I2C)</figcaption></figure>
+    <figure data-file="assets/img/log9-2.png" style="--r: 1.188; --w: 1070px"><img src="../assets/img/log9-2.png" alt="GNSS hooked up to TFAC via I2C" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 2 - GNSS hooked up to TFAC via I2C)</figcaption></figure>
   </div>
   <div class="prose">
     <h2>Accomplishments in August 2022</h2>
@@ -75,14 +73,14 @@
     <p>Finally I designed TFAC r2 (fig 6), the main improvements include more IO, a functioning onboard GNSS and a much better layout (TFAC r1’s layout was pretty bad in hindsight). I’ve decided not to manufacture it because it doesn’t really make sense, the changes aren’t noteworthy and most of them can be fixed with a bodge.</p>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log9-3.png"><img src="../assets/img/log9-3.png" alt="barometer data with GNSS data being logged" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 3 - barometer data with GNSS data being logged)</figcaption></figure>
+    <figure data-file="assets/img/log9-3.png" style="--r: 2.105; --w: 1248px"><img src="../assets/img/log9-3.png" alt="barometer data with GNSS data being logged" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 3 - barometer data with GNSS data being logged)</figcaption></figure>
   </div>
   <div class="figs figs-1">
-    <figure data-file="assets/img/log9-4.png"><img src="../assets/img/log9-4.png" alt="breakout board for the LoRa" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 5 - breakout board for the LoRa)</figcaption></figure>
+    <figure data-file="assets/img/log9-4.png" style="--r: 2.113; --w: 1253px"><img src="../assets/img/log9-4.png" alt="breakout board for the LoRa" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 5 - breakout board for the LoRa)</figcaption></figure>
   </div>
   <div class="figs figs-2">
-    <figure data-file="assets/img/log9-5.png"><img src="../assets/img/log9-5.png" alt="CAD model of the avionics" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 4 - CAD model of the avionics)</figcaption></figure>
-    <figure data-file="assets/img/log9-6.png"><img src="../assets/img/log9-6.png" alt="TFAC r2, layout" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 5 - TFAC r2, layout)</figcaption></figure>
+    <figure data-file="assets/img/log9-5.png" style="--r: 0.420; --w: 350px"><img src="../assets/img/log9-5.png" alt="CAD model of the avionics" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 4 - CAD model of the avionics)</figcaption></figure>
+    <figure data-file="assets/img/log9-6.png" style="--r: 0.570; --w: 475px"><img src="../assets/img/log9-6.png" alt="TFAC r2, layout" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 5 - TFAC r2, layout)</figcaption></figure>
   </div>
   <nav class="pager" aria-label="Dev logs">
     <a href="march-may-2022.html">Older: March - May 2022</a>
