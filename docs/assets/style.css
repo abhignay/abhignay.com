@@ -175,10 +175,12 @@ figure img {
   max-width: 100%;
   height: auto;
   max-height: 34rem;
-  background: var(--panel);
-  border: 1px solid var(--line);
   border-radius: 3px;
 }
+/* White backgrounds baked into screenshots and CAD renders take the page colour
+   instead of showing as white boxes. Light mode only: in dark mode this would
+   darken every photo. */
+:root:not([data-theme="dark"]) figure img { mix-blend-mode: multiply; }
 figcaption { color: var(--muted); font-size: 0.92rem; line-height: 1.4; margin-top: 0.5rem; }
 
 /* Photo groups: figs-1 is one photo the width of the text, figs-2 a side-by-side
