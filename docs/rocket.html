@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>
+  // Pick the theme before the page draws, so it never flashes the wrong colours.
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (e) {}
+    var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (dark) document.documentElement.setAttribute("data-theme", "dark");
+  })();
+</script>
 <title>Advanced Model Rockets | Abhigna Y</title>
 <meta name="description" content="High-power model rockets and the avionics, rockets and launch pads built for them.">
 <meta property="og:title" content="Advanced Model Rockets | Abhigna Y">
@@ -23,13 +33,19 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="index.html">Abhigna Y</a>
-    <nav aria-label="Main">
-      <a href="index.html" aria-current="page">Projects</a>
-      <a href="documents.html">Documents</a>
-      <a href="highlights.html">Highlights</a>
-      <a href="archive.html">Archive</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <div class="header-end">
+      <nav aria-label="Main">
+        <a href="index.html" aria-current="page">Projects</a>
+        <a href="documents.html">Documents</a>
+        <a href="highlights.html">Highlights</a>
+        <a href="archive.html">Archive</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 <main id="main">
@@ -41,23 +57,20 @@
     <p class="when">March 2020 - Present <span class="status">In progress</span></p>
   </header>
 
-  <div class="figs narrow">
-    <figure data-file="assets/img/rocket-overview.jpg"><img src="assets/img/rocket-overview.jpg" alt="Model rocket hardware" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
-  </div>
-
   <ul class="parts">
     <li>
       <div>
         <h2><a href="avionics.html">Avionics</a></h2>
         <p>Flight computers that I've designed and built to fly on and control rockets</p>
       </div>
-      <figure data-file="assets/img/avionics-overview.jpg"><img src="assets/img/avionics-overview.jpg" alt="A flight computer" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
+      <figure data-file="assets/img/rocket-overview.jpg"><img src="assets/img/rocket-overview.jpg" alt="A flight computer" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
     </li>
     <li>
       <div>
         <h2><a href="rockets.html">Rockets</a></h2>
         <p>All the rockets that I've designed/built</p>
       </div>
+      <figure data-file="assets/img/avionics-overview.jpg"><img src="assets/img/avionics-overview.jpg" alt="A model rocket" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
     </li>
     <li>
       <div>
@@ -81,5 +94,22 @@
     </ul>
   </div>
 </footer>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var button = document.querySelector(".theme-toggle");
+    function label() {
+      var dark = root.getAttribute("data-theme") === "dark";
+      button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    }
+    label();
+    button.addEventListener("click", function () {
+      var dark = root.getAttribute("data-theme") !== "dark";
+      if (dark) root.setAttribute("data-theme", "dark"); else root.removeAttribute("data-theme");
+      try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+      label();
+    });
+  })();
+</script>
 </body>
 </html>

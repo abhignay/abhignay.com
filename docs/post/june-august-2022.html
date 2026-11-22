@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>
+  // Pick the theme before the page draws, so it never flashes the wrong colours.
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (e) {}
+    var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (dark) document.documentElement.setAttribute("data-theme", "dark");
+  })();
+</script>
 <title>June - August 2022 | Abhigna Y</title>
 <meta name="description" content="Dev Log 9. Telemetry radio and GNSS added, a barometer bug fixed, and TFAC r2 designed.">
 <meta property="og:title" content="June - August 2022 | Abhigna Y">
@@ -23,13 +33,19 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="../index.html">Abhigna Y</a>
-    <nav aria-label="Main">
-      <a href="../index.html">Projects</a>
-      <a href="../documents.html">Documents</a>
-      <a href="../highlights.html">Highlights</a>
-      <a href="../archive.html" aria-current="page">Archive</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
+    <div class="header-end">
+      <nav aria-label="Main">
+        <a href="../index.html">Projects</a>
+        <a href="../documents.html">Documents</a>
+        <a href="../highlights.html">Highlights</a>
+        <a href="../archive.html" aria-current="page">Archive</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 <main id="main">
@@ -45,8 +61,10 @@
     <h2>Accomplishments in July 2022</h2>
     <p>After the lack of progress in June I decided to work on something that wasn’t waiting for rocket parts. I began work on adding two components to the avionics stack which were a Telemetry radio and GNSS. The telemetry radio I chose was an Ebyte E32 LoRa module (fig 1) operating on 433mHz (very powerful), I chose this radio primarily because it was cheaper while being more powerful than the other options I was looking at. As for the GNSS I chose the uBlox SAM-M8Q on a sparkfun board (fig 2), I again chose this because it was cheap compared to other options available and it has a builtin ceramic antenna!</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log9-1.png"><img src="../assets/img/log9-1.png" alt="Telemetry radios" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 1 - Telemetry radios)</figcaption></figure>
+  </div>
+  <div class="figs figs-1">
     <figure data-file="assets/img/log9-2.png"><img src="../assets/img/log9-2.png" alt="GNSS hooked up to TFAC via I2C" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 2 - GNSS hooked up to TFAC via I2C)</figcaption></figure>
   </div>
   <div class="prose">
@@ -56,9 +74,13 @@
     <p>Also I made a little breakout board (fig 5) for the Telemetry radio mainly to improve cable management (didn’t really fix that) and to test out the capabilities and quality of PCBs manufactured locally.</p>
     <p>Finally I designed TFAC r2 (fig 6), the main improvements include more IO, a functioning onboard GNSS and a much better layout (TFAC r1’s layout was pretty bad in hindsight). I’ve decided not to manufacture it because it doesn’t really make sense, the changes aren’t noteworthy and most of them can be fixed with a bodge.</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log9-3.png"><img src="../assets/img/log9-3.png" alt="barometer data with GNSS data being logged" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 3 - barometer data with GNSS data being logged)</figcaption></figure>
+  </div>
+  <div class="figs figs-1">
     <figure data-file="assets/img/log9-4.png"><img src="../assets/img/log9-4.png" alt="breakout board for the LoRa" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 5 - breakout board for the LoRa)</figcaption></figure>
+  </div>
+  <div class="figs figs-2">
     <figure data-file="assets/img/log9-5.png"><img src="../assets/img/log9-5.png" alt="CAD model of the avionics" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 4 - CAD model of the avionics)</figcaption></figure>
     <figure data-file="assets/img/log9-6.png"><img src="../assets/img/log9-6.png" alt="TFAC r2, layout" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 5 - TFAC r2, layout)</figcaption></figure>
   </div>
@@ -80,5 +102,22 @@
     </ul>
   </div>
 </footer>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var button = document.querySelector(".theme-toggle");
+    function label() {
+      var dark = root.getAttribute("data-theme") === "dark";
+      button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    }
+    label();
+    button.addEventListener("click", function () {
+      var dark = root.getAttribute("data-theme") !== "dark";
+      if (dark) root.setAttribute("data-theme", "dark"); else root.removeAttribute("data-theme");
+      try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+      label();
+    });
+  })();
+</script>
 </body>
 </html>

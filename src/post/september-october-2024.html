@@ -12,33 +12,33 @@ nav: archive
     <h2>Project Update - September 2024</h2>
     <p>Began working on the hardware for the TVC rocket this month. Got the airframe tubes, and designed and 3D printed the nosecone. Also did some integration tests of the TVC mount. (figs 1,2).</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-2">
     {{img log21-1.jpg | TVC rocket dev version 1 | fig 1 - TVC rocket dev version 1}}
     {{img log21-2.jpg | TVC rocket dev version 2 | fig 1 - TVC rocket dev version 2}}
   </div>
   <div class="prose">
     <p>Also got all the launchpad computers fabricated from JLCPCB, threw in a small RFM69 breakout for TFAC and also some more TFAC r3 in purple this time (fig 3)!</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     {{img log21-3.jpg | launch computers, TFAC, RFM69 breakout | fig 3 - launch computers, TFAC, RFM69 breakout}}
   </div>
   <div class="prose">
     <p>Put together the launch remote, and it works great. I was worried about how well I shielded the telemetry radio's antenna, but it looks like it works nominally (fig 4).</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     {{img log21-4.jpeg | Pad remote computer fully assembled | fig 4 - Pad remote computer fully assembled}}
   </div>
   <div class="prose">
     <h2>Project Update - October 2024</h2>
     <p>This month I turned the Pad Remote PCB to an actual remote. My idea for this was a 3D printed enclosure with several buttons - key switch for arming the system, flick switch for putting the system in a hold, green push button for resetting the countdown, a big red button for launching the rocket (because obviously), and a 7 segment display to display the countdown sequence (fig 5).</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     {{img log21-5.jpg | Initial designs | fig 5 - Initial designs}}
   </div>
   <div class="prose">
     <p>Implementing the design in CAD was rather straightforward, everything translated from paper to CAD quite easily. The only thing I had to change was add a bump at the bottom of the case because the key switch was too long to fit in the case with a LiPo at the bottom (figs 6-9).</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-3">
     {{img log21-6.png | CAD of the pad remote | fig 6 - CAD of the pad remote}}
     {{img log21-7.png | pad remote internals | fig 7 - pad remote internals}}
     {{img log21-8.jpg | pad remote fully built | fig 8 - pad remote fully built}}
@@ -47,7 +47,7 @@ nav: archive
   <div class="prose">
     <p>Finally I wrote some software with all the switches performing their real actions.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     {{video log21-v1.mp4 | Pad remote working}}
   </div>
   <nav class="pager" aria-label="Dev logs">

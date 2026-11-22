@@ -9,8 +9,26 @@
   --kapton: #f2a900;
   --kapton-soft: #fbe6ae;
   --link: #2343c9;
+  --on-ink: #ffffff;
+  --missing-stripe: rgba(19, 27, 46, 0.035);
   --display: "Barlow Condensed", "Arial Narrow", sans-serif;
   --body: "IBM Plex Sans", system-ui, sans-serif;
+}
+
+/* Dark mode: same roles, night-shift values. Chosen by the toggle in the header,
+   or by the visitor's system setting until they use the toggle. */
+:root[data-theme="dark"] {
+  --paper: #10151f;
+  --panel: #1a2130;
+  --ink: #e4e8f0;
+  --muted: #9aa5ba;
+  --line: #2d3647;
+  --kapton: #f2a900;
+  --kapton-soft: #3d3112;
+  --link: #93a8ff;
+  --on-ink: #10151f;
+  --missing-stripe: rgba(228, 232, 240, 0.05);
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -40,7 +58,7 @@ a:hover { text-decoration-thickness: 2px; }
   position: absolute;
   left: -999rem;
   background: var(--ink);
-  color: #fff;
+  color: var(--on-ink);
   padding: 0.5rem 1rem;
 }
 .skip:focus { left: 1rem; top: 1rem; z-index: 10; }
@@ -148,31 +166,39 @@ li + li { margin-top: 0.35rem; }
 
 /* Article pages */
 
-.prose { max-width: 44rem; }
+.prose { max-width: 44rem; overflow-wrap: break-word; }
+.prose a { overflow-wrap: anywhere; }
 .prose > h2:first-child { margin-top: 3.5rem; }
 
 figure { margin: 0; }
+/* Photos keep their own shape: never stretched, never letterboxed.
+   Wide screenshots fill the column; tall photos stop at a set height. */
 figure img {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
   max-height: 34rem;
-  object-fit: contain;
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 3px;
 }
 figcaption { color: var(--muted); font-size: 0.92rem; line-height: 1.4; margin-top: 0.5rem; }
 
+/* Photo groups: figs-1 is one photo the width of the text, figs-2 a side-by-side
+   pair, figs-3 three or more in a row that wraps. */
 .figs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
   gap: 1.5rem;
   align-items: end;
   margin-top: 2rem;
-  max-width: 60rem;
+  margin-bottom: 0.5rem;
 }
-.figs.narrow { max-width: 30rem; }
+.figs-1 { grid-template-columns: minmax(0, 1fr); max-width: 44rem; }
+.figs-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 52rem; }
+.figs-3 { grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); max-width: 60rem; }
+.figs-2 img { max-height: 36rem; }
+.figs-3 img { max-height: 28rem; }
 
 /* A figure whose file has not been added yet shows where it goes. */
 figure.missing img { display: none; }
@@ -187,9 +213,9 @@ figure.missing::before {
   font-size: 0.88rem;
   color: var(--muted);
   overflow-wrap: anywhere;
-  border: 1px dashed #aab3c2;
+  border: 1px dashed var(--muted);
   border-radius: 3px;
-  background: repeating-linear-gradient(135deg, transparent 0 10px, rgba(19, 27, 46, 0.035) 10px 20px);
+  background: repeating-linear-gradient(135deg, transparent 0 10px, var(--missing-stripe) 10px 20px);
 }
 
 /* Section links (hopper and rocket overviews) */
@@ -239,7 +265,7 @@ td:nth-child(2) { color: var(--muted); }
 .button {
   display: inline-block;
   background: var(--ink);
-  color: #fff;
+  color: var(--on-ink);
   text-decoration: none;
   font-weight: 500;
   padding: 0.7rem 1.3rem;
@@ -290,10 +316,47 @@ h2 + .parts { margin-top: 1.5rem; }
 /* Project rows: picture first */
 
 .project { grid-template-columns: minmax(0, 19rem) minmax(0, 1fr); gap: 1rem 2.5rem; align-items: center; }
-.project figure img { aspect-ratio: 4 / 3; height: auto; max-height: none; object-fit: cover; }
+.project figure img { width: 100%; aspect-ratio: 4 / 3; height: auto; max-height: none; object-fit: cover; }
 .project figure.missing::before { aspect-ratio: 4 / 3; min-height: 0; }
 .project .when { flex-direction: row; align-items: center; flex-wrap: wrap; padding-top: 0; margin-bottom: 0.6rem; }
 @media (max-width: 46rem) {
   .project { grid-template-columns: 1fr; }
   .project figure { max-width: 22rem; }
+}
+
+/* Light and dark mode toggle */
+
+.site-header .wrap { align-items: center; }
+.header-end { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.theme-toggle:hover { border-color: var(--ink); }
+.theme-toggle svg { width: 1.1rem; height: 1.1rem; }
+.theme-toggle .sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .moon { display: none; }
+
+@media (max-width: 46rem) {
+  .figs-2 { grid-template-columns: minmax(0, 1fr); }
+  .figs-2 img, .figs-3 img { max-height: 30rem; }
+  .figs-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 46rem) {
+  /* On phones: name and toggle share the top line, the menu sits below. */
+  .header-end { display: contents; }
+  .site-name { order: 1; }
+  .theme-toggle { order: 2; margin-left: auto; }
+  .site-header nav { order: 3; width: 100%; }
 }

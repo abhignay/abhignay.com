@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>
+  // Pick the theme before the page draws, so it never flashes the wrong colours.
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (e) {}
+    var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (dark) document.documentElement.setAttribute("data-theme", "dark");
+  })();
+</script>
 <title>October 2021 | Abhigna Y</title>
 <meta name="description" content="Dev Log 3. SAFAC didn&#x27;t work, so TFAC was designed to be easier to solder.">
 <meta property="og:title" content="October 2021 | Abhigna Y">
@@ -23,13 +33,19 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="../index.html">Abhigna Y</a>
-    <nav aria-label="Main">
-      <a href="../index.html">Projects</a>
-      <a href="../documents.html">Documents</a>
-      <a href="../highlights.html">Highlights</a>
-      <a href="../archive.html" aria-current="page">Archive</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
+    <div class="header-end">
+      <nav aria-label="Main">
+        <a href="../index.html">Projects</a>
+        <a href="../documents.html">Documents</a>
+        <a href="../highlights.html">Highlights</a>
+        <a href="../archive.html" aria-current="page">Archive</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 <main id="main">
@@ -42,7 +58,7 @@
   <div class="prose">
     <p>I told you October was going to be progress galore……well it wasn’t the only big updates was flight computer related. SAFAC didn’t work and I would blame that mostly on my soldering skills this was my first time soldering tiny SMD components and it wasn’t too great, there were a lot of shorts on most of the fine pitched components and adding to all this the solder paste I chose wasn’t very easy to work with. Now there are two main “options” while choosing solder paste leaded and unleaded. Leaded solder paste is easier to work with because of its lower melting temperature, I didn’t know about this at the time of ordering so I went with unleaded solder paste specifically an SAC305 blend (Tin, silver and copper) I’m going a little off-topic but let me tell you, without a proper reflow setup (basically a fancy way of saying melting that solder) I can’t get the paste to melt properly unless I get the hot air gun real up close to the components. After learning this I’ve taken a step back and made an FC that is easier to solder. It’s called TFAC (Fig 1) Third Flyable Avionics Computer, it includes a faster processor (not that it is necessary) a magnetometer and a GNSS radio along with a couple other things. Also, some big updates were made to the website making it look a lot cleaner and nicer, this concludes the updates for October :)</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log3-1.png"><img src="../assets/img/log3-1.png" alt="Front of TFAC" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(Fig 1) Front of TFAC</figcaption></figure>
   </div>
   <nav class="pager" aria-label="Dev logs">
@@ -63,5 +79,22 @@
     </ul>
   </div>
 </footer>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var button = document.querySelector(".theme-toggle");
+    function label() {
+      var dark = root.getAttribute("data-theme") === "dark";
+      button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    }
+    label();
+    button.addEventListener("click", function () {
+      var dark = root.getAttribute("data-theme") !== "dark";
+      if (dark) root.setAttribute("data-theme", "dark"); else root.removeAttribute("data-theme");
+      try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+      label();
+    });
+  })();
+</script>
 </body>
 </html>

@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>
+  // Pick the theme before the page draws, so it never flashes the wrong colours.
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (e) {}
+    var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (dark) document.documentElement.setAttribute("data-theme", "dark");
+  })();
+</script>
 <title>April 2023 - May 2023 | Abhigna Y</title>
 <meta name="description" content="Dev Log 14. Watch faces, five case revisions, and the name WatchPi.">
 <meta property="og:title" content="April 2023 - May 2023 | Abhigna Y">
@@ -23,13 +33,19 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="../index.html">Abhigna Y</a>
-    <nav aria-label="Main">
-      <a href="../index.html">Projects</a>
-      <a href="../documents.html">Documents</a>
-      <a href="../highlights.html">Highlights</a>
-      <a href="../archive.html" aria-current="page">Archive</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
+    <div class="header-end">
+      <nav aria-label="Main">
+        <a href="../index.html">Projects</a>
+        <a href="../documents.html">Documents</a>
+        <a href="../highlights.html">Highlights</a>
+        <a href="../archive.html" aria-current="page">Archive</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 <main id="main">
@@ -44,7 +60,7 @@
     <p>This month I made a lot of progress on the software for the watch. After some deliberation I decided to write the software in C with the RP2040 C SDK rather than just using Arduino. I wanted to learn something new from this project and dip my toes into "real" embedded system software.</p>
     <p>First I began working on the watch faces, then moved onto the actual time ticking software and other miscellaneous stuff. My first go at the watch face was dead simple; time (hour, minute, second) in big text in the middle of the screen, and the date right below it (fig 1).</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-3">
     <figure data-file="assets/img/log14-1.jpg"><img src="../assets/img/log14-1.jpg" alt="first attempt at a watch face" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - first attempt at a watch face</figcaption></figure>
     <figure data-file="assets/img/log14-2.jpg"><img src="../assets/img/log14-2.jpg" alt="second watch face" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 2 - second watch face</figcaption></figure>
     <figure data-file="assets/img/log14-3.jpg"><img src="../assets/img/log14-3.jpg" alt="third watch face" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - third watch face</figcaption></figure>
@@ -54,32 +70,32 @@
     <p>Next up was a more aesthetic watch face. Here I played around with using "less plain" colors and changed up the formatting of the time and date shown. Some of Garmin's watch faces inspired me for this.</p>
     <p>I also designed a basic case for the watch (fig 4). I wanted it to be very small and low profile so what I did is make a case just big enough for the circular part of the display module to fit in and have a cutout for the USB-C extrusion to prod out of. This extrusion will be covered by a cap and there is an identical cap at the back for symmetry. Also there are two buttons on either side of the watch.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log14-4.png"><img src="../assets/img/log14-4.png" alt="Watch Case v1 CAD model in Fusion 360" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 4 - Watch Case v1 CAD model in Fusion 360</figcaption></figure>
   </div>
   <div class="prose">
     <h2>Project Update - May 2023</h2>
     <p>A continuation of last month's case design efforts. I got the 1st version of the case printed (fig 5), however it didn't turn out so great. The case was very flimsy due to how thin the walls were and the USB-C cap idea failed spectacularly. In fact I had to break off the front of the case just to slide the RP2040 module in the case.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log14-5.jpeg"><img src="../assets/img/log14-5.jpeg" alt="printed 1st version watch case" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 5 - printed 1st version watch case</figcaption></figure>
   </div>
   <div class="prose">
     <p>So I redesigned the case from scratch (fig 6). No more extremely thin walls and weird protrusions, the whole module is now going to fit nicely inside the case. I bumped up the case diameter a whole 7mm and cutout a contour-ish shape for the USB protrusion to fit in. This version didn't have any buttons.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log14-6.png"><img src="../assets/img/log14-6.png" alt="case v2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 6 - case v2</figcaption></figure>
   </div>
   <div class="prose">
     <p>After printing and testing the 2nd version of the case I realized there were still some kinks I needed to iron out, so I did that and more with the 3rd version of the case. Then I had to fix the positioning and size of the USB-C port hole, then added some buttons which I did with the 4th version. Finally the 5th version changed the position of the buttons so they rest better inside the case. Iterative design (fig 7)!</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log14-7.jpeg"><img src="../assets/img/log14-7.jpeg" alt="watch case iterations" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 7 - watch case iterations</figcaption></figure>
   </div>
   <div class="prose">
     <p>With all the hardware stuff done I had to turn my eyes to software and add the buttons functions and tidy it up a bit so I could publish it on Git. But before I do that I had the all important task of naming the thing. And I chose the name, WatchPi, an amalgamation of Watch and Raspberry Pi. Here is the GitHub repo with all the code and CAD for WatchPi - <a href="https://github.com/abhignay/WatchPi">https://github.com/abhignay/WatchPi</a></p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure class="video" data-file="assets/video/log14-v1.mp4"><video controls preload="metadata" src="../assets/video/log14-v1.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>WatchPi buttons test</figcaption></figure>
   </div>
   <nav class="pager" aria-label="Dev logs">
@@ -100,5 +116,22 @@
     </ul>
   </div>
 </footer>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var button = document.querySelector(".theme-toggle");
+    function label() {
+      var dark = root.getAttribute("data-theme") === "dark";
+      button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    }
+    label();
+    button.addEventListener("click", function () {
+      var dark = root.getAttribute("data-theme") !== "dark";
+      if (dark) root.setAttribute("data-theme", "dark"); else root.removeAttribute("data-theme");
+      try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+      label();
+    });
+  })();
+</script>
 </body>
 </html>

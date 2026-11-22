@@ -45,6 +45,16 @@ PAGE = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>
+  // Pick the theme before the page draws, so it never flashes the wrong colours.
+  (function () {{
+    var saved = null;
+    try {{ saved = localStorage.getItem("theme"); }} catch (e) {{}}
+    var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (dark) document.documentElement.setAttribute("data-theme", "dark");
+  }})();
+</script>
 <title>{title}</title>
 <meta name="description" content="{description}">
 <meta property="og:title" content="{title}">
@@ -65,9 +75,15 @@ PAGE = """<!DOCTYPE html>
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="{root}index.html">Abhigna Y</a>
-    <nav aria-label="Main">
+    <div class="header-end">
+      <nav aria-label="Main">
 {nav}
-    </nav>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 <main id="main">
@@ -81,6 +97,23 @@ PAGE = """<!DOCTYPE html>
     </ul>
   </div>
 </footer>
+<script>
+  (function () {{
+    var root = document.documentElement;
+    var button = document.querySelector(".theme-toggle");
+    function label() {{
+      var dark = root.getAttribute("data-theme") === "dark";
+      button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    }}
+    label();
+    button.addEventListener("click", function () {{
+      var dark = root.getAttribute("data-theme") !== "dark";
+      if (dark) root.setAttribute("data-theme", "dark"); else root.removeAttribute("data-theme");
+      try {{ localStorage.setItem("theme", dark ? "dark" : "light"); }} catch (e) {{}}
+      label();
+    }});
+  }})();
+</script>
 </body>
 </html>
 """
@@ -140,13 +173,19 @@ def build():
     for src in sorted(SRC.rglob("*.html")):
         rel = src.relative_to(SRC)
         root = "../" * (len(rel.parts) - 1)  # pages in src/post/ sit one folder down
-        head, body = src.read_text(encoding="utf-8").split("\n---\n", 1)
+        text = src.read_text(encoding="utf-8").replace("\r\n", "\n")
+        if "\n---\n" not in text:
+            raise SystemExit(
+                f"src/{rel.as_posix()}: the top of this file needs the title:, description: "
+                "and nav: lines, then a line with just --- before the page content."
+            )
+        head, body = text.split("\n---\n", 1)
         meta = dict(line.split(": ", 1) for line in head.strip().splitlines())
         body = re.sub(r"\{\{img (.+?)\}\}", lambda m: figure(m, root), body)
         body = re.sub(r"\{\{video (.+?)\}\}", lambda m: video(m, root), body)
         body = re.sub(r"\{\{lineup\}\}", lineup, body)
         nav = "\n".join(
-            '      <a href="{0}{1}.html"{2}>{3}</a>'.format(
+            '        <a href="{0}{1}.html"{2}>{3}</a>'.format(
                 root, slug, ' aria-current="page"' if meta.get("nav") == slug else "", label
             )
             for slug, label in NAV

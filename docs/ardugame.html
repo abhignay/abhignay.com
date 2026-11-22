@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>
+  // Pick the theme before the page draws, so it never flashes the wrong colours.
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (e) {}
+    var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (dark) document.documentElement.setAttribute("data-theme", "dark");
+  })();
+</script>
 <title>ArduGame | Abhigna Y</title>
 <meta name="description" content="An Arduboy clone">
 <meta property="og:title" content="ArduGame | Abhigna Y">
@@ -23,13 +33,19 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="index.html">Abhigna Y</a>
-    <nav aria-label="Main">
-      <a href="index.html" aria-current="page">Projects</a>
-      <a href="documents.html">Documents</a>
-      <a href="highlights.html">Highlights</a>
-      <a href="archive.html">Archive</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <div class="header-end">
+      <nav aria-label="Main">
+        <a href="index.html" aria-current="page">Projects</a>
+        <a href="documents.html">Documents</a>
+        <a href="highlights.html">Highlights</a>
+        <a href="archive.html">Archive</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 <main id="main">
@@ -45,7 +61,7 @@
     <h2>The beginning</h2>
     <p>I first came across the Arduboy, in September 2023, when I watched <a href="https://youtu.be/R6doWcA6q6Y">Short Circuit's video about the Arduboy Mini</a> and ever since then the Arduboy has been one of the top 3 coolest gadgets I've seen that uses an Arduino, and the best part; all the hardware and games are open-sourced, seemed like a no-brainer to try making something similar. As a fun weekend project, I put together an ArduBoy on a perfboard. To build it I used an Arduino Pro Micro as the microcontroller paired with an SH1106 1.3" OLED as the display and threw in a couple of tactile push-buttons for the D-Pad and A and B buttons, very similar hardware to what I would eventually use on the ArduGame. Finally, to power the whole thing I used a 9V battery. Since the Pro Micro had a logic level of 5V a 1s LiPo was out of the question and I couldn't find any 2s LiPos that were small enough or felt safe enough for my application so the 9V battery was pretty much a last-ditch effort. Unfortunately, this combination of display and microcontroller eats through 9V batteries, and each battery would only allow 3-4 hours of gameplay.</p>
   </div>
-  <div class="figs" style="max-width:40rem">
+  <div class="figs figs-2">
     <figure data-file="assets/img/ardugame-perfboard-front.png"><img src="assets/img/ardugame-perfboard-front.png" alt="Arduboy on perfboard, front" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Arduboy on Perfboard - Front</figcaption></figure>
     <figure data-file="assets/img/ardugame-perfboard-back.png"><img src="assets/img/ardugame-perfboard-back.png" alt="Arduboy on perfboard, back" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>Arduboy on Perfboard - Back</figcaption></figure>
   </div>
@@ -55,7 +71,7 @@
     <h2>Designing the PCB</h2>
     <p>Even though I'd made my own Arduboy and had a fairly good understanding of the hardware I didn't get the idea that the whole Arduboy ecosystem was mainly made for AVR microcontrollers, and so I decided to use an <a href="https://www.waveshare.com/wiki/RP2040-Zero">RP2040 Zero</a> as the microcontroller in my first revision ArduGame board. I had some experience using the RP2040 from my previous <a href="watchpi.html">WatchPi</a> project and I wanted to try out something new. Along with the RP2040 Zero, I used a TP4056 battery charging module so I could use a LiPo to power the system safely along with a little 16MB flash chip which would store a couple 100 games on my Arduboy clone instead of just one</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/ardugame-r1.jpg"><img src="assets/img/ardugame-r1.jpg" alt="First revision ArduGame PCB" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>First Revision ArduGame PCB</figcaption></figure>
   </div>
   <div class="prose">
@@ -64,8 +80,10 @@
     <h2>ArduGame v2</h2>
     <p>Now that I had a much better understanding of the software part of the Arduboy it was time to redesign the hardware! I started redesigning ArduGame v2 by switching to an ATMega32u4 on an Arduino Pro Micro as the microcontroller. The ATMega32u4 is the exact same microcontroller that is used on the actual Arduboy. For v2 I decided to stick with using a 9V battery instead of a LiPo. This would make the board less complex and easier to design. After remembering how bad the battery life of my original ArduGame with the 9V battery was, I decided to take the plunge and do the not-so-hard work of adding a step-up converter which honestly I should've just done in the first place.</p>
   </div>
-  <div class="figs" style="max-width:40rem">
+  <div class="figs figs-1">
     <figure data-file="assets/img/ardugame-v2-front.jpg"><img src="assets/img/ardugame-v2-front.jpg" alt="ArduGame v2, front" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>ArduGame v2 - Front</figcaption></figure>
+  </div>
+  <div class="figs figs-1">
     <figure data-file="assets/img/ardugame-v2-back.jpg"><img src="assets/img/ardugame-v2-back.jpg" alt="ArduGame v2, back" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>ArduGame v2 - Back</figcaption></figure>
   </div>
 
@@ -74,8 +92,10 @@
     <p>This version of the ArduGame PCB has too few changes to be considered another separate version. All I did was add a step-up converter board so that I could use a 3.3V LiPo battery and still supply the Arduino Pro Micro with the right voltage, I also added back the TP4056 battery manager. And with that, I finally had built my own game console hardware!</p>
     <p>The files for the ArduGame PCB are <a href="https://github.com/abhignay/ArduGame">here</a> if you want to try building one or are just looking for inspiration for your own game console</p>
   </div>
-  <div class="figs" style="max-width:40rem">
+  <div class="figs figs-1">
     <figure data-file="assets/img/ardugame-v21-front.png"><img src="assets/img/ardugame-v21-front.png" alt="ArduGame v2.1, front" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>ArduGame v2.1 - Front</figcaption></figure>
+  </div>
+  <div class="figs figs-1">
     <figure data-file="assets/img/ardugame-v21-back.png"><img src="assets/img/ardugame-v21-back.png" alt="ArduGame v2.1, back" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>ArduGame v2.1 - Back</figcaption></figure>
   </div>
 </div>
@@ -92,5 +112,22 @@
     </ul>
   </div>
 </footer>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var button = document.querySelector(".theme-toggle");
+    function label() {
+      var dark = root.getAttribute("data-theme") === "dark";
+      button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    }
+    label();
+    button.addEventListener("click", function () {
+      var dark = root.getAttribute("data-theme") !== "dark";
+      if (dark) root.setAttribute("data-theme", "dark"); else root.removeAttribute("data-theme");
+      try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+      label();
+    });
+  })();
+</script>
 </body>
 </html>

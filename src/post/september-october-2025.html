@@ -12,13 +12,13 @@ nav: archive
     <h2>Project Update - August 2025</h2>
     <p>This month I upgraded the test stand to measure TVC vane deflection as well as motor thrust. The way I'm doing this is mounting another load cell on L-shaped aluminium extrusions right up against one of the TVC servos (fig 1). This will give me the data I need to create the transfer function for converting servo angle to side force generated in the control system.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     {{img log26-1.png | New Test Stand setup | fig 1 - New Test Stand setup}}
   </div>
   <div class="prose">
     <p>I also threw together a simple GCS UI (fig 2) for the stand, using Python and PyQt5. This simple UI lets me control the thrust of the brushless motors, activate a simple servo routine for cycling through various vane deflections, and zero-ing out the load cells.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     {{img log26-2.png | Test Stand Control UI | fig 2 - Test Stand Control UI}}
   </div>
   <div class="prose">
@@ -27,7 +27,7 @@ nav: archive
     <h2>Project Update - September 2025</h2>
     <p>I ran the new TVC vane deflection tests this month (fig 3), and I'm pretty happy with the data. There is a proper correlation between vane angle and side force that I can use for creating my transfer function. There are still some inconsistencies between what I expect and what the data tells me (especially at larger deflection angles), so I think some additional tests may be in order.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     {{img log26-3.png | Test Stand that can measure accurate side forces | fig 3 - Test Stand that can measure accurate side forces}}
   </div>
   <div class="prose">

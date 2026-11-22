@@ -37,7 +37,7 @@ Page file names match the old Wix addresses (`/tvc-hopper`, `/watchpi`, `/rocket
 2. Run `python3 build.py`.
 3. Open `docs/index.html` in a browser to check, then commit and push.
 
-- **Add a photo:** put the file in `docs/assets/img/` and write `{{img file.jpg | alt text | optional caption}}` in the page. On a dev log, wrap one or more of them in `<div class="figs">`.
+- **Add a photo:** put the file in `docs/assets/img/` and write `{{img file.jpg | alt text | optional caption}}` in the page. On a dev log, wrap them in `<div class="figs figs-1">` (one photo), `figs-2` (a side-by-side pair) or `figs-3` (three or more in a row).
 - **Add a video:** put the file in `docs/assets/video/` and write `{{video file.mp4 | optional caption}}`.
 - **Post a hopper build log entry:** copy `src/hopper-build-log/entry-1.html` to a new file and write the entry, add a row for it at the top of the table in `src/hopper-build-log/index.html`, and update the "Latest" line in `src/tvc-hopper.html`.
 - **Add a project to the Archive:** fill in one of the placeholder blocks in `src/archive.html` (the comment above them says how to turn one into a link).

@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>
+  // Pick the theme before the page draws, so it never flashes the wrong colours.
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (e) {}
+    var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (dark) document.documentElement.setAttribute("data-theme", "dark");
+  })();
+</script>
 <title>Launch Pad | Abhigna Y</title>
 <meta name="description" content="Launch Pad 1, an aluminium launch pad with a strong back and a 2 m rail.">
 <meta property="og:title" content="Launch Pad | Abhigna Y">
@@ -23,13 +33,19 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="index.html">Abhigna Y</a>
-    <nav aria-label="Main">
-      <a href="index.html" aria-current="page">Projects</a>
-      <a href="documents.html">Documents</a>
-      <a href="highlights.html">Highlights</a>
-      <a href="archive.html">Archive</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <div class="header-end">
+      <nav aria-label="Main">
+        <a href="index.html" aria-current="page">Projects</a>
+        <a href="documents.html">Documents</a>
+        <a href="highlights.html">Highlights</a>
+        <a href="archive.html">Archive</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 <main id="main">
@@ -43,7 +59,7 @@
     <p>This is Launch-Pad 1 (fig 1). It consists of three main parts: the base, strong back, and the launch rail. The launch rail is a 2-meter long aluminum extrusion in the 3030 profile. The rail is mounted on the strong back (fig 2), the strong back is made up of two 'L-clamps' and 2"x1" 90cm long rectangular aluminum piping. The aluminum piping rotates around the 3 screws on the 'L-clamp'. The base (fig 3) is made up of the same aluminum piping that the strong back uses. Two pipes are stacked on each other orthogonally and welded together. Two 10cm long rectangular tubes are welded to each tube to raise the base 10cm off the ground</p>
   </div>
 
-  <div class="figs">
+  <div class="figs figs-3">
     <figure data-file="assets/img/launchpad-cad.png"><img src="assets/img/launchpad-cad.png" alt="CAD model of the launch pad" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 1) CAD Model of the launch-pad</figcaption></figure>
     <figure data-file="assets/img/launchpad-strongback.png"><img src="assets/img/launchpad-strongback.png" alt="CAD model of the strong back" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 2) CAD Model of the strongback. Not modeled here are the t-nuts that hold the rail in place</figcaption></figure>
     <figure data-file="assets/img/launchpad-base.png"><img src="assets/img/launchpad-base.png" alt="CAD model of the launch pad base" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>(fig 3) Launch-pad base</figcaption></figure>
@@ -62,5 +78,22 @@
     </ul>
   </div>
 </footer>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var button = document.querySelector(".theme-toggle");
+    function label() {
+      var dark = root.getAttribute("data-theme") === "dark";
+      button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    }
+    label();
+    button.addEventListener("click", function () {
+      var dark = root.getAttribute("data-theme") !== "dark";
+      if (dark) root.setAttribute("data-theme", "dark"); else root.removeAttribute("data-theme");
+      try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+      label();
+    });
+  })();
+</script>
 </body>
 </html>

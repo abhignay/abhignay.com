@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>
+  // Pick the theme before the page draws, so it never flashes the wrong colours.
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (e) {}
+    var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (dark) document.documentElement.setAttribute("data-theme", "dark");
+  })();
+</script>
 <title>January - March 2025 | Abhigna Y</title>
 <meta name="description" content="Dev Log 23. Lander CAD, thrust tube and air ducts, then a switch from the EDF to counter-rotating motors.">
 <meta property="og:title" content="January - March 2025 | Abhigna Y">
@@ -23,13 +33,19 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="../index.html">Abhigna Y</a>
-    <nav aria-label="Main">
-      <a href="../index.html">Projects</a>
-      <a href="../documents.html">Documents</a>
-      <a href="../highlights.html">Highlights</a>
-      <a href="../archive.html" aria-current="page">Archive</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
+    <div class="header-end">
+      <nav aria-label="Main">
+        <a href="../index.html">Projects</a>
+        <a href="../documents.html">Documents</a>
+        <a href="../highlights.html">Highlights</a>
+        <a href="../archive.html" aria-current="page">Archive</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 <main id="main">
@@ -43,31 +59,31 @@
     <h2>Project Update - January 2025</h2>
     <p>Made progress on the CAD for the lander this month. The lander will be built out of two sections of 74mm cardboard tube as the airframe, very similar to the way I build rockets. The aft airframe will have the EDF assembly which has an EDF with an air duct and exhaust tube mounted to it. Right below the EDF exhaust tube I'll have 4 servos with thrust vanes mounted, this will be used to control the vehicle. The forward airframe I'll have the nosecone, avionics, ESCs and camera (fig 1)</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log23-1.png"><img src="../assets/img/log23-1.png" alt="Lander CAD" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - Lander CAD</figcaption></figure>
   </div>
   <div class="prose">
     <p>Making the thrust tube (fig 2) was quite straightforward. The opening matched the diameter of the EDF, and the exhaust port was around 12mm smaller than the opening diameter. Why the 12mm you may ask? It's because it looked cool in CAD, I haven't done any calculations to figure out the ideal exhaust port diameter, but I will do that soon enough.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log23-2.jpg"><img src="../assets/img/log23-2.jpg" alt="Thrust Tube for EDF" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 2 - Thrust Tube for EDF</figcaption></figure>
   </div>
   <div class="prose">
     <p>The air duct (fig 3) on the other hand was more difficult to design. With the first version I had a plain old triangle as the opening and no way to direct the air to the EDF. For the second version I designed a NACA duct and a path that directs air to the EDF. I realized this vehicle would not hit speeds where the NACA duct would be efficient, I just needed something that just let air in. So with the third version I had a squircle-ish design. Need to conduct some tests to check how well both the air duct and the thrust tube work.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log23-3.jpg"><img src="../assets/img/log23-3.jpg" alt="Air ducts Version 1 (R), Version 2 (M), Version 3 (L" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - Air ducts Version 1 (R), Version 2 (M), Version 3 (L)</figcaption></figure>
   </div>
   <div class="prose">
     <p>Also designed a test stand (fig 4) for the vehicle. It's going to be made out of a 2020 aluminum extrusion with a load cell on the bottom to measure EDF thrust and a load cell on one of the "arms" for the jet vane characterization.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log23-4.png"><img src="../assets/img/log23-4.png" alt="Test stand" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 4 - Test stand</figcaption></figure>
   </div>
   <div class="prose">
     <p>Apart from CAD I also made a new GCS UI (fig 5) for this project. Went back to the layout of a big GCS with rapidly updating graphs and just a ton of data like I did with GCS v1. It also has a big box with various controls of the vehicle in the middle. The GCS displays data from both the lander and also the catch tower.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log23-5.png"><img src="../assets/img/log23-5.png" alt="New GCS UI" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 5 - New GCS UI</figcaption></figure>
   </div>
   <div class="prose">
@@ -75,7 +91,7 @@
     <p>Didn't make much progress this month. I completely changed the design of the hopper. The cardboard tubes would add too much mass. The EDF is supposed provide 1.3kg of thrust (it'll almost certainly be lower than that), and the vehicle weighs around 1.5kg with the cardboard tubes themselves being over 0.6kg.</p>
     <p>I'm scrapping the idea of using the cardboard tubes, instead I'll use the power of 3D printing and Carbon Fiber rods for structure. So far what I have going on is having three 4mm diameter CF rods for the structure and 3D printing all other components (fig 6).</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log23-6.png"><img src="../assets/img/log23-6.png" alt="Lander v2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 6 - Lander v2</figcaption></figure>
   </div>
   <div class="prose">
@@ -83,21 +99,21 @@
     <h2>Project Update - March 2025</h2>
     <p>First up this month was refining the thrust tube. Until the the thrust tube was single purpose, but for this newer lander setup the thrust tube acts like a hub for the vehicle. The servos should be attached to the tube, the CF rods and some struts for the landing legs should all be able to interface with the tube (figs 7, 8).</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-2">
     <figure data-file="assets/img/log23-7.jpg"><img src="../assets/img/log23-7.jpg" alt="Thrust tube exhaust view" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 7 - Thrust tube exhaust view</figcaption></figure>
     <figure data-file="assets/img/log23-8.jpg"><img src="../assets/img/log23-8.jpg" alt="Thrust Tube" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 8 - Thrust Tube</figcaption></figure>
   </div>
   <div class="prose">
     <p>Then I began working on the landing leg setup. I wanted to use 4mm CF rods as the legs and struts. I was having a lot of problems safely cutting the CF rods (which I acquired in a unit length of 1000mm), and getting clean cuts. So instead I decided to 3D print the legs and leg setup. Ideally the legs shouldn't take much damage so 3D printing them shouldn't be a cause for concern. After that I put together the whole craft to do some tests (fig 9).</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log23-9.jpg"><img src="../assets/img/log23-9.jpg" alt="Lander v2 actually built" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 9 - Lander v2 actually built</figcaption></figure>
   </div>
   <div class="prose">
     <p>Next up I wanted to test out the EDF to see how much thrust it produced. The manufacturer says that the EDF should produce 1.3kg of thrust, but it's for sure going to be less than that. The question is how much lower is the actual thrust than the manufacturer's claim. I can live with a deficit of 0.2kg but any more than that and I have to seriously reconsider the propulsion system for the vehicle. I've cut down mass wherever I can, and I don't think I can lower it any more.</p>
     <p>To measure the thrust I put together the test stand (fig 10, 11) I designed in January, but without the arms for measuring side forces from the thrust vanes. I also put together a quick and dirty little air inlet + load cell adapter that I 3D printed.</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-2">
     <figure data-file="assets/img/log23-10.jpg"><img src="../assets/img/log23-10.jpg" alt="Test stand with vehicle installed" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 10 - Test stand with vehicle installed</figcaption></figure>
     <figure data-file="assets/img/log23-11.jpg"><img src="../assets/img/log23-11.jpg" alt="Test setup for EDF" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 11 - Test setup for EDF</figcaption></figure>
   </div>
@@ -123,5 +139,22 @@
     </ul>
   </div>
 </footer>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var button = document.querySelector(".theme-toggle");
+    function label() {
+      var dark = root.getAttribute("data-theme") === "dark";
+      button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    }
+    label();
+    button.addEventListener("click", function () {
+      var dark = root.getAttribute("data-theme") !== "dark";
+      if (dark) root.setAttribute("data-theme", "dark"); else root.removeAttribute("data-theme");
+      try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+      label();
+    });
+  })();
+</script>
 </body>
 </html>

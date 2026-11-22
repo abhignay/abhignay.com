@@ -19,17 +19,17 @@ nav: index
     <p>After getting my hands on the module, I began working on the software. From other projects, I had pretty good experience working in C++ with the Arduino Framework, but in the spirit of learning as much as possible, I decided to go with the <a href="https://www.raspberrypi.com/documentation/microcontrollers/c_sdk.html">RP2040 C SDK</a>. Waveshare had already written a basic driver to interface with the LCD Display and various other components on the board, so I thought that I'd just use that as I had no plans of designing an intricate fully-fledged watch interface.</p>
     <p>I started with the basics, setting the RTC to the date and time I wanted, and displaying the date and time on separate lines. Then I began to design some watch faces; nothing too special, just some colored text, aesthetic lines, and changing the arrangement of various pieces of data, some of <a href="https://www.nytimes.com/wirecutter/reviews/best-running-watch/">Garmin's more minimalist watch faces</a> inspired me here.</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-3">
     {{img watchpi-face-1.jpg | First watch face | First attempt at designing a watch face}}
-    {{img watchpi-face-3.jpg | First aesthetic watch face | First aesthetic watch face}}
-    {{img watchpi-face-2.png | Second watch face | Second watch face}}
+    {{img watchpi-face-2.png | First aesthetic watch face | First aesthetic watch face}}
+    {{img watchpi-face-3.jpg | Second watch face | Second watch face}}
   </div>
 
   <div class="prose">
     <h2>Hardware</h2>
     <p>Other than the Waveshare display module there would be a couple more components required to turn a display with a microcontroller attached to it, into a watch. For starters; a battery. I wanted this watch to be rechargeable and small, so a Lithium Polymer (LiPo) battery seemed like my best bet. Then came the challenge of where to position the battery in the watch. I knew I wanted the watch to be somewhat inconspicuous so I had some pretty major size constraints to deal with. After some experimenting the best place to position the battery seemed to be in-between the Waveshare module's header-pins. I could have a fairly thick battery but would have to skimp on the width and length of the battery. After a bunch of digging online, I came across <a href="https://robu.in/product/400mah-pcm-protected-micro-li-po-battery-2/">this 400mAh 1-cell LiPo</a> that fits the bill pretty well. This may seem like a fairly large battery (the Apple Watch Series 9 has a 308mAh battery, and lasts all day long), but with an always-on-display WatchPi has a battery life of only 9 hours, so it's fairly short.</p>
   </div>
-  <div class="figs" style="max-width:40rem">
+  <div class="figs figs-2">
     {{img watchpi-battery.jpg | Battery sitting between the header pins | WatchPi battery Placement}}
     {{img watchpi-side.jpg | Side view of the watch | WatchPi Side Profile}}
   </div>
@@ -39,28 +39,28 @@ nav: index
     <h2>Watch Case</h2>
     <p>At this point, all that's needed to turn this stack of parts into an actual watch is a watch case. For my first case design, my philosophy was to keep it as small and as low-profile as possible. The case diameter was 38mm and the height of the case was 12mm. Keep in mind that the Waveshare module had a diameter of around 35mm with a 3-4mm protrusion in the form of its USB-C port. To get around this without making the watch case bigger I decided to have a fairly large slot in the case for the USB-C port to stick out with an extrusion to cover the port.</p>
   </div>
-  <div class="figs" style="max-width:40rem">
+  <div class="figs figs-2">
     {{img watchpi-case-r1-cad.png | CAD model of case r1 | WatchPi Case r1 - CAD Model}}
     {{img watchpi-case-r1-cad-2.png | CAD model of case r1 without parts | WatchPi Case r1 - CAD Model}}
   </div>
   <div class="prose">
     <p>This case design didn't work for several reasons. It was difficult to print, difficult to integrate, and had very little room for adding extra functionalities. In fact, I had to break the front of the case to get the Waveshare module out as it was stuck inside.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     {{img watchpi-case-r1.jpg | 3D-printed case r1 | WatchPi Case r1 - 3D Printed}}
   </div>
   <div class="prose">
     <p>After my failed first go at designing the case I decided to go back to the drawing board and change the design from the ground up. The current case design compromised its form over its function and that was something I didn't want to do. The whole purpose of building this watch was to help me learn as much as I could about building wearable electronics, and I couldn't learn all I could if I made the case so small that it left no room for expandability. So it was time to pivot.</p>
     <p>Enter WatchPi Case r2. It was now a whopping 45mm in diameter which allowed me to simply slide in the Waveshare module instead of painstakingly fiddling with the module to get the USB-C connector into the connector slot and then pushing down on the module. Case v2 wasn't the final case, however. I intentionally didn't add an opening for the USB-C port or buttonholes. The goal of this case was to just perfect the integration and all the dimensions of the Waveshare module. That's it. Trying to fix all the problems I had with Case r1 and also adding more functionalities would prove difficult to do in the next revision. Instead, an iterative design process was far better as I could alter subtle aspects of each case design to see what worked and looked the best.</p>
   </div>
-  <div class="figs" style="max-width:40rem">
+  <div class="figs figs-2">
     {{img watchpi-case-r2.jpg | 3D-printed case r2 | WatchPi Case r2 - 3D Printed}}
     {{img watchpi-case-r2-model.jpg | 3D model of case r2 | WatchPi Case r2 - 3D Model}}
   </div>
   <div class="prose">
     <p>With Case r3 I added the opening for the USB-C port but didn't get the position of the port quite right. I fixed that with Case r4 and added holes for two buttons but unfortunately, the position of those buttons was off by a couple of millimeters. So that needed to be fixed in the next revision.</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-3">
     {{img watchpi-case-r3.jpg | Case r3 | WatchPi Case r3}}
     {{img watchpi-case-r4.jpg | Case r4 | WatchPi Case r4}}
     {{img watchpi-case-r4-button.jpg | Button hole on case r4 | WatchPi Case r4 - Button Hole}}
@@ -68,15 +68,16 @@ nav: index
   <div class="prose">
     <p>The final WatchPi case revision was r5. With case r5 all I did was move the button holes down by 2mm. Sometimes these revisions will have breakthrough changes; other times, all that changes is a singular dimension.</p>
   </div>
-  <div class="figs" style="max-width:40rem">
+  <div class="figs figs-2">
     {{img watchpi-case-r5-front.png | Top view of case r5 | WatchPi Case r5 - Top View}}
     {{img watchpi-case-r5-back.png | Bottom view of case r5 | WatchPi Case r5 - Bottom View}}
   </div>
   <div class="prose">
     <p>In total, there were 5 revisions of the WatchPi case.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-2">
     {{img watchpi-case-revisions.png | All five case revisions side by side | All WatchPi case revisions}}
+    {{img watchpi-final.jpg | The finished WatchPi on its strap | WatchPi fully integrated}}
   </div>
 
   <div class="prose">
@@ -89,8 +90,5 @@ nav: index
 
     <h2>What I would do differently on the next watch?</h2>
     <p>Firstly I would make my own watch PCB. Considering that all the issues with WatchPi stemmed from the Waveshare module making my own PCB would be the biggest change. I would also use a different display, an OLED or E-Ink display either of which would be more power efficient and look cooler than the LCD on the WatchPi. Furthermore, I would consider switching the microcontroller to an ESP32 or something with inbuilt WIFI and BLE capabilities so that I could add some smarts to the watch. Adding a tiny GPS radio, like the MTK3333, and a flash chip to store game files are also on my list for my next watch project.</p>
-  </div>
-  <div class="figs narrow" style="max-width:20rem">
-    {{img watchpi-final.jpg | The finished WatchPi on its strap | WatchPi fully integrated}}
   </div>
 </div>

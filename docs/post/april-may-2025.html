@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>
+  // Pick the theme before the page draws, so it never flashes the wrong colours.
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (e) {}
+    var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (dark) document.documentElement.setAttribute("data-theme", "dark");
+  })();
+</script>
 <title>April - May 2025 | Abhigna Y</title>
 <meta name="description" content="Dev Log 24. Start of Lander v3: CAD finished, motors tested, hardware built.">
 <meta property="og:title" content="April - May 2025 | Abhigna Y">
@@ -23,13 +33,19 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="../index.html">Abhigna Y</a>
-    <nav aria-label="Main">
-      <a href="../index.html">Projects</a>
-      <a href="../documents.html">Documents</a>
-      <a href="../highlights.html">Highlights</a>
-      <a href="../archive.html" aria-current="page">Archive</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
+    <div class="header-end">
+      <nav aria-label="Main">
+        <a href="../index.html">Projects</a>
+        <a href="../documents.html">Documents</a>
+        <a href="../highlights.html">Highlights</a>
+        <a href="../archive.html" aria-current="page">Archive</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 <main id="main">
@@ -43,13 +59,13 @@
     <h2>Project Update - April 2025</h2>
     <p>April was the proper start of Lander v3. Got the CAD for the lander finished (fig 1) pretty early on this month. I'm keeping the upper section of the vehicle identical to the previous version so I don't have to redesign and reprint the parts I've already made. I based the motor section heavily based on <a href="https://www.youtube.com/watch?v=WqUVGSOdfZo">Charles ∇P's Project Epsilon</a>. Both motors are held in a hexagonal cage, with both motors inline to each other. The bottom motor is directly mounted on the bottom section of the hexagonal case, and the top motor is mounted to a box which is held above the bottom motor by rectangular CF tubes. The landing legs also use rectangular CF tubes, these tubes come pre-cut with a length of 200mm.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log24-1.png"><img src="../assets/img/log24-1.png" alt="Lander v3 CAD" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - Lander v3 CAD</figcaption></figure>
   </div>
   <div class="prose">
     <p>After this I got the EMAX ECO II 1300kv motors (fig 2), and tested it on a bare-bones test stand. I.E the load cell is directly mounted to a 2020 aluminum extrusion and the motor is mounted on a 3D printed adapter which is bolted to the other end of the load cell (fig 3).</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-2">
     <figure data-file="assets/img/log24-2.jpg"><img src="../assets/img/log24-2.jpg" alt="EMAX motor" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 2 - EMAX motor</figcaption></figure>
     <figure data-file="assets/img/log24-3.png"><img src="../assets/img/log24-3.png" alt="Load cell setup" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - Load cell setup</figcaption></figure>
   </div>
@@ -58,7 +74,7 @@
     <h2>Project Update - May 2025</h2>
     <p>There were some changes to the design of the Lander. First I decide to scrap the idea of having the top motor mounted via CF tubes in the middle of the propulsion cage. Now I'll have the other hexagonal section at the top of the propulsion cage. This was done because the CF rods I had specced out went out of stock everywhere. Next I switched from using those same CF rods for the landing legs to 3D printing the landing legs and leg struts. I did this for the same reason as before. With that I've 3D printed all the components and put the lander together. The hardware is now finally finished (fig 4)!</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log24-4.jpg"><img src="../assets/img/log24-4.jpg" alt="Lander v3 fully built" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 4 - Lander v3 fully built</figcaption></figure>
   </div>
   <nav class="pager" aria-label="Dev logs">
@@ -79,5 +95,22 @@
     </ul>
   </div>
 </footer>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var button = document.querySelector(".theme-toggle");
+    function label() {
+      var dark = root.getAttribute("data-theme") === "dark";
+      button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    }
+    label();
+    button.addEventListener("click", function () {
+      var dark = root.getAttribute("data-theme") !== "dark";
+      if (dark) root.setAttribute("data-theme", "dark"); else root.removeAttribute("data-theme");
+      try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+      label();
+    });
+  })();
+</script>
 </body>
 </html>

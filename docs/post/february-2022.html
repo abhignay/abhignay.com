@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>
+  // Pick the theme before the page draws, so it never flashes the wrong colours.
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (e) {}
+    var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (dark) document.documentElement.setAttribute("data-theme", "dark");
+  })();
+</script>
 <title>February 2022 | Abhigna Y</title>
 <meta name="description" content="Dev Log 7. Most of TFAC&#x27;s software written, plus Kalman filter testing.">
 <meta property="og:title" content="February 2022 | Abhigna Y">
@@ -23,13 +33,19 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="../index.html">Abhigna Y</a>
-    <nav aria-label="Main">
-      <a href="../index.html">Projects</a>
-      <a href="../documents.html">Documents</a>
-      <a href="../highlights.html">Highlights</a>
-      <a href="../archive.html" aria-current="page">Archive</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
+    <div class="header-end">
+      <nav aria-label="Main">
+        <a href="../index.html">Projects</a>
+        <a href="../documents.html">Documents</a>
+        <a href="../highlights.html">Highlights</a>
+        <a href="../archive.html" aria-current="page">Archive</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 <main id="main">
@@ -42,14 +58,16 @@
   <div class="prose">
     <h2>Accomplishments in February 2022</h2>
     <p>I made a decent amount of progress in February. Firstly I wrote most of TFAC’s software, and did some Kalman Filter testing (fig1). I only need to write a couple small changes before TFAC can fly on a rocket as passive payload. I did a lot of testing to make sure that the flight software and the state machine was working well. I also found a supplier who are willing to make custom sized Fiberglass tubes for the airframe of AltusAer. And finally I made did a lot of fiddling around in CAD making some of the internal parts like bulkheads, the chute ejection system and mounting brackets for the Flight Computer</p>
+  </div>
+  <div class="figs figs-1">
+    <figure data-file="assets/img/log7-1.jpg"><img src="../assets/img/log7-1.jpg" alt="Kalman Filter testing. Blue line is raw altitude, Red line is filtered altitude" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - Kalman Filter testing. Blue line is raw altitude, Red line is filtered altitude</figcaption></figure>
+  </div>
+  <div class="prose">
     <h2>Goals for March 2022</h2>
     <p>In March I don’t think that I will be making any significant progress because of my final exams and my school year coming to an end. However I intend on finishing the flight software and building AltusAer along with working on the video I want to make on it.</p>
   </div>
-  <div class="figs narrow">
-    <figure data-file="assets/img/log7-1.jpg"><img src="../assets/img/log7-1.jpg" alt="Kalman Filter testing. Blue line is raw altitude, Red line is filtered altitude" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - Kalman Filter testing. Blue line is raw altitude, Red line is filtered altitude</figcaption></figure>
-  </div>
   <nav class="pager" aria-label="Dev logs">
-    <span></span>
+    <a href="january-2022.html">Older: January 2022</a>
     <a href="march-may-2022.html">Newer: March - May 2022</a>
   </nav>
 </div>
@@ -66,5 +84,22 @@
     </ul>
   </div>
 </footer>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var button = document.querySelector(".theme-toggle");
+    function label() {
+      var dark = root.getAttribute("data-theme") === "dark";
+      button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    }
+    label();
+    button.addEventListener("click", function () {
+      var dark = root.getAttribute("data-theme") !== "dark";
+      if (dark) root.setAttribute("data-theme", "dark"); else root.removeAttribute("data-theme");
+      try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+      label();
+    });
+  })();
+</script>
 </body>
 </html>

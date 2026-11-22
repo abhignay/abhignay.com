@@ -14,8 +14,10 @@ nav: archive
     <h2>Accomplishments in July 2022</h2>
     <p>After the lack of progress in June I decided to work on something that wasn’t waiting for rocket parts. I began work on adding two components to the avionics stack which were a Telemetry radio and GNSS. The telemetry radio I chose was an Ebyte E32 LoRa module (fig 1) operating on 433mHz (very powerful), I chose this radio primarily because it was cheaper while being more powerful than the other options I was looking at. As for the GNSS I chose the uBlox SAM-M8Q on a sparkfun board (fig 2), I again chose this because it was cheap compared to other options available and it has a builtin ceramic antenna!</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-1">
     {{img log9-1.png | Telemetry radios | (fig 1 - Telemetry radios)}}
+  </div>
+  <div class="figs figs-1">
     {{img log9-2.png | GNSS hooked up to TFAC via I2C | (fig 2 - GNSS hooked up to TFAC via I2C)}}
   </div>
   <div class="prose">
@@ -25,9 +27,13 @@ nav: archive
     <p>Also I made a little breakout board (fig 5) for the Telemetry radio mainly to improve cable management (didn’t really fix that) and to test out the capabilities and quality of PCBs manufactured locally.</p>
     <p>Finally I designed TFAC r2 (fig 6), the main improvements include more IO, a functioning onboard GNSS and a much better layout (TFAC r1’s layout was pretty bad in hindsight). I’ve decided not to manufacture it because it doesn’t really make sense, the changes aren’t noteworthy and most of them can be fixed with a bodge.</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-1">
     {{img log9-3.png | barometer data with GNSS data being logged | (fig 3 - barometer data with GNSS data being logged)}}
+  </div>
+  <div class="figs figs-1">
     {{img log9-4.png | breakout board for the LoRa | (fig 5 - breakout board for the LoRa)}}
+  </div>
+  <div class="figs figs-2">
     {{img log9-5.png | CAD model of the avionics | (fig 4 - CAD model of the avionics)}}
     {{img log9-6.png | TFAC r2, layout | (fig 5 - TFAC r2, layout)}}
   </div>

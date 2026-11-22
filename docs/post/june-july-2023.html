@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>
+  // Pick the theme before the page draws, so it never flashes the wrong colours.
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (e) {}
+    var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (dark) document.documentElement.setAttribute("data-theme", "dark");
+  })();
+</script>
 <title>June - July 2023 | Abhigna Y</title>
 <meta name="description" content="Dev Log 15. Third attempt at Air MK1, a blown-up TFAC, and TFAC r2.">
 <meta property="og:title" content="June - July 2023 | Abhigna Y">
@@ -23,13 +33,19 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="../index.html">Abhigna Y</a>
-    <nav aria-label="Main">
-      <a href="../index.html">Projects</a>
-      <a href="../documents.html">Documents</a>
-      <a href="../highlights.html">Highlights</a>
-      <a href="../archive.html" aria-current="page">Archive</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
+    <div class="header-end">
+      <nav aria-label="Main">
+        <a href="../index.html">Projects</a>
+        <a href="../documents.html">Documents</a>
+        <a href="../highlights.html">Highlights</a>
+        <a href="../archive.html" aria-current="page">Archive</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 <main id="main">
@@ -43,14 +59,14 @@
     <h2>Project Update - June 2023</h2>
     <p>In June I had my 3rd go at building Air MK1, this time with the goal to fly it as soon as possible. I used my previous designs of Air MK1 as a jumping off point and then decided to simplify it, like a lot. Instead of using fiberglass tubes for the airframe and couplers, I switched to using 76.7mm diameter cardboard tube (fig1).</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log15-1.png"><img src="../assets/img/log15-1.png" alt="Air MK1 3D Model" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - Air MK1 3D Model</figcaption></figure>
   </div>
   <div class="prose">
     <p>Air MK1 is now 1.1m tall and weighs 1.5kg. On the first flight I plan to have it fly to an altitude of 300m and it'll fly higher and faster after that. The goal with this vehicle is to test the software and telemetry capabilities of TFAC. The forward section of this vehicle is 45cm long and houses the avionics stack which has TFAC, LoRa radio, GPS, battery, Camera and the nosecone. The aft section holds the motor mount tube (38mm diameter) and thru-the-wall fins.</p>
     <p>I also made some progress on actually building the vehicle. I designed and 3D printed a cutting jig for the RunCam (fig 2, fig 3), and also cut out the forward airframe to size (fig 4).</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-3">
     <figure data-file="assets/img/log15-2.png"><img src="../assets/img/log15-2.png" alt="Camera cutout jig" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 2 - Camera cutout jig</figcaption></figure>
     <figure data-file="assets/img/log15-3.jpg"><img src="../assets/img/log15-3.jpg" alt="Camera sticking out of airframe" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - Camera sticking out of airframe</figcaption></figure>
     <figure data-file="assets/img/log15-4.png"><img src="../assets/img/log15-4.png" alt="Airframe cut out" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 4 - Airframe cut out</figcaption></figure>
@@ -58,7 +74,7 @@
   <div class="prose">
     <p>After this disaster struck. One fine evening while powering TFAC with a LiPo I made the magic smoke. A while before this I soldered together a XT-60 connector with a very weird color scheme: Black - Positive, White Negative (fig 5). Under the impression that I followed the common electronics convention of black wires corresponding to the negative terminal. I plugged to black wire (+11.1V) to the negative terminal of TFAC, and the white wire (GND) to the positive terminal of TFAC. Upon plugging in the battery I heard a loud pop and then a small cloud of smoke rise from the back of TFAC. Very unfortunate and probably one of the worst (and saddest) electronics moments I've ever had. I'd blown the buck converter and one of the load switches. (fig 6, 7)</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-3">
     <figure data-file="assets/img/log15-5.png"><img src="../assets/img/log15-5.png" alt="The worst XT60 connector ever made" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 5 - The worst XT60 connector ever made</figcaption></figure>
     <figure data-file="assets/img/log15-6.jpg"><img src="../assets/img/log15-6.jpg" alt="TFAC after the big smoke" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 6 - TFAC after the big smoke</figcaption></figure>
     <figure data-file="assets/img/log15-7.jpg"><img src="../assets/img/log15-7.jpg" alt="The blown up buck converter" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 7 - The blown up buck converter</figcaption></figure>
@@ -66,7 +82,7 @@
   <div class="prose">
     <p>I had to put a hold on Air MK1's development and decided to make TFAC r2 (fig 8, 9). I cleaned up the layout and fixed the issues with the GNSS radio. Unfortunately I removed the flash chip pull up resistor (something I only realized once I had the PCBs in hand).</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-2">
     <figure data-file="assets/img/log15-8.png"><img src="../assets/img/log15-8.png" alt="TFAC r2 layout" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 8 - TFAC r2 layout</figcaption></figure>
     <figure data-file="assets/img/log15-9.jpg"><img src="../assets/img/log15-9.jpg" alt="TFAC r2 3D Model" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 9 - TFAC r2 3D Model</figcaption></figure>
   </div>
@@ -74,7 +90,7 @@
     <h2>Project Update - July 2023</h2>
     <p>Not much progress was made this month. I got the TFAC r2 PCBs, assembled them, tried some stuff out to see if the flash chip was still salvageable (bodging a resistor up against the chip). None of these things worked and I fixed it up, and added a couple other things with TFAC r3, the new revision.</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-3">
     <figure data-file="assets/img/log15-10.jpg"><img src="../assets/img/log15-10.jpg" alt="Photo from dev log 15" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
     <figure data-file="assets/img/log15-11.jpg"><img src="../assets/img/log15-11.jpg" alt="Photo from dev log 15" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
     <figure data-file="assets/img/log15-12.jpg"><img src="../assets/img/log15-12.jpg" alt="Photo from dev log 15" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
@@ -97,5 +113,22 @@
     </ul>
   </div>
 </footer>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var button = document.querySelector(".theme-toggle");
+    function label() {
+      var dark = root.getAttribute("data-theme") === "dark";
+      button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    }
+    label();
+    button.addEventListener("click", function () {
+      var dark = root.getAttribute("data-theme") !== "dark";
+      if (dark) root.setAttribute("data-theme", "dark"); else root.removeAttribute("data-theme");
+      try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+      label();
+    });
+  })();
+</script>
 </body>
 </html>

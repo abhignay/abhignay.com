@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>
+  // Pick the theme before the page draws, so it never flashes the wrong colours.
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (e) {}
+    var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (dark) document.documentElement.setAttribute("data-theme", "dark");
+  })();
+</script>
 <title>January - March 2024 | Abhigna Y</title>
 <meta name="description" content="Dev Log 18. Final Air MK1 tasks, two-way telemetry, and most of the Air MK2 build.">
 <meta property="og:title" content="January - March 2024 | Abhigna Y">
@@ -23,13 +33,19 @@
 <header class="site-header">
   <div class="wrap">
     <a class="site-name" href="../index.html">Abhigna Y</a>
-    <nav aria-label="Main">
-      <a href="../index.html">Projects</a>
-      <a href="../documents.html">Documents</a>
-      <a href="../highlights.html">Highlights</a>
-      <a href="../archive.html" aria-current="page">Archive</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
+    <div class="header-end">
+      <nav aria-label="Main">
+        <a href="../index.html">Projects</a>
+        <a href="../documents.html">Documents</a>
+        <a href="../highlights.html">Highlights</a>
+        <a href="../archive.html" aria-current="page">Archive</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 <main id="main">
@@ -43,21 +59,21 @@
     <h2>Project Update - January 2024</h2>
     <p>There were still a couple of small things with Air MK1 that needed to be done, so in January I did just that. First up was installing the rail buttons on the vehicle (figs 1, 2). These rail buttons are 3D printed and fit in a 3030 aluminum extrusion.</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-2">
     <figure data-file="assets/img/log18-1.jpg"><img src="../assets/img/log18-1.jpg" alt="Rail buttons" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - Rail buttons</figcaption></figure>
     <figure data-file="assets/img/log18-2.jpg"><img src="../assets/img/log18-2.jpg" alt="vehicle mounted on launch rail" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 2 - vehicle mounted on launch rail</figcaption></figure>
   </div>
   <div class="prose">
     <p>I also put together another TFAC r3 board, and finally got the GNSS radio working (fig 3)! The issue is what I thought it was - a bad GPS antenna.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log18-3.jpg"><img src="../assets/img/log18-3.jpg" alt="Working GNSS radio!" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - Working GNSS radio!</figcaption></figure>
   </div>
   <div class="prose">
     <p>Another cool thing I did this month is a make a PCB assembly montage of TFAC. It was my first time doing something like this, and I learned a lot about recording your projects and editing videos. Here's the link to the video - <a href="https://youtu.be/mceE_PpdT4M">https://youtu.be/mceE_PpdT4M</a></p>
     <p>After all that hardware stuff, it was time to work on TFAC's flight software. I was having some issues with transmitting packets; what I did to fix this is increase the Air Data Rate, and change my data packetizing library (fig 5, 6).</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-3">
     <figure data-file="assets/img/log18-4.jpg"><img src="../assets/img/log18-4.jpg" alt="TFAC connected to the tlm radio" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 4 - TFAC connected to the tlm radio</figcaption></figure>
     <figure data-file="assets/img/log18-5.png"><img src="../assets/img/log18-5.png" alt="Ground Control UI" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 5 - Ground Control UI</figcaption></figure>
     <figure class="video" data-file="assets/video/log18-v1.mp4"><video controls preload="metadata" src="../assets/video/log18-v1.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>Rocket -&gt; Receiver -&gt; GCS</figcaption></figure>
@@ -65,51 +81,51 @@
   <div class="prose">
     <p>I really wanted two-way comms, so I could remotely control when the cameras turned on and have a Ground-Locked state so I could perform pre-flight tests on the vehicle while it was turned on. I already got two-way comms working in the back end, now I had to write the code for the GCS to reflect that. I included a vehicle command section where I could turn the cameras on or off, command the pyro channels, and change the avionics' states (fig 7).</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log18-6.jpg"><img src="../assets/img/log18-6.jpg" alt="Updated GCS software" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 7 - Updated GCS software</figcaption></figure>
   </div>
   <div class="prose">
     <h2>Project Update - February 2024</h2>
     <p>Sooooooooo I messed up soldering the new TFAC r3 board (figs 8, 9). I didn't inspect the board well enough after soldering and so I didn't catch the fact that one of the load cells was bridged. When I powered the board with a 3s LiPo and commanded that load cell to turn ON, I heard a loud pop and was greeted with the unpleasent site of a hole in my load cell :/</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-2">
     <figure data-file="assets/img/log18-7.jpg"><img src="../assets/img/log18-7.jpg" alt="One good load cell, one very stressed load cell" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 8 - One good load cell, one very stressed load cell</figcaption></figure>
     <figure data-file="assets/img/log18-8.jpg"><img src="../assets/img/log18-8.jpg" alt="Load Cell &quot;Popped&quot;, Circa Feb &#x27;24" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 9 - Load Cell "Popped", Circa Feb '24</figcaption></figure>
   </div>
   <div class="prose">
     <p>After that unpleasent event, I was met with another unpleasent event! This time my barometer started acting up (fig 10), or rather down. Whenever a telemetry packet is sent there's a change in the read interval for the baro which causes a change in the measured pressure. To fix this I played around with the ADR and UART rate until it was resolved.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log18-9.jpg"><img src="../assets/img/log18-9.jpg" alt="Raw Baro Readings" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 10 - Raw Baro Readings</figcaption></figure>
   </div>
   <div class="prose">
     <p>Pleasent event alert - The camera commands work well (fig 11)</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure class="video" data-file="assets/video/log18-v2.mp4"><video controls preload="metadata" src="../assets/video/log18-v2.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>fig 11 - Runcam arming from GCS</figcaption></figure>
   </div>
   <div class="prose">
     <p>Well this is sad. I broke another TFAC board (fig 12). This was extremely stupid. I had the switch wire right up against the 5V and GND lines of the servo, when I plugged in the battery it looks like I fried the Teensy's VREG. I think it should be salvageable, and then only think I need to do is replace the VREG.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log18-10.png"><img src="../assets/img/log18-10.png" alt="Broken TFAC r3" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 12 - Broken TFAC r3</figcaption></figure>
   </div>
   <div class="prose">
     <p>With all that done it was time to launch Air MK1. I packed up the rocket (fig 13) and sent it to my mentor who has a motor and will be launching the rocket. I can't go launch the rocket because I have my 10th Grade finals.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log18-11.jpg"><img src="../assets/img/log18-11.jpg" alt="Air MK1 packed" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 13 - Air MK1 packed</figcaption></figure>
   </div>
   <div class="prose">
     <p>Next up Air MK2 (fig 14). This is going to fly higher, faster, and I'm going to implement everything I learned from Air MK1 into this. This will be a dual deploy rocket, meaning it has a drogue parachute deploy at apogee and a main that deploys closer to the ground, controlled by TFAC. The forward section of Air MK2 holds the nosecone, eyebolt bulkhead and main parachute. The aft section holds the 54mm motor mount tube, thru-the-wall fins, eyebolt bulkhead and drogue parachute. Both sections of airframe are attached by a coupler which doubles as the avionics bay with avionics and cameras.</p>
   </div>
-  <div class="figs narrow">
+  <div class="figs figs-1">
     <figure data-file="assets/img/log18-12.jpg"><img src="../assets/img/log18-12.jpg" alt="Air MK2 3D Model" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 14 - Air MK2 3D Model</figcaption></figure>
   </div>
   <div class="prose">
     <p>I also designed the avionics bay (figs 15, 16). The av-bay holds TFAC, 3s LiPo, Telemetry radio and antenna, GNSS antenna, and a pull pin switch for arming the stack. The av-bay has three physical parts - the sled, forward and aft bulkhead. The sled is fully 3D printed. The forward and aft bulkheads are 3D printed out of PETG at a high infill and have 5mm plywood plates epoxied on them. The whole bay maintains structural integrity by two 6mm threaded rods that run through the whole bay.</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-2">
     <figure data-file="assets/img/log18-13.png"><img src="../assets/img/log18-13.png" alt="Av-bay front" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 15 - Av-bay front</figcaption></figure>
     <figure data-file="assets/img/log18-14.png"><img src="../assets/img/log18-14.png" alt="Av-bay back" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 16 - Av-bay back</figcaption></figure>
   </div>
@@ -117,7 +133,7 @@
     <h2>Project Update - March 2024</h2>
     <p>Lot of Air MK2 progress this month. The vehicle is almost fully done. Cut the tubes, got the fins cut, fin slots cut, motor mount epoxied in, inner fillets, outer fillets, sanding, beveling, painting (figs 17 - 24)</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-3">
     <figure data-file="assets/img/log18-15.jpg"><img src="../assets/img/log18-15.jpg" alt="Tubes cut out" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 17 - Tubes cut out</figcaption></figure>
     <figure data-file="assets/img/log18-16.jpg"><img src="../assets/img/log18-16.jpg" alt="Fins, bulkheads, jigs" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 18 - Fins, bulkheads, jigs</figcaption></figure>
     <figure data-file="assets/img/log18-17.jpg"><img src="../assets/img/log18-17.jpg" alt="MMT epoxied" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 19 - MMT epoxied</figcaption></figure>
@@ -130,7 +146,7 @@
   <div class="prose">
     <p>Also finished up the av-bay (figs 25, 26).</p>
   </div>
-  <div class="figs">
+  <div class="figs figs-2">
     <figure data-file="assets/img/log18-23.jpg"><img src="../assets/img/log18-23.jpg" alt="Avbay front" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 25 - Avbay front</figcaption></figure>
     <figure data-file="assets/img/log18-24.jpg"><img src="../assets/img/log18-24.jpg" alt="Photo from dev log 18" loading="lazy" onerror="this.parentNode.classList.add('missing')"></figure>
   </div>
@@ -152,5 +168,22 @@
     </ul>
   </div>
 </footer>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var button = document.querySelector(".theme-toggle");
+    function label() {
+      var dark = root.getAttribute("data-theme") === "dark";
+      button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    }
+    label();
+    button.addEventListener("click", function () {
+      var dark = root.getAttribute("data-theme") !== "dark";
+      if (dark) root.setAttribute("data-theme", "dark"); else root.removeAttribute("data-theme");
+      try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+      label();
+    });
+  })();
+</script>
 </body>
 </html>
