@@ -157,7 +157,7 @@ li + li { margin-top: 0.35rem; }
 .project .when { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; padding-top: 0.4rem; }
 .project h3 { font-size: clamp(2rem, 4.5vw, 2.9rem); margin: 0; }
 .project p { margin-top: 0.6rem; max-width: 34rem; }
-.project img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; display: block; background: var(--line); }
+.project img { width: 100%; border-radius: 3px; display: block; }
 .project:hover h3 { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 0.12em; text-decoration-color: var(--kapton); }
 
 /* Article pages */
@@ -331,10 +331,20 @@ h2 + .parts { margin-top: 1.5rem; }
 
 /* Project rows: picture first */
 
-.project { grid-template-columns: minmax(0, 19rem) minmax(0, 1fr); gap: 1rem 2.5rem; align-items: center; }
-/* Project photos (home page, Archive, overview cards): all the same 4:3 frame,
-   filled edge to edge. Tall photos are aimed at their subject below. */
-.project figure img, .parts figure img {
+.project { grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); gap: 1rem 2.5rem; align-items: center; }
+/* Home page and Archive: each photo shown whole, centred in a square space, so
+   tall and wide photos both fit without cropping. */
+.project figure img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+}
+
+/* Overview cards (TVC Hopper, Advanced Model Rockets): one 4:3 frame, filled
+   edge to edge. Tall photos are aimed at their subject below. */
+.parts figure img {
   width: 100%;
   aspect-ratio: 4 / 3;
   height: auto;
@@ -342,15 +352,18 @@ h2 + .parts { margin-top: 1.5rem; }
   object-fit: cover;
   object-position: center;
 }
-img[src$="home-hopper.jpg"] { object-position: center 30%; }
-img[src$="home-rockets.jpg"] { object-position: center 25%; }
 img[src$="hopper-v2.jpg"] { object-position: center 40%; }
 img[src$="avionics-overview.jpg"] { object-position: center 35%; }
-.project figure.missing::before { aspect-ratio: 4 / 3; min-height: 0; }
+
+/* Highlights: the VSSUT photo a little smaller than full width. */
+img[src$="vssut.png"] { max-width: min(100%, 32rem); }
+.project figure.missing::before { aspect-ratio: 1 / 1; min-height: 0; }
 .project .when { flex-direction: row; align-items: center; flex-wrap: wrap; padding-top: 0; margin-bottom: 0.6rem; }
 @media (max-width: 46rem) {
   .project { grid-template-columns: 1fr; }
-  .project figure { max-width: 22rem; }
+  .project figure { max-width: 18rem; }
+  /* On phones the photo takes only its own height, so wide photos leave no gaps. */
+  .project figure img { width: auto; max-width: 100%; aspect-ratio: auto; max-height: 18rem; }
 }
 
 /* Light and dark mode toggle: sits after Contact and looks like a menu item. */
