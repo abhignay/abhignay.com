@@ -32,9 +32,13 @@ export function mount(el, { modelUrl, decoderUrl, onProgress }) {
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.dampingFactor = 0.08;
-  controls.enablePan = false;
+  controls.enablePan = true; // right-drag, Shift-drag or two fingers
+  controls.screenSpacePanning = true;
   controls.autoRotateSpeed = 1.6;
-  controls.maxPolarAngle = MathUtils.degToRad(92); // can look slightly up, never from under the floor
+  controls.minPolarAngle = 0; // straight down from above...
+  controls.maxPolarAngle = Math.PI; // ...all the way round to straight up from underneath
+  controls.rotateSpeed = 0.9;
+  controls.zoomSpeed = 1.2;
   controls.autoRotate = !reducedMotion.matches;
 
   let resumeTimer = 0;
@@ -61,7 +65,7 @@ export function mount(el, { modelUrl, decoderUrl, onProgress }) {
     if (!grid) return;
     const { line, muted } = themeColours();
     const mats = Array.isArray(grid.material) ? grid.material : [grid.material];
-    mats.forEach((m) => { m.vertexColors = false; m.color = line.clone().lerp(muted, 0.25); m.needsUpdate = true; });
+    mats.forEach((m) => { m.vertexColors = false; m.color = line.clone().lerp(muted, 0.35); m.transparent = true; m.opacity = 0.7; m.needsUpdate = true; });
   }
   const themeWatch = new MutationObserver(paintGrid);
   themeWatch.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
@@ -85,9 +89,9 @@ export function mount(el, { modelUrl, decoderUrl, onProgress }) {
     const radius = Math.max(size.x, size.z) / 2;
     const fitH = (size.y / 2) / Math.tan(vFov / 2);
     const fitW = radius / Math.tan(hFov / 2);
-    const dist = Math.max(fitH, fitW) * 1.12 + radius * 0.85;
-    controls.minDistance = radius * 1.2;
-    controls.maxDistance = dist * 2.2;
+    const dist = Math.max(fitH, fitW) * 1.25 + radius * 0.85;
+    controls.minDistance = radius * 0.35;
+    controls.maxDistance = dist * 3;
     if (moveCamera) {
       controls.target.copy(centre);
       const dir = new Vector3(1, 0.32, 1).normalize();

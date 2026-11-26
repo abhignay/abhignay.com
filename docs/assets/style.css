@@ -407,7 +407,12 @@ table.flights th:nth-child(2), table.flights th:nth-child(3) { width: 45%; }
   margin: -1px; padding: 0; border: 0;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
 }
-.intro { padding-top: clamp(2.5rem, 6vw, 4.5rem); margin-top: 0; max-width: 42rem; }
+.intro {
+  padding-top: clamp(2.5rem, 6vw, 4.5rem);
+  max-width: 24em;
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  line-height: 1.1;
+}
 
 .feature {
   display: grid;
@@ -421,7 +426,7 @@ table.flights th:nth-child(2), table.flights th:nth-child(3) { width: 45%; }
 .feature-stage {
   position: relative;
   height: clamp(22rem, 60vh, 36rem);
-  background: var(--panel);
+  background: radial-gradient(ellipse 85% 75% at 50% 40%, var(--stage-glow), var(--stage-edge));
   border: 1px solid var(--line);
   border-radius: 3px;
   overflow: hidden;
@@ -510,10 +515,13 @@ table.flights th:nth-child(2), table.flights th:nth-child(3) { width: 45%; }
 .feature-links { list-style: none; padding: 0; margin-top: 1.75rem; border-top: 1px solid var(--line); }
 .feature-links li { margin: 0; padding: 0.75rem 0; border-bottom: 1px solid var(--line); color: var(--muted); }
 .feature-links a { display: block; font-weight: 600; color: var(--ink); text-decoration-color: var(--kapton); }
-.feature-more { margin-top: 1.25rem; }
 
 @media (max-width: 52rem) {
   .feature { grid-template-columns: minmax(0, 1fr); }
   .feature-stage { height: min(30rem, 110vw); }
   .feature-thumbs button { width: calc((100% - 2.4rem) / 5); max-width: 4.75rem; }
 }
+
+/* Soft backdrop behind the 3D model and photos. */
+:root { --stage-glow: #ffffff; --stage-edge: #dde3ec; }
+:root[data-theme="dark"] { --stage-glow: #2a3347; --stage-edge: #121824; }
