@@ -393,3 +393,9 @@ img[src$="vssut.png"] { max-width: min(100%, 32rem); }
   .figs-2 { flex-wrap: wrap; }
   .figs-3 > figure { flex-basis: calc(var(--r, 1.33) * 9rem); }
 }
+
+/* Flight test table (hopper build log): long text wraps, the flight number stays on one line. */
+table.flights { max-width: 52rem; }
+table.flights td { white-space: normal; color: inherit; }
+table.flights td:first-child { white-space: nowrap; font-weight: 600; }
+table.flights th:nth-child(2), table.flights th:nth-child(3) { width: 45%; }

@@ -14,9 +14,9 @@
   })();
 </script>
 <title>Build log entry 3 | Hopper Build Log | Abhigna Y</title>
-<meta name="description" content="Hopper build log entry 3. One line on what happened.">
+<meta name="description" content="Detailing the first few test flights.">
 <meta property="og:title" content="Build log entry 3 | Hopper Build Log | Abhigna Y">
-<meta property="og:description" content="Hopper build log entry 3. One line on what happened.">
+<meta property="og:description" content="Detailing the first few test flights.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.abhignay.com/hopper-build-log/entry-3">
 <meta property="og:image" content="https://www.abhignay.com/assets/img/hopper-hero.jpg">
@@ -50,45 +50,39 @@
 <div class="wrap">
   <header class="page-head">
     <a class="back" href="index.html">Build log</a>
-    <h1>Build log entry 3</h1>
-    <p class="when">Month Year</p>
+    <h1>First Test Flights</h1>
+    <p class="when">November 26th 2026</p>
   </header>
 
-  <!-- Change the title (here and in the first line of this file), the date and the
-       description line, then write the entry. Delete any photo or video block you
-       don't need. Photos go in docs/assets/img/, videos in docs/assets/video/. -->
-  <div class="prose">
-    <p class="placeholder">Opening paragraph: what you worked on and why.</p>
+   <div class="prose">
+    <p>So the hopper finally got off the ground, albeit fairly unreliably. In this log i'm going to be detailing the integrated test flights I've done so far. 
+      The flights are ordered in the form of IFT X, where IFT stand for Integrated Flight Test and X is the flight number. There were a couple of "test flights" before IFT 1, but they were mainly for characterization and axis checking which is why they don't count as Integrated Flight Tests.</p>
+    <p>The way I've set up theses flights is that after I manually command the hopper to liftoff from ground control, the motors go upto 40% throttle, hold there for 3 seconds. I then lift the hopper to its nominal flight altitude of 0.5 meters. After those 3 seconds the motors go to the hover throttle of about 68-70% at which point I let go of the vehicle and let it do its thing. I will interfere if it is about to tip over or crash into anything. This hover state lasts for about 10 seconds, after that the vehicle indicates that it is about to end hover by changing the color of the indicator LED. It stays at this "end hover" state for about 2 seconds which lets me hold the hopper, after this the motors shutoff and waits till we are 0.05 meters above the ground to switch to a landed state where it moves data from the flash chip to the sd card. The vehicle abort function can be triggered anytime either by a button on the ground software or if the vehicle tips past 35 degrees in pitch or yaw. If the vehicle is in the abort state motors immediately shut down and data is flushed to the sd card.</p>
+    <h2>Pre IFT 1</h2>
+    <p>Through my characterization flights I noticed that the roll controller was doing a pretty bad job of holding roll angle and roll rate. This is not ideal for many reasons, most notably because all my angle errors are in the inertial frame and my vane commands and mixer are in the body frame. Through these tests I'm hoping to maintain my roll setpoints and convert my angle errors to body frame."</p>
 
-    <h2>Section heading</h2>
-    <p class="placeholder">More detail. Add as many paragraphs as you like.</p>
+    <h2>IFT 1 - 6</h2>
   </div>
 
-  <!-- One photo:
-  <div class="figs figs-1">
-    <figure data-file="assets/img/hopper-log3-1.jpg"><img src="../assets/img/hopper-log3-1.jpg" alt="What the photo shows" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - Caption</figcaption></figure>
-  </div>
-  -->
-
-  <!-- Two photos side by side (use figs-3 for three or more):
-  <div class="figs figs-2">
-    <figure data-file="assets/img/hopper-log3-2.jpg"><img src="../assets/img/hopper-log3-2.jpg" alt="What it shows" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 2 - Caption</figcaption></figure>
-    <figure data-file="assets/img/hopper-log3-3.jpg"><img src="../assets/img/hopper-log3-3.jpg" alt="What it shows" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - Caption</figcaption></figure>
-  </div>
-  -->
-
-  <!-- A video:
-  <div class="figs figs-1">
-    <figure class="video" data-file="assets/video/hopper-log3-1.mp4" style="--r: 1.778"><video controls preload="metadata" src="../assets/video/hopper-log3-1.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>Caption</figcaption></figure>
-  </div>
-  -->
-
-  <div class="prose">
-    <p class="placeholder">Closing paragraph: what's next.</p>
+  <div class="table-scroll">
+    <table class="flights">
+      <thead>
+        <tr><th scope="col">Flight</th><th scope="col">What happened</th><th scope="col">Changes for the next flight</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>IFT 1</td><td>I wanted to combat the issues with the roll controller in this flight, through the characterization flights. I settled on adding a +15degree trim to the roll controller, because it lined up with where the I term was settling. Through my characterizaion flights I'd also noted a significant tilt on pitch and yaw as well after the vehicle took off. I settled on a -8 degree trim for yaw and -6 degree trim for pitch. These were fairly beefy trim values and it ended up saturating the vanes at their max actuation range.</td><td>For the next flight I'd want to change the roll and yaw trims.</td></tr>
+        <tr><td>IFT 2</td><td>Brought the trims down to +7 degrees for roll, leaving the yaw and pitch trims unchanged. In IFT 1 there was a lot of correction from me to ensure that the hopper didn't fall over or hit anything, I decided to reduce my inputs in this flight but it led to some pretty bad damage. Almost instantly after I let go of the vehicle, it spun to -45 degrees which threw off pitch and yaw control because of the difference in reference frame between the angle errors and the rest of the control system. At that point the hopper began significantly tilting in yaw while continuously rolling. I tried to catch and hold the vehicle in place but accidently nudged it in the direction of the yaw tilt. The hopper then tilted past 35 degrees, going into the abort state, shutdown the motors and crashed.</td><td>Heading correction.</td></tr>
+        <tr><td>IFT 3</td><td>Converted the pitch and yaw errors to body frame. The vehicle dropped as soon as I let go of it and tilted in yaw and pitch. I believe the drop happened because I'd constrained the altitude controller quite significantly, only giving it plus or minus 10% throttle to work with. Additionally my yaw trim was too negative causing the tilt, pitch trim would also need to be changed.</td><td>More positive yaw trim, change pitch trim, increase the throttle cap.</td></tr>
+        <tr><td>IFT 4</td><td>Changed yaw trim to -4 degrees and pitch trim to -9 degrees. Increased the throttle cap to + or - 15% throttle. The hopper still dropped as soon as I left it at 0.5m and continuously rolled and tilted in pitch and yaw multiple times. Probably the most chaotic flight so far with me having to intervene several times for long periods.</td><td>Bigger hover feedforward to account for thrust loss because of the vanes in the airflow, dial back the trims a little more.</td></tr>
+        <tr><td>IFT 5</td><td>I increased the Hover feedforward controller from 16.667N (which was equal to the exact mass of the hopper, 1.7kg) to 17.5N. I also changed the pitch and yaw trims to -7.5 and -2.5 degrees respectively. I also made my outer roll Kp gain 0 to avoid having the roll controller take vane range from tilt, I also increased my vane range from plus or minus 25 degree to plus or minus 30 degrees. This flight was quite a bit better than the previous ones with less intervention needed and less tilting and better altitude hold, but the flight battery was around half dead so I'd want to test again with freshly charged batteries.</td><td>Fully charged flight batteries.</td></tr>
+        <tr><td>IFT 6</td><td>Didn't need to do much intervention here! All I did was nudge it slightly to keep it from hitting anything in the vicinity, but the hopper was doing slow leans on both pitch and yaw. This is probably because of incorrect tuning in my sims, so the control system is a lot more softer than I need. Overall I cut my spin rate down to 29 deg/s from 51 deg/s in IFT 5 and maintained an altitude of 0.49 meters a lot better.</td><td>Jack up outer Kp gains for pitch and yaw, small updates to the trims. Possibly add a trim to the upper motor in the counter rotating setup in the future.</td></tr>
+      </tbody>
+    </table>
   </div>
 
+  <!-- Link to the entries before and after this one. Leave <span></span> where there is none. -->
   <nav class="pager" aria-label="Build log entries">
-    <a href="entry-2.html">Older: Build log entry 2</a>
+    <span></span>
     <span></span>
   </nav>
 </div>
