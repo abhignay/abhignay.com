@@ -10,16 +10,20 @@ nav: index
   </header>
 
   <!-- One row per entry, newest at the top. To post an entry:
-       1. Copy entry-1.html in src/hopper-build-log/ to a new file (entry-2.html, or a
-          name like 2026-12-first-hover.html) and write the entry there.
-       2. Copy a <tr> row below, paste it at the top, and change the date, link and summary. -->
+       1. Copy the newest entry file in src/hopper-build-log/ to a new file (entry-4.html)
+          and write the entry there.
+       2. Link the two entries to each other in their "pager" blocks at the bottom.
+       3. Copy a <tr> row below, paste it at the top, and change the date, link and summary.
+       4. Point the "Latest" line in src/tvc-hopper.html at the new entry. -->
   <div class="table-scroll">
     <table class="logs">
       <thead>
         <tr><th scope="col">Date</th><th scope="col">Entry</th><th scope="col">What happened</th></tr>
       </thead>
       <tbody>
-        <tr class="placeholder"><td>Date</td><td><a href="entry-1.html">Entry title</a></td><td>Coming soon.</td></tr>
+        <tr><td>Month Year</td><td><a href="entry-3.html">Build log entry 3</a></td><td>One line on what happened.</td></tr>
+        <tr><td>Month Year</td><td><a href="entry-2.html">Build log entry 2</a></td><td>One line on what happened.</td></tr>
+        <tr><td>Month Year</td><td><a href="entry-1.html">Build log entry 1</a></td><td>One line on what happened.</td></tr>
       </tbody>
     </table>
   </div>

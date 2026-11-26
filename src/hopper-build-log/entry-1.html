@@ -1,26 +1,49 @@
-title: Entry title | Hopper Build Log | Abhigna Y
-description: Hopper build log entry.
+title: Build log entry 1 | Hopper Build Log | Abhigna Y
+description: Hopper build log entry 1. One line on what happened.
 nav: index
 ---
 <div class="wrap">
   <header class="page-head">
     <a class="back" href="index.html">Build log</a>
-    <h1>Entry title</h1>
-    <p class="when">Date</p>
+    <h1>Build log entry 1</h1>
+    <p class="when">Month Year</p>
   </header>
 
-  <!-- Write the entry here. Use <p> for paragraphs and <h2> for headings.
-       Photos and videos go in a "figs" block between prose blocks:
-         <div class="figs figs-1"> {{img file.jpg | alt text | caption}} </div>
-         <div class="figs figs-1"> {{video file.mp4 | caption}} </div>
-       Put the files in docs/assets/img/ and docs/assets/video/. -->
+  <!-- Change the title (here and in the first line of this file), the date and the
+       description line, then write the entry. Delete any photo or video block you
+       don't need. Photos go in docs/assets/img/, videos in docs/assets/video/. -->
   <div class="prose">
-    <p class="placeholder">First entry coming soon.</p>
+    <p class="placeholder">Opening paragraph: what you worked on and why.</p>
+
+    <h2>Section heading</h2>
+    <p class="placeholder">More detail. Add as many paragraphs as you like.</p>
   </div>
 
-  <!-- Link to the entries before and after this one. Leave <span></span> where there is none. -->
+  <!-- One photo:
+  <div class="figs figs-1">
+    {{img hopper-log1-1.jpg | What the photo shows | fig 1 - Caption}}
+  </div>
+  -->
+
+  <!-- Two photos side by side (use figs-3 for three or more):
+  <div class="figs figs-2">
+    {{img hopper-log1-2.jpg | What it shows | fig 2 - Caption}}
+    {{img hopper-log1-3.jpg | What it shows | fig 3 - Caption}}
+  </div>
+  -->
+
+  <!-- A video:
+  <div class="figs figs-1">
+    {{video hopper-log1-1.mp4 | Caption}}
+  </div>
+  -->
+
+  <div class="prose">
+    <p class="placeholder">Closing paragraph: what's next.</p>
+  </div>
+
   <nav class="pager" aria-label="Build log entries">
     <span></span>
-    <span></span>
+    <a href="entry-2.html">Newer: Build log entry 2</a>
   </nav>
 </div>

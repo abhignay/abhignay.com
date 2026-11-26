@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>
+  // Pick the theme before the page draws, so it never flashes the wrong colours.
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (e) {}
+    var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (dark) document.documentElement.setAttribute("data-theme", "dark");
+  })();
+</script>
+<title>Build log entry 3 | Hopper Build Log | Abhigna Y</title>
+<meta name="description" content="Hopper build log entry 3. One line on what happened.">
+<meta property="og:title" content="Build log entry 3 | Hopper Build Log | Abhigna Y">
+<meta property="og:description" content="Hopper build log entry 3. One line on what happened.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.abhignay.com/hopper-build-log/entry-3">
+<meta property="og:image" content="https://www.abhignay.com/assets/img/hopper-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.abhignay.com/hopper-build-log/entry-3">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">Abhigna Y</a>
+    <nav aria-label="Main">
+      <a href="../index.html" aria-current="page">Projects</a>
+      <a href="../documents.html">Documents</a>
+      <a href="../highlights.html">Highlights</a>
+      <a href="../archive.html">Archive</a>
+      <a href="../contact.html">Contact</a>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="index.html">Build log</a>
+    <h1>Build log entry 3</h1>
+    <p class="when">Month Year</p>
+  </header>
+
+  <!-- Change the title (here and in the first line of this file), the date and the
+       description line, then write the entry. Delete any photo or video block you
+       don't need. Photos go in docs/assets/img/, videos in docs/assets/video/. -->
+  <div class="prose">
+    <p class="placeholder">Opening paragraph: what you worked on and why.</p>
+
+    <h2>Section heading</h2>
+    <p class="placeholder">More detail. Add as many paragraphs as you like.</p>
+  </div>
+
+  <!-- One photo:
+  <div class="figs figs-1">
+    <figure data-file="assets/img/hopper-log3-1.jpg"><img src="../assets/img/hopper-log3-1.jpg" alt="What the photo shows" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 1 - Caption</figcaption></figure>
+  </div>
+  -->
+
+  <!-- Two photos side by side (use figs-3 for three or more):
+  <div class="figs figs-2">
+    <figure data-file="assets/img/hopper-log3-2.jpg"><img src="../assets/img/hopper-log3-2.jpg" alt="What it shows" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 2 - Caption</figcaption></figure>
+    <figure data-file="assets/img/hopper-log3-3.jpg"><img src="../assets/img/hopper-log3-3.jpg" alt="What it shows" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>fig 3 - Caption</figcaption></figure>
+  </div>
+  -->
+
+  <!-- A video:
+  <div class="figs figs-1">
+    <figure class="video" data-file="assets/video/hopper-log3-1.mp4" style="--r: 1.778"><video controls preload="metadata" src="../assets/video/hopper-log3-1.mp4" onerror="this.parentNode.classList.add('missing')"></video><figcaption>Caption</figcaption></figure>
+  </div>
+  -->
+
+  <div class="prose">
+    <p class="placeholder">Closing paragraph: what's next.</p>
+  </div>
+
+  <nav class="pager" aria-label="Build log entries">
+    <a href="entry-2.html">Older: Build log entry 2</a>
+    <span></span>
+  </nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; Abhigna Y</p>
+    <ul>
+      <li><a href="https://github.com/abhignay">GitHub</a></li>
+      <li><a href="https://www.youtube.com/@abhignay">YouTube</a></li>
+      <li><a href="https://x.com/abhignayrk">X</a></li>
+      <li><a href="https://www.linkedin.com/in/abhigna-yerramreddikalva-97230231a/">LinkedIn</a></li>
+      <li><a href="https://www.flickr.com/photos/202569144@N06/">Flickr</a></li>
+    </ul>
+  </div>
+</footer>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var button = document.querySelector(".theme-toggle");
+    function label() {
+      var dark = root.getAttribute("data-theme") === "dark";
+      button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    }
+    label();
+    button.addEventListener("click", function () {
+      var dark = root.getAttribute("data-theme") !== "dark";
+      if (dark) root.setAttribute("data-theme", "dark"); else root.removeAttribute("data-theme");
+      try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+      label();
+    });
+  })();
+</script>
+</body>
+</html>
