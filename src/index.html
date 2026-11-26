@@ -3,25 +3,57 @@ description: Abhigna Yerramreddikalva's projects in electronics, programming and
 nav: index
 ---
 <div class="wrap">
-  <section class="hero">
-    <div>
-      <h1>Rockets, flight computers and a hopper steered by its own thrust.</h1>
-      <p class="lede">Hello! I'm Abhigna. I love electronics, programming, rocketry, and hardware reverse engineering. On this website, I showcase and document stuff I've worked on.</p>
+  <h1 class="visually-hidden">Abhigna Y</h1>
+  <p class="lede intro">Hello! I'm Abhigna. I love electronics, programming, rocketry, and hardware reverse engineering. On this website, I showcase and document stuff I've worked on.</p>
+
+  <section class="feature" data-hopper-feature aria-labelledby="feature-title">
+    <div class="feature-media">
+      <div class="feature-stage" data-view="model">
+        <img class="feature-poster" src="assets/img/feature/hopper-3d.png" alt="3D model of the TVC Hopper">
+        <div class="feature-3d"></div>
+        <img class="feature-photo" alt="">
+        <p class="feature-status" aria-live="polite"></p>
+        <div class="feature-tools">
+          <span class="feature-hint">Drag to turn it, scroll to zoom</span>
+          <button class="feature-reset" type="button">Reset view</button>
+        </div>
+      </div>
+      <div class="feature-thumbs" role="group" aria-label="Choose what to show">
+        <button type="button" data-view="model" aria-pressed="true">
+          <img src="assets/img/feature/hopper-3d-thumb.png" alt=""><span class="tag">3D</span>
+          <span class="visually-hidden">3D model</span>
+        </button>
+        <button type="button" data-src="assets/img/feature/hopper-1.jpg" data-alt="Hopper v2" aria-pressed="false">
+          <img src="assets/img/feature/hopper-1-thumb.jpg" alt="Photo: Hopper v2">
+        </button>
+        <button type="button" data-src="assets/img/feature/hopper-2.jpg" data-alt="Hopper v2" aria-pressed="false">
+          <img src="assets/img/feature/hopper-2-thumb.jpg" alt="Photo: Hopper v2, another angle">
+        </button>
+        <button type="button" data-src="assets/img/feature/hopper-3.jpg" data-alt="Hopper v2" aria-pressed="false">
+          <img src="assets/img/feature/hopper-3-thumb.jpg" alt="Photo: Hopper v2, third photo">
+        </button>
+        <button type="button" data-src="assets/img/feature/hopper-4.jpg" data-alt="Hopper v1" aria-pressed="false">
+          <img src="assets/img/feature/hopper-4-thumb.jpg" alt="Photo: Hopper v1">
+        </button>
+      </div>
+    </div>
+
+    <div class="feature-text">
+      <div class="when">Jan 2025 to now <span class="status">In progress</span></div>
+      <h2 id="feature-title"><a href="tvc-hopper.html">TVC Hopper</a></h2>
+      <p>An autonomous electric motor-based Vertical Takeoff and Vertical Landing Vehicle</p>
+      <ul class="feature-links">
+        <li><a href="hopperv2.html">Hopper v2</a> The latest revision of the hopper.</li>
+        <li><a href="hopper-build-log/index.html">Build log</a> Updates as the hopper comes together, newest first.</li>
+        <li><a href="hopperv1.html">Hopper v1</a> The 1st revision of the vehicle powered by an EDF</li>
+        <li><a href="teststand.html">Test Stand</a> Stand used to measure motor thrust and vane deflection side forces</li>
+      </ul>
+      <p class="feature-more"><a href="tvc-hopper.html">Go to the TVC Hopper page</a></p>
     </div>
   </section>
 
   <h2>Projects</h2>
   <ul class="projects">
-    <li>
-      <a class="project" href="tvc-hopper.html">
-        {{img home-hopper.jpg | TVC Hopper}}
-        <div>
-          <div class="when">Jan 2025 to now <span class="status">In progress</span></div>
-          <h3>TVC Hopper</h3>
-          <p>An autonomous electric motor-based Vertical Takeoff and Vertical Landing Vehicle</p>
-        </div>
-      </a>
-    </li>
     <li>
       <a class="project" href="rocket.html">
         {{img home-rockets.jpg | Advanced Model Rockets}}
@@ -29,16 +61,6 @@ nav: index
           <div class="when">Mar 2020 to now <span class="status">In progress</span></div>
           <h3>Advanced Model Rockets</h3>
           <p>High Power model rockets with onboard computers that log data, and can control several aspects of the rocket's flight</p>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a class="project" href="ardugame.html">
-        {{img home-ardugame.png | ArduGame}}
-        <div>
-          <div class="when">Sep to Nov 2023</div>
-          <h3>ArduGame</h3>
-          <p>An Arduboy clone</p>
         </div>
       </a>
     </li>
@@ -52,6 +74,17 @@ nav: index
         </div>
       </a>
     </li>
+    <li>
+      <a class="project" href="ardugame.html">
+        {{img home-ardugame.png | ArduGame}}
+        <div>
+          <div class="when">Sep to Nov 2023</div>
+          <h3>ArduGame</h3>
+          <p>An Arduboy clone</p>
+        </div>
+      </a>
+    </li>
   </ul>
   <p class="more">More projects and the old dev logs are in the <a href="archive.html">Archive</a>.</p>
 </div>
+<script type="module" src="assets/js/hopper-viewer.js"></script>

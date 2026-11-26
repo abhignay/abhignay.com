@@ -399,3 +399,121 @@ table.flights { max-width: 52rem; }
 table.flights td { white-space: normal; color: inherit; }
 table.flights td:first-child { white-space: nowrap; font-weight: 600; }
 table.flights th:nth-child(2), table.flights th:nth-child(3) { width: 45%; }
+/* Home page: intro line, then the TVC Hopper feature box (3D model and photos). */
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+.intro { padding-top: clamp(2.5rem, 6vw, 4.5rem); margin-top: 0; max-width: 42rem; }
+
+.feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 2rem 3rem;
+  align-items: start;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--ink);
+}
+.feature-stage {
+  position: relative;
+  height: clamp(22rem, 60vh, 36rem);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.feature-3d, .feature-3d canvas,
+.feature-poster, .feature-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.feature-3d { cursor: grab; touch-action: none; }
+.feature-3d:active { cursor: grabbing; }
+.feature-poster, .feature-photo { object-fit: contain; }
+.feature-stage.ready .feature-poster,
+.feature-stage.no-3d .feature-poster,
+.feature-stage[data-view="photo"] .feature-poster,
+.feature-stage[data-view="photo"] .feature-3d,
+.feature-stage[data-view="photo"] .feature-tools,
+.feature-stage[data-view="model"] .feature-photo { display: none; }
+.feature-status {
+  position: absolute;
+  left: 1rem; top: 0.75rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.feature-tools {
+  position: absolute;
+  left: 1rem; right: 0.75rem; top: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+.feature-stage:not(.ready) .feature-tools { display: none; }
+.feature-reset {
+  pointer-events: auto;
+  font: inherit;
+  color: var(--ink);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 0.2rem 0.6rem;
+  cursor: pointer;
+}
+.feature-reset:hover { border-color: var(--muted); }
+@media (hover: none), (max-width: 52rem) { .feature-hint { visibility: hidden; } }
+
+.feature-thumbs { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.75rem; }
+.feature-thumbs button {
+  position: relative;
+  width: 4.75rem;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.feature-thumbs button:hover { opacity: 1; }
+.feature-thumbs button[aria-pressed="true"] { opacity: 1; border-color: var(--kapton); box-shadow: inset 0 0 0 2px var(--kapton); }
+.feature-thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.feature-thumbs .tag {
+  position: absolute;
+  right: 0.25rem; bottom: 0.25rem;
+  padding: 0 0.3rem;
+  font: 600 0.8rem/1.4 var(--display);
+  color: var(--ink);
+  background: var(--kapton-soft);
+  border: 1px solid var(--kapton);
+  border-radius: 2px;
+}
+
+.feature-text .when { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; }
+.feature-text h2 { margin-top: 0.75rem; font-size: clamp(2.6rem, 5.5vw, 3.6rem); }
+.feature-text h2 a { color: var(--ink); text-decoration: none; }
+.feature-text h2 a:hover { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 0.12em; text-decoration-color: var(--kapton); }
+.feature-text > p { max-width: 30rem; }
+.feature-links { list-style: none; padding: 0; margin-top: 1.75rem; border-top: 1px solid var(--line); }
+.feature-links li { margin: 0; padding: 0.75rem 0; border-bottom: 1px solid var(--line); color: var(--muted); }
+.feature-links a { display: block; font-weight: 600; color: var(--ink); text-decoration-color: var(--kapton); }
+.feature-more { margin-top: 1.25rem; }
+
+@media (max-width: 52rem) {
+  .feature { grid-template-columns: minmax(0, 1fr); }
+  .feature-stage { height: min(30rem, 110vw); }
+  .feature-thumbs button { width: calc((100% - 2.4rem) / 5); max-width: 4.75rem; }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "hopper-viewer",
+  "private": true,
+  "description": "3D hopper viewer for the home page. Run `npm install` then `npm run build`; the output goes to docs/assets/js/.",
+  "scripts": {
+    "prebuild": "rm -f ../docs/assets/js/hopper-*.js",
+    "build": "esbuild src/hopper-viewer.js --bundle --splitting --format=esm --minify --target=es2020 --outdir=../docs/assets/js --entry-names=[name] --chunk-names=[name]-[hash] --legal-comments=none"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "three": "0.187.0"
+  }
+}
